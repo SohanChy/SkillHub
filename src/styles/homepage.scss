@@ -1,0 +1,77 @@
+.wrapper {
+	max-width: 1080px;
+	margin: 0 auto;
+	position: relative;
+}
+
+/*Banner*/
+
+#banner {
+	height: 700px;
+	background: #F8B109 url(../res-static/images/header-image.jpg) no-repeat center;
+	position: relative;
+	padding: 1px 0 0 0;
+}
+
+#banner .wrapper {
+	text-align: center;
+	margin-top: 230px;
+}
+
+#banner h2 {
+	margin: 20px auto 20px auto;
+	padding: 0 5%;
+	opacity: 0.9;
+	color: #fff;
+	font-size: 60px;
+	text-align: center;
+	font-weight: 700;
+}
+
+#banner .subtitle {
+	font-size: 18px;
+	letter-spacing: 0.1emx;
+	margin: 0;
+	color: #e0dad4;
+}
+
+#banner p {
+	font-family: 'Droid Serif', Times, Georgia, serif;
+	font-style: italic;
+	width: 70%;
+	margin: 0 auto;
+	color: #e0dad4;
+	margin-bottom: 40px;
+}
+
+#banner .button-2 {
+	color: #fff;
+}
+
+@media only screen and (max-width: 1024px) {
+	#banner h2 {
+		font-size: 48px;
+		margin-top: 20px;
+		padding: 0;
+		width: 100%;
+	}
+	#banner .wrapper {
+		margin: 50px auto;
+	}
+	#banner p {
+		width: 90%;
+	}
+	#banner {
+		height: auto;
+		padding: 40px 0;
+	}
+}
+
+/* */
+
+.full-width-section .subtitle {
+	color: #b1a492;
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+
