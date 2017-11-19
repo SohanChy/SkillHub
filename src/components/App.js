@@ -17,7 +17,6 @@ import NotFoundPage from './Public/NotFoundPage';
 class App extends React.Component {
   render() {
     return (
-      <div>
         <Switch>
 
           {/* PUBLIC ROUTES */}
@@ -27,7 +26,6 @@ class App extends React.Component {
           <Route component={NotFoundPage} />
 
         </Switch>
-      </div>
     );
   }
 }

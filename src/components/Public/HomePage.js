@@ -1,17 +1,77 @@
 import React from 'react';
-import '../../styles/styles.scss';
-import '../../styles/homepage.scss';
-import Header from './Header';
+import Base from './Base';
 import Banner from './Banner';
-import Footer from './Footer';
+import FeaturedSection from './FeaturedSection';
+import FeatureCard from './FeatureCard';
 
 const HomePage = () => {
   return (
-    <div>
-      <Header />
-      <Banner />
-      <Footer />
-    </div>
+      <Base>
+
+                     
+<FeaturedSection >
+
+            <FeatureCard 
+              type="large"
+              bgImg="../res-static/images/card-bg-1.jpg"
+              tagline="yo Bros"
+              title="Wanna seee this tutorial?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+              />
+
+            <FeatureCard 
+              type="small"
+              bgImg="../res-static/images/card-bg-1.jpg"
+              tagline="yo Bros"
+              title="Wanna seee this tutorial?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+              />
+
+            <FeatureCard 
+                type="small"
+                bgImg="../res-static/images/card-bg-1.jpg"
+                tagline="yo Bros"
+                title="Wanna seee this tutorial?"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+            />
+
+          </ FeaturedSection>
+            
+
+
+          <Banner />
+
+          <div className="top-spacing" />
+          
+          <FeaturedSection title="Hello world">
+
+            <FeatureCard 
+              type="large"
+              bgImg="../res-static/images/card-bg-1.jpg"
+              tagline="yo Bros"
+              title="Wanna seee this tutorial?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+              />
+
+            <FeatureCard 
+              type="small"
+              bgImg="../res-static/images/card-bg-1.jpg"
+              tagline="yo Bros"
+              title="Wanna seee this tutorial?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+              />
+
+            <FeatureCard 
+                type="small"
+                bgImg="../res-static/images/card-bg-1.jpg"
+                tagline="yo Bros"
+                title="Wanna seee this tutorial?"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+            />
+
+          </ FeaturedSection>
+          
+      </Base>
   );
 };
 
