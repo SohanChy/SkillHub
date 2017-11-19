@@ -553,3 +553,267 @@
 		margin: 2.5% 2.5%;
 	}
 }
+
+
+
+.masonry-section {
+	text-align: center;
+	padding: 100px 0;
+	background: #f2f2f2;
+}
+
+.masonry-section-videos {
+	text-align: center;
+	padding: 100px 0;
+	background: #f2f2f2;
+}
+
+.masonry {
+    margin: 60px auto;
+    padding: 0;
+    width: 95%;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    font-size: .85em;
+}
+
+.item {
+    display: inline-block;
+    background: #fff;
+    margin: 0 0 1.5em;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.item .summary {
+	padding: 10px 30px 30px 30px;
+}
+
+.item h4 {
+	font-family: 'Droid Serif', Times, Georgia, serif;
+	font-size: 28px;
+	margin: 12px 0;
+	padding: 0;
+}
+
+.item .category {
+	color: #867a6f;
+	font-size: 12px;
+}
+
+.item h4:after {
+	display: none;
+}
+
+.item img.article-image {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.item img.article-image-videos {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.advert-item {
+	background: none;
+}
+
+.item img.advert {
+	border-radius: 10px;
+}
+
+@media only screen and (min-width: 480px) {
+    .masonry {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .masonry {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+
+
+
+
+.instagram-section {
+	text-align: center;
+	padding: 100px 0;
+	background: #fff;
+}
+
+.instagram-section p.subtitle {
+	color: #e59361;
+	font-size: 17px;
+}
+
+ul.instagram-list {
+	width: 90%;
+	max-width: 1190px;
+	margin: 80px auto 60px;
+}
+
+ul.instagram-list li {
+	display: inline-block;
+	float: left;
+	width: 23%;
+	background: #fff;
+	padding: 0;
+	margin: 1%;
+}
+
+ul.instagram-list li img {
+	border-radius: 10px;
+}
+
+ul.instagram-list li a:hover {
+	opacity: .5;
+}
+@media only screen and (max-width: 960px) {
+	ul.instagram-list li {
+		display: block;
+		width: 47%;
+		margin: 1.5%;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	ul.instagram-list li {
+		display: block;
+		width: 100%;
+		margin: 3% 0;
+	}
+}
+
+.profile {
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+}
+
+
+
+
+
+.full-width-section {
+	text-align: left;
+	padding: 100px 0;
+	background: url(../res-static/images/full-width-bg.jpg) no-repeat center;
+	max-height: 870px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.full-width-section .subtitle {
+	color: #b1a492;
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+
+.full-width-section {
+	padding: 240px 0;
+}
+
+.full-width-section h2 {
+	margin-bottom: 40px;
+}
+
+.full-width-section p {
+	font-family: 'Droid Serif', Times, Georgia, serif;
+	font-style: italic;
+	font-size: 18px;
+	color: #777;
+	margin-bottom: 50px;
+}
+
+.full-width-section .text.align-left {
+	float: left;
+	width: 60%;
+	padding: 0 10% 0 40px;
+}
+
+.full-width-section .text.align-right{
+	float: right;
+	width: 60%;
+	padding: 0 40px 0 10%;
+}
+
+.full-width-section .text.align-center {
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.full-width-section .text.align-center p.subtitle {
+	text-align: center;
+}
+
+.full-width-section ul.list-checkmarks {
+	margin-top: 40px;
+}
+
+ul.list-checkmarks li {
+	text-align: left;
+	list-style-image: none;
+	background-position: 0 2px;
+	margin: 10px 0;
+	padding: 0 10px 10px 40px;
+}
+
+@media only screen and (max-width: 1024px) {
+	.full-width-section {
+		padding: 120px 0;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	.full-width-section .text {
+		float: none!important;
+		text-align: center;
+	}
+	.full-width-section .text.align-right, 
+	.full-width-section .text.align-left,
+	.full-width-section .image.align-right,
+	.full-width-section .image.align-left {
+		width: 100%;
+	}
+	.full-width-section .image {
+		float: none!important;
+		width: 80%!important;
+		padding: 0 20px;
+		margin: 0 auto 60px auto;
+	}
+	.full-width-section .text p.subtitle {
+		text-align: center;
+	}
+	.full-width-section h2 {
+		font-size: 60px;
+	}
+}
+

@@ -3,6 +3,10 @@ import Base from './Base';
 import Banner from './Banner';
 import FeaturedSection from './FeaturedSection';
 import FeatureCard from './FeatureCard';
+import Courses from './Courses';
+import Teachers from './Teachers';
+import FullWidth from './FullWidth';
+
 
 const HomePage = () => {
   return (
@@ -37,9 +41,10 @@ const HomePage = () => {
 
           </ FeaturedSection>
             
-
-
           <Banner />
+          <Courses  />
+          <FullWidth />  
+
 
           <div className="top-spacing" />
           
@@ -70,7 +75,8 @@ const HomePage = () => {
             />
 
           </ FeaturedSection>
-          
+
+          <Teachers/>
       </Base>
   );
 };
