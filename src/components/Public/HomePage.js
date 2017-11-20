@@ -12,64 +12,64 @@ const HomePage = () => {
   return (
       <Base>
 
-                     
+
 <FeaturedSection >
 
-            <FeatureCard 
+            <FeatureCard
               type="large"
               bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="yo Bros"
-              title="Wanna seee this tutorial?"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
+              tagline="Complete Courses"
+              title="Learn any topic from our teachers, take a course!"
+              description="Learn, participate and solve your problems."
               />
 
-            <FeatureCard 
+            <FeatureCard
               type="small"
               bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="yo Bros"
+              tagline="Learn any topic"
               title="Wanna seee this tutorial?"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
               />
 
-            <FeatureCard 
+            <FeatureCard
                 type="small"
                 bgImg="../res-static/images/card-bg-1.jpg"
-                tagline="yo Bros"
+                tagline="Learn any topic"
                 title="Wanna seee this tutorial?"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
             />
 
           </ FeaturedSection>
-            
+
           <Banner />
           <Courses  />
-          <FullWidth />  
+          <FullWidth />
 
 
           <div className="top-spacing" />
-          
+
           <FeaturedSection title="Hello world">
 
-            <FeatureCard 
+            <FeatureCard
               type="large"
               bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="yo Bros"
+              tagline="Learn any topic"
               title="Wanna seee this tutorial?"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
               />
 
-            <FeatureCard 
+            <FeatureCard
               type="small"
               bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="yo Bros"
+              tagline="Learn any topic"
               title="Wanna seee this tutorial?"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
               />
 
-            <FeatureCard 
+            <FeatureCard
                 type="small"
                 bgImg="../res-static/images/card-bg-1.jpg"
-                tagline="yo Bros"
+                tagline="Learn any topic"
                 title="Wanna seee this tutorial?"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
             />

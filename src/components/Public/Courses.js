@@ -31,6 +31,13 @@ const Courses = () => {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum rhoncus hendrerit. Cras molestie tristique tempor.</p>
             </div>
           </div>
+          <div className="item">
+            <img src="../res-static/images/thumb6.jpeg" alt="" className="article-image"/>
+            <div className="summary">
+              <h5>Class 11-12</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum rhoncus hendrerit. Cras molestie tristique tempor.</p>
+            </div>
+          </div>
 
         </div>
 
