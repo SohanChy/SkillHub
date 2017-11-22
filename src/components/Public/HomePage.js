@@ -1,82 +1,36 @@
 import React from 'react';
 import Base from './Base';
-import Banner from './Banner';
-import FeaturedSection from './FeaturedSection';
-import FeatureCard from './FeatureCard';
-import Courses from './Courses';
-import Teachers from './Teachers';
-import FullWidth from './FullWidth';
+
+import CourseCard from './CourseCard';
 
 
 const HomePage = () => {
   return (
       <Base>
 
+      <div id="content-wrapper" className="mui--text-center">
+        <div className="mui--appbar-height" />
+        <br />
+        <br />
+        <div className="mui--text-display3 row wow zoomInDown">Brand.io</div>
+        <br />
+        <br />
+        <button className="mui-btn mui-btn--raised">Get started</button>
+        <br />
+        <br />
+        <i className="fa fa-university fa-5x mui--color-pink-A100 mui--text-display3 row wow zoomIn" aria-hidden="true" />
+      </div>
 
-<FeaturedSection >
+        <CourseCard 
+        imgUrl="http://resources3.news.com.au/images/2014/01/13/1226800/983627-beach.gif"
+        tag="SSC Physics"
+        title="Full Course on SSC Physics With Basic"
+        authorString="Taught By Shahed Zaman, BUET CSE"
+        rating="4.5"
+        tryLink="S"
+        sylabusLink="X"
+        />
 
-            <FeatureCard
-              type="large"
-              bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="Complete Courses"
-              title="Learn any topic from our teachers, take a course!"
-              description="Learn, participate and solve your problems."
-              />
-
-            <FeatureCard
-              type="small"
-              bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="Learn any topic"
-              title="Wanna seee this tutorial?"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
-              />
-
-            <FeatureCard
-                type="small"
-                bgImg="../res-static/images/card-bg-1.jpg"
-                tagline="Learn any topic"
-                title="Wanna seee this tutorial?"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
-            />
-
-          </ FeaturedSection>
-
-          <Banner />
-          <Courses  />
-          <FullWidth />
-
-
-          <div className="top-spacing" />
-
-          <FeaturedSection title="Hello world">
-
-            <FeatureCard
-              type="large"
-              bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="Learn any topic"
-              title="Wanna seee this tutorial?"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
-              />
-
-            <FeatureCard
-              type="small"
-              bgImg="../res-static/images/card-bg-1.jpg"
-              tagline="Learn any topic"
-              title="Wanna seee this tutorial?"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
-              />
-
-            <FeatureCard
-                type="small"
-                bgImg="../res-static/images/card-bg-1.jpg"
-                tagline="Learn any topic"
-                title="Wanna seee this tutorial?"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus feugiat mi, a tincidunt lectus."
-            />
-
-          </ FeaturedSection>
-
-          <Teachers/>
       </Base>
   );
 };

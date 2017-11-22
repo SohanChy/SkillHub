@@ -9,7 +9,6 @@ import HomePage from './Public/HomePage';
 //import FuelSavingsPage from '../containers/FuelSavingsPage';
 import AboutPage from './Public/AboutPage';
 import NotFoundPage from './Public/NotFoundPage';
-import BrowseCourses from './Public/BrowseCourses';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -22,7 +21,6 @@ class App extends React.Component {
 
           {/* PUBLIC ROUTES */}
           <Route exact path="/" component={HomePage} />
-          <Route path="/browse" component={BrowseCourses} />
           <Route path="/about" component={AboutPage} />
           <Route component={NotFoundPage} />
 

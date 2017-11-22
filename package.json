@@ -31,8 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "2.2.5",
-    "material-ui": "1.0.0-beta.21",
-    "material-ui-icons": "1.0.0-beta.17",
+    "muicss": "0.9.30",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
@@ -41,7 +40,8 @@
     "react-router-redux": "5.0.0-alpha.6",
     "react-search-bar": "2.2.0",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",
