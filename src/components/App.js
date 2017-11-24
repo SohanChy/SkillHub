@@ -10,6 +10,8 @@ import HomePage from './Public/HomePage';
 import AboutPage from './Public/AboutPage';
 import NotFoundPage from './Public/NotFoundPage';
 import BrowseCourses from './Public/BrowseCourses';
+import LoginPage from './Public/LoginPage';
+import RegisterPage from './Public/RegisterPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -19,13 +21,13 @@ class App extends React.Component {
   render() {
     return (
         <Switch>
-
           {/* PUBLIC ROUTES */}
           <Route exact path="/" component={HomePage} />
           <Route path="/browse" component={BrowseCourses} />
           <Route path="/about" component={AboutPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
           <Route component={NotFoundPage} />
-
         </Switch>
     );
   }

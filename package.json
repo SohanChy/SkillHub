@@ -30,6 +30,7 @@
   "author": "Sohan Chowdhury",
   "license": "MIT",
   "dependencies": {
+    "axios": "0.17.1",
     "classnames": "2.2.5",
     "material-ui": "1.0.0-beta.21",
     "material-ui-icons": "1.0.0-beta.17",

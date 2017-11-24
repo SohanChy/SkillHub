@@ -1,16 +1,12 @@
 import React from 'react';
 import Base from './Base';
-import SearchBar from './SearchBar';
 
 const BrowseCourses = () => {
   return (
       <Base>
-
       	<section className="masonry-section-video">
-	<a name="portfolio"/>
+		<a name="portfolio"/>
 			<div className="wrapper">
-
-
 				<div className="masonry">
 					<div className="item">
 						<img src="../res-static/images/thumb4.jpeg" alt="" className="article-image-video"/>
