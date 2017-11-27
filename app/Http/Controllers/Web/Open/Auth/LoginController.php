@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Auth;
+namespace App\Http\Controllers\Web\Open\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -20,6 +20,16 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view('open.auth.login');
+    }
 
     /**
      * Create a new controller instance.

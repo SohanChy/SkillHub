@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Auth;
+namespace App\Http\Controllers\Web\Open\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -21,6 +21,16 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('open.auth.register');
+    }
 
 
     protected function redirectTo()

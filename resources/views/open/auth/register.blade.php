@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('open.layouts.app')
 
 @section('content')
     <div class="mui-container-fluid">
@@ -6,8 +6,8 @@
             <div class="mui-col-md-4 mui-col-md-offset-4">
 
                 <div class="mui-panel">
-                    <form method="POST" class="mui-form" action="{{ route('login') }}">
-                        <legend>Login</legend>
+                    <form method="POST" class="mui-form" action="{{ route('register') }}">
+                        <legend>Register</legend>
                         {{ csrf_field() }}
 
                         @component('mui.errors',
@@ -32,7 +32,6 @@
                                 <option value="student">Student</option>
                                 <option value="teacher">Teacher</option>
                             </select>
-
                         </div>
 
                         @component('mui.textfield',
