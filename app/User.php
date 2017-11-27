@@ -78,7 +78,7 @@ class User extends Authenticatable
         } else if (Auth::user()->hasRole("teacher")) {
             return "/teacher";
         } else {
-            return "/user";
+            return "/student";
         }
     }
 

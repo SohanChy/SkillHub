@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use App\User;
 use Closure;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class CheckRole
@@ -23,8 +22,9 @@ class CheckRole
         if( $user->hasRole($role) ){
             return $next($request);
         }
-
-        return User::roleErrorResponse();
+        else {
+            return response('You do not have permission to access this.');
+        }
 
     }
 }

@@ -27,22 +27,40 @@ Route::group([
     Route::post('login', "Auth\LoginController@login");
     Route::post('register', "Auth\RegisterController@register");
 
+});
 
-    Route::get('user', function () {
+
+Route::group([
+    'namespace' => 'Web\Student',
+    'middleware' => ['auth', 'check.role:student'],
+    'prefix' => 'student'
+], function () {
+    //Student Routes Here
+    Route::get('/', function () {
         return "You are a user. Only admins can login to web dashboard!";
     });
-    Route::get('deliveryman', function () {
-        return "You are a deliveryman. Only admins can login to web dashboard!";
-    });
-
-    Route::group([
-        'namespace' => 'Web\Admin',
-        'middleware' => ['auth', 'check.role:admin'],
-        'prefix' => 'admin'
-    ], function () {
-        //Admin Routes Here
-        Route::get('/', "DashboardController@index");
-    });
-
-
 });
+
+Route::group([
+    'namespace' => 'Web\Teacher',
+    'middleware' => ['auth', 'check.role:teacher'],
+    'prefix' => 'teacher'
+], function () {
+    //Student Routes Here
+    Route::get('/', function () {
+        return "You are a teacher. Only admins can login to web dashboard!";
+    });
+});
+
+
+Route::group([
+    'namespace' => 'Web\Admin',
+    'middleware' => ['auth', 'check.role:admin'],
+    'prefix' => 'admin'
+], function () {
+    //Admin Routes Here
+    Route::get('/', function () {
+        return "You are a teacher. Only admins can login to web dashboard!";
+    });
+});
+
