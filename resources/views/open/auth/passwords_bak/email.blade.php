@@ -1,4 +1,4 @@
-@extends('open.layouts.app')
+@extends('open.layouts.base.php')
 
 @section('content')
 <div class="container">

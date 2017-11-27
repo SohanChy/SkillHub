@@ -37,7 +37,7 @@ Route::group([
 ], function () {
     //Student Routes Here
     Route::get('/', function () {
-        return "You are a user. Only admins can login to web dashboard!";
+        return view("student.dashboard");
     });
 });
 
@@ -48,7 +48,7 @@ Route::group([
 ], function () {
     //Student Routes Here
     Route::get('/', function () {
-        return "You are a teacher. Only admins can login to web dashboard!";
+        return view("teacher.dashboard");
     });
 });
 
@@ -60,7 +60,7 @@ Route::group([
 ], function () {
     //Admin Routes Here
     Route::get('/', function () {
-        return "You are a teacher. Only admins can login to web dashboard!";
+        return view("admin.dashboard");
     });
 });
 

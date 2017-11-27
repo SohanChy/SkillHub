@@ -1,4 +1,4 @@
-@extends('open.layouts.app')
+@extends('open.layouts.base')
 
 @section('content')
     <div class="mui--text-center">

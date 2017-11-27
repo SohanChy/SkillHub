@@ -8,11 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Welcome') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('style/muicss/mui.css') }}" rel="stylesheet">
-    <link href="{{ asset('style/public/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/open/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -36,6 +36,11 @@
                                         <span class="mui-caret"></span>
                                     </button>
                                     <ul class="mui-dropdown__menu">
+                                        <li>
+                                            <a href="{{ url(App\User::redirectRoleLogic()) }}">
+                                                Dashboard
+                                            </a>
+                                        </li>
                                         <li>
                                             <a href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
