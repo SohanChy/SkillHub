@@ -18,105 +18,100 @@
 </head>
 <body>
 
-<div id="sidedrawer" class="mui--no-user-select">
-    <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title">Admin.io</span>
+    <div id="sidedrawer" class="mui--no-user-select">
+        <div id="sidedrawer-brand" class="mui--appbar-line-height">
+            <span class="mui--text-title">Admin.io</span>
+        </div>
+        <div class="mui-divider"></div>
+        <ul>
+            <li>
+                <strong><a href="{{ URL::to('admin/category/create') }}">Add category</a></strong>
+            </li>
+            <li>
+                <strong>Category 2</strong>
+                <ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <strong>Category 3</strong>
+                <ul>
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <div class="mui-divider"></div>
-    <ul>
-        <li>
-            <strong>Category 1</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
-        <li>
-            <strong>Category 2</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
-        <li>
-            <strong>Category 3</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
 
-<header id="header">
+    <header id="header">
 
-    <div class="mui-appbar mui--appbar-line-height">
-        <div class="mui-container-fluid">
+        <div class="mui-appbar mui--appbar-line-height">
+            <div class="mui-container-fluid">
 
-            <div class="mui-row">
-                <div class="mui-col-md-8">
-                    <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
-                    <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-                    <span class="mui--text-title">Section Name</span>
-                </div>
-                <div class="mui-col-md-3 mui--text-right">
+                <div class="mui-row">
+                    <div class="mui-col-md-8">
+                        <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+                        <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+                        <span class="mui--text-title">Section Name</span>
+                    </div>
+                    <div class="mui-col-md-3 mui--text-right">
 
-                    <ul class="mui-list--inline">
-                        <li><a href="#" class="mui--text-light">
+                        <ul class="mui-list--inline">
+                            <li><a href="#" class="mui--text-light">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a></li>
-                        <li>
-                            <div class="mui-dropdown">
-                                <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
-                                    <i class="fa fa-bell" aria-hidden="true"></i>
-                                    <span class="mui-caret"></span>
-                                </button>
-                                <ul class="mui-dropdown__menu">
-                                    <li><a href="#">Course Noti 1</a></li>
-                                    <li><a href="#">Course Noti 2</a></li>
-                                    <li>
-                                        <div class="mui-panel mui--text-dark">
-                                            <i class="fa fa-globe"></i> Card noti works!
-                                        </div>
-                                    </li>
-                                    <li><a href="#">Course Noti 4</a></li>
-                                    <li><a href="#">Course Noti 5</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+                            <li>
+                                <div class="mui-dropdown">
+                                    <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                        <span class="mui-caret"></span>
+                                    </button>
+                                    <ul class="mui-dropdown__menu">
+                                        <li><a href="#">Course Noti 1</a></li>
+                                        <li><a href="#">Course Noti 2</a></li>
+                                        <li>
+                                            <div class="mui-panel mui--text-dark">
+                                                <i class="fa fa-globe"></i> Card noti works!
+                                            </div>
+                                        </li>
+                                        <li><a href="#">Course Noti 4</a></li>
+                                        <li><a href="#">Course Noti 5</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
 
 
-                </div>
-                <div class="mui-col-md-1">
+                    </div>
+                    <div class="mui-col-md-1">
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
 
-</header>
-
-
-@yield("content")
-
-<footer id="footer">
-    <div class="mui-container-fluid">
-        <br>
-        Made with ♥ by <a href="https://www.muicss.com">MUI</a>
-    </div>
-</footer>
+    </header>
 
 
-<script src="{{ asset('style/muicss/mui.js') }}"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
+    @yield("content")
+
+    <footer id="footer">
+        <div class="mui-container-fluid">
+            <br>
+            Made with ♥ by <a href="https://www.muicss.com">MUI</a>
+        </div>
+    </footer>
+
+
+    <script src="{{ asset('style/muicss/mui.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
 
 </body>
 </html>

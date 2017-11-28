@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'namespace' => 'Web\Open'
+'namespace' => 'Web\Open'
 ],function () {
 
     Route::get('/', function () {
@@ -31,9 +31,9 @@ Route::group([
 
 
 Route::group([
-    'namespace' => 'Web\Student',
-    'middleware' => ['auth', 'check.role:student'],
-    'prefix' => 'student'
+'namespace' => 'Web\Student',
+'middleware' => ['auth', 'check.role:student'],
+'prefix' => 'student'
 ], function () {
     //Student Routes Here
     Route::get('/', function () {
@@ -42,9 +42,9 @@ Route::group([
 });
 
 Route::group([
-    'namespace' => 'Web\Teacher',
-    'middleware' => ['auth', 'check.role:teacher'],
-    'prefix' => 'teacher'
+'namespace' => 'Web\Teacher',
+'middleware' => ['auth', 'check.role:teacher'],
+'prefix' => 'teacher'
 ], function () {
     //Student Routes Here
     Route::get('/', function () {
@@ -54,13 +54,17 @@ Route::group([
 
 
 Route::group([
-    'namespace' => 'Web\Admin',
-    'middleware' => ['auth', 'check.role:admin'],
-    'prefix' => 'admin'
+'namespace' => 'Web\Admin',
+'middleware' => ['auth', 'check.role:admin'],
+'prefix' => 'admin'
 ], function () {
     //Admin Routes Here
     Route::get('/', function () {
         return view("admin.dashboard");
     });
+
+    Route::resources([
+    'category' => 'AdminCategoryController'
+    ]);
 });
 
