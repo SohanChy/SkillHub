@@ -68,7 +68,8 @@ Route::group([
     });
 
     Route::resources([
-    'category' => 'AdminCategoryController'
+    'category' => 'AdminCategoryController',
+    'approval' => 'ApprovalController'    
     ]);
 });
 
