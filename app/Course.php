@@ -12,7 +12,4 @@ class Course extends Model
      * @var array
      */
     protected $guarded = ['rating'];
-
-
-    public static $validationRules = [];
 }

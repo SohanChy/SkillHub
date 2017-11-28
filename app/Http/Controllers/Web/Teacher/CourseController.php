@@ -6,9 +6,18 @@ use App\Category;
 use App\Course;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use function MongoDB\BSON\toJSON;
 
 class CourseController extends Controller
 {
+    public static $validationRules = [
+        'title' => 'required|max:191',
+        'small_description' => 'required|min:30',
+        'full_description' => 'required|min:30',
+        'category_id' => 'required|exists:categories,id'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +25,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return "here";
+        $courses = Course::select("title","small_description")->get();
+        return view("teacher.courses.index")->with(compact("courses"));
     }
 
     /**
@@ -28,8 +38,8 @@ class CourseController extends Controller
     {
         $course = new Course();
         $categoriesList = Category::pluck('name', 'id');
-        return view("teacher.courses.create")
-        ->with( compact('course', 'categoriesList') );
+        return view("teacher.courses.create_edit")
+            ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -40,7 +50,18 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+
+        $this->validate($request, self::$validationRules);
+        $validatedData = $request->all();
+
+        $course = Course::create($validatedData);
+
+        if($course){
+            return redirect()->route('teacher.courses.index');
+        }
+        else {
+            return Redirect::back()->withErrors(['Error', 'Could not create course!']);
+        }
     }
 
     /**
@@ -51,7 +72,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return $course->toJson();
     }
 
     /**
@@ -63,8 +84,8 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $categoriesList = Category::pluck('name', 'id');
-        return view("teacher.courses.create")
-        ->with( compact('course', 'categoriesList') );
+        return view("teacher.courses.create_edit")
+            ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -76,7 +97,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $this->validate($request, self::$validationRules);
+        $validatedData = $request->all();
+
+        $course->fill($validatedData);
+
+        if($course->save()){
+            return redirect()->route('teacher.courses.show',$course->id);
+        }
+        else {
+            return Redirect::back()->withErrors(['Error', 'Could not save update!']);
+        }
     }
 
     /**
