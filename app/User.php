@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     }
 
-    public static $statusArr = ["pending", "approved", "rejected","banned"];
+    public static $statusArr = ["Pending", "Approved", "Rejected","Banned"];
 
 
     public static function getStatusAttribute($value)

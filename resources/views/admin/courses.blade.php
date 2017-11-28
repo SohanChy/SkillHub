@@ -4,7 +4,7 @@
 <div id="content-wrapper">
 	<div class="mui--appbar-height"></div>
 	<div class="mui-container-fluid">
-		
+		<div class="mui-panel">
 		<table class="mui-table">
 			<thead>
 				<tr>
@@ -23,23 +23,14 @@
 					<td>{{$course->created_at}}</td>
 
 
-					@if($course->publish_status == 0)
-					<td>Pending</td>
-
-					@elseif($course->publish_status == 1)
-					<td>Rejected</td>
-
-					@elseif($course->publish_status == 2)
-					<td>Accepted</td>
-					@else
-					<td>Yet to decide</td>
-					@endif
+					<td>{{\App\StatusHelper::getStatusString($course->admin_status,\App\Course::$adminStatusArr)}}</td>
 
 					<td><a class="mui-btn" href="{{URL::to('admin/approval/' . $course->id)}}">Details</a></td>
 				</tr>
 				@endforeach
 			</tbody>
 		</table>
+		</div>
 
 	</div>
 </div>

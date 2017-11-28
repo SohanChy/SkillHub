@@ -31,15 +31,14 @@
             ['name' => 'full_description', 'type' => 'textarea','size'=>'30x7'])
             @endcomponent
 
-            <div class="mui-select">
-            {!!
-            Form::select('category_id',
-            $categoriesList,
-            null,
-            ['placeholder' => 'Pick a category...'])
-            !!}
-                <label>Course Category</label>
-            </div>
+            @component('mui.select',
+            ['name' => 'category_id', 'list' => $categoriesList])
+            @endcomponent
+
+            @component('mui.select',
+            ['name' => 'publish_status', 'list' => \App\Course::$publishStatusArr])
+            @endcomponent
+
 
                 <div class="mui--text-right">
                     <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>

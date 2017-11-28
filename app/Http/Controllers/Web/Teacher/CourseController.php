@@ -27,7 +27,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $courses = Auth::user()->teacherOfCourses()
-            ->select("id","title","small_description");
+            ->select("id","title","small_description","admin_status");
 
         $courses->when($request->has("publish_status"), function ($query) use ($request) {
             return $query->where('publish_status',
@@ -36,6 +36,8 @@ class CourseController extends Controller
         });
 
         $courses = $courses->get();
+
+        \Debugbar::info($courses);
 
         return view("teacher.courses.index")->with(compact("courses"));
     }

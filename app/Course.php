@@ -13,8 +13,8 @@ class Course extends Model
      */
     protected $guarded = ['rating'];
 
-    public static $adminStatusArr = ["pending", "live", "rejected"];
-    public static $publishStatusArr = ["draft", "published"];
+    public static $adminStatusArr = ["Pending", "Live", "Rejected"];
+    public static $publishStatusArr = ["Draft", "Published"];
 
 
     public function teachers()
