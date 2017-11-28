@@ -5,19 +5,6 @@ namespace App;
 
 class Helpers
 {
-    public static function sendSMS($msg, $toNumber, $senderID = "8804445629100")
-    {
-        $url = "http://brandsms.mimsms.com/smsapi";
-        $params = [
-            "api_key" => env("SMS_API_KEY"),
-            "type" => "text",
-            "senderid" => $senderID,
-            "contacts" => $toNumber,
-            "msg" => $msg
-        ];
-
-        self::HTTPPost($url, $params);
-    }
 
     public static function HTTPPost($url, array $params)
     {
@@ -41,7 +28,7 @@ class Helpers
         $html = "
             <html>
             <body style='text-align:center; margin:auto '>
-            <h1>Welcome to <i>RobotDako {$user->name}!</i></h1>
+            <h1>Welcome to <i>X {$user->name}!</i></h1>
             <h2>Your account has been approved.</h2>
             
             <blockquote 
@@ -62,7 +49,7 @@ class Helpers
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: noreply@horkora.com";
+        $headers .= "From: noreply@X.com";
         mail($to, $subject, $html, $headers);
     }
 }

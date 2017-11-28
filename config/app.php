@@ -179,6 +179,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        EloquentFilter\ServiceProvider::class,
         ],
 
     /*
@@ -232,4 +233,4 @@ return [
     'Html' => Collective\Html\HtmlFacade::class,
     ],
 
-    ];
+];

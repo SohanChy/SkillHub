@@ -77,7 +77,7 @@
 
     <footer>
         <div class="mui-container mui--text-center">
-            Made with ♥ by <a href="https://www.muicss.com">MUICSS</a>
+            {{--Made with ♥ by <a href="https://www.muicss.com">MUICSS</a>--}}
         </div>
     </footer>
     <script src="{{ asset('style/muicss/mui.js') }}"></script>

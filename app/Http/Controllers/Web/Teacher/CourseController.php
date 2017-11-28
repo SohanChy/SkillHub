@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Web\Teacher;
 use App\Category;
 use App\Course;
 use App\Http\Controllers\Controller;
+use App\StatusHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use function MongoDB\BSON\toJSON;
 
 class CourseController extends Controller
 {
@@ -23,9 +24,19 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::select("id","title","small_description")->get();
+        $courses = Auth::user()->teacherOfCourses()
+            ->select("id","title","small_description");
+
+        $courses->when($request->has("publish_status"), function ($query) use ($request) {
+            return $query->where('publish_status',
+                StatusHelper::getStatusKey($request->publish_status,Course::$publishStatusArr)
+            );
+        });
+
+        $courses = $courses->get();
+
         return view("teacher.courses.index")->with(compact("courses"));
     }
 
@@ -55,6 +66,9 @@ class CourseController extends Controller
         $validatedData = $request->all();
 
         $course = Course::create($validatedData);
+
+        $user = Auth::user();
+        $course->teachers()->attach($user);
 
         if($course){
             return redirect()->route('teacher.courses.index');

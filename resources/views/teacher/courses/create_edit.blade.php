@@ -7,10 +7,10 @@
     <div class="mui-container-fluid">
 
         @if($course->exists)
-            <h2>Edit Course</h2>
+            <h3>Edit Course</h3>
             {!! Form::model($course, ['method' => 'PATCH','route' => ['teacher.courses.update', $course->id]]) !!}
         @else
-            <h2>Create Course</h2>
+            <h3>Create Course</h3>
             {!! Form::model($course, ['route' => ['teacher.courses.store']]) !!}
         @endif
 

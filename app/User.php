@@ -68,22 +68,10 @@ class User extends Authenticatable
 
     public static $statusArr = ["pending", "approved", "rejected","banned"];
 
-    public static function getStatusString($status)
-    {
-        return self::$statusArr[(int)$status];
-    }
-
-    public static function getStatusKey($string)
-    {
-        if (is_numeric($string)) {
-            return $string;
-        }
-        return array_search($string, self::$statusArr);
-    }
 
     public static function getStatusAttribute($value)
     {
-        return self::getStatusKey($value);
+        return StatusHelper::getStatusKey($value,self::$statusArr);
     }
 
     public function getMyStatusKey()
@@ -93,25 +81,14 @@ class User extends Authenticatable
 
     //Relations
 
-    public static function index(Request $request)
+    public function teacherOfCourses()
     {
-        $users = User::query();
+        return $this->belongsToMany('App\Course', 'course_teacher', 'teacher_id','course_id');
+    }
 
-        if ($request->has("status")) {
-            $users = User::where('status', '=', $request->status);
-        }
-
-        if ($request->has("role")) {
-            $users = $users->where("role", "=", $request->role);
-        }
-
-        if ($request->has("name")) {
-            $users = $users->where("name", "LIKE", "%" . $request->name . "%");
-        }
-
-        $users = $users->orderByDesc("id")->paginate(25);
-
-        return $users;
+    public function studentOfCourses()
+    {
+        return $this->belongsToMany('App\Course', 'course_student', 'student_id','course_id');
     }
 
     public static $proPicDirString = "uploads/profile_pics/";

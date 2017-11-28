@@ -26,12 +26,11 @@
     <div class="mui-divider"></div>
     <ul>
         <li>
-            <strong>My Courses</strong>
+            <strong><i class="fa fa-fw fa-graduation-cap"></i> My Courses</strong>
             <ul>
                 <li><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create</a></li>
                 <li><a href="{{route('teacher.courses.index')}}?publish_status=published"><i class="fa fa-fw fa-graduation-cap"></i> Published</a></li>
-                <li><a href="{{route('teacher.courses.index')}}?publish_status=pending"><i class="fa fa-fw fa-hourglass"></i> Pending</a></li>
-                <li><a href="{{route('teacher.courses.index')}}?publish_status=rejected"><i class="fa fa-fw fa-remove"></i> Rejected</a></li>
+                <li><a href="{{route('teacher.courses.index')}}?publish_status=draft"><i class="fa fa-fw fa-pencil-square"></i> Drafts</a></li>
             </ul>
         </li>
         <li>
@@ -106,7 +105,7 @@
 <footer id="footer">
     <div class="mui-container-fluid">
         <br>
-        Made with ♥ by <a href="https://www.muicss.com">MUI</a>
+        {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
     </div>
 </footer>
 
