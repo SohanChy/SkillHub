@@ -3,14 +3,14 @@
 
 @section('content')
 <div id="content-wrapper">
-    <div class="mui--appbar-height"></div>
-    <div class="mui-container-fluid">
+	<div class="mui--appbar-height"></div>
+	<div class="mui-container-fluid">
 
-        @foreach($courses as $course)
-            @component("teacher.courses.course_card",['course' => $course])
-            @endcomponent
-        @endforeach
+		@foreach($courses as $course)
+		@component("teacher.courses.course_card",['course' => $course])
+		@endcomponent
+		@endforeach
 
-    </div>
+	</div>
 </div>
 @endsection

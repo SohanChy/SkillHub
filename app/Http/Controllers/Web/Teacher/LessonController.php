@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Web\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Lesson;
+use App\Uploads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+
 
 class LessonController extends Controller
 {
@@ -15,7 +19,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,9 +27,10 @@ class LessonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $lesson = new Lesson();
+        return view('teacher.lesson.lesson_create', compact('lesson', 'id'));
     }
 
     /**
@@ -36,8 +41,51 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lesson = new Lesson();
+        
+        $videoId = null;
+        $documentId = [];
+
+        $file = $request->file('video');
+        if($file){
+            $videoId = $this->uploadFiles($file);
+        }
+
+        $file = $request->file('document');        
+        if($file){
+            array_push($documentId, $this->uploadFiles($file));            
+        }
+        
+        $lesson->course_id = $request->get('id');        
+        $lesson->short_description = $request->get('short_description');        
+        $lesson->video_file_id = $videoId;        
+        $lesson->lesson_text = $request->get('write_an_article');        
+        $lesson->json_file_ids = json_encode($documentId);
+        $lesson->save();      
+        
+        dd($lesson);
     }
+
+
+    public function uploadFiles($file){
+
+        $extension = $file->getClientOriginalExtension();
+        $video = time().rand().'.'.$extension;
+        $destinationPath = public_path('/uploads');
+        $file->move($destinationPath, $video);  
+
+
+        $uploadfile = new Uploads();
+        
+        $uploadfile->name = $file->getClientOriginalName();
+        $uploadfile->size = $file->getClientSize();
+        $uploadfile->path = $video;
+        $uploadfile->uploader_id = Auth::user()->id;
+        $uploadfile->save();
+
+        return $uploadfile->id;
+    }
+
 
     /**
      * Display the specified resource.
