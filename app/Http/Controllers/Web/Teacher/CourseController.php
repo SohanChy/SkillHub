@@ -25,7 +25,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::select("title","small_description")->get();
+        $courses = Course::select("id","title","small_description")->get();
         return view("teacher.courses.index")->with(compact("courses"));
     }
 
