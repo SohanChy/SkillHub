@@ -59,7 +59,8 @@ Route::group([
 Route::group([
 'namespace' => 'Web\Admin',
 'middleware' => ['auth', 'check.role:admin'],
-'prefix' => 'admin'
+'prefix' => 'admin',
+'as' => 'admin.'
 ], function () {
     //Admin Routes Here
     Route::get('/', function () {

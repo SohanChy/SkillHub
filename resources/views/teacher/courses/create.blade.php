@@ -7,16 +7,16 @@
     <div class="mui-container-fluid">
 
         @if($course->exists)
-            <h2>Edit Course</h2>
-            {!! Form::model($course, ['route' => ['teacher.courses.update', $course->id]]) !!}
+        <h2>Edit Course</h2>
+        {!! Form::model($course, ['route' => ['teacher.courses.update', $course->id]]) !!}
         @else
-            <h2>Create Course</h2>
-            {!! Form::model($course, ['route' => ['teacher.courses.store']]) !!}
+        <h2>Create Course</h2>
+        {!! Form::model($course, ['route' => ['teacher.courses.store']]) !!}
         @endif
 
         <div class="mui-panel">
             @component('mui.errors',
-                      ['errors' => $errors])
+            ['errors' => $errors])
             @endcomponent
 
             @component('mui.textfield',
@@ -32,18 +32,18 @@
             @endcomponent
 
             <div class="mui-select">
-            {!!
-            Form::select('category_id',
-            $categoriesList,
-            null,
-            ['placeholder' => 'Pick a category...'])
-            !!}
+                {!!
+                Form::select('category_id',
+                $categoriesList,
+                null,
+                ['placeholder' => 'Pick a category...'])
+                !!}
                 <label>Course Category</label>
             </div>
 
-                <div class="mui--text-right">
-                    <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
-                </div>
+            <div class="mui--text-right">
+                <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
+            </div>
 
         </div>
 

@@ -29,7 +29,7 @@ class CourseController extends Controller
         $course = new Course();
         $categoriesList = Category::pluck('name', 'id');
         return view("teacher.courses.create")
-            ->with( compact('course', 'categoriesList') );
+        ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -64,7 +64,7 @@ class CourseController extends Controller
     {
         $categoriesList = Category::pluck('name', 'id');
         return view("teacher.courses.create")
-            ->with( compact('course', 'categoriesList') );
+        ->with( compact('course', 'categoriesList') );
     }
 
     /**

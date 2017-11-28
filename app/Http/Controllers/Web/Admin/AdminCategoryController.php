@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web\Admin;
+use App\Category;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,7 +24,10 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.add_category');
+        $category = new Category();
+        $categoriesList = Category::pluck('name', 'id');
+
+        return view('admin.add_category', compact('category', 'categoriesList'));
     }
 
     /**
@@ -34,7 +38,10 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->get('title');
+        $category->save(); 
+        return redirect('/admin');
     }
 
     /**
