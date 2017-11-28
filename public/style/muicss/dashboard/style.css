@@ -179,3 +179,7 @@ buttons {
 .mui-appbar ul {
   margin: 0;
 }
+
+#header > .mui-appbar {
+  margin-bottom: 3px;
+}

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('style/muicss/mui.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/muicss/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('style/muicss/dashboard/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,7 +21,7 @@
 
 <div id="sidedrawer" class="mui--no-user-select">
     <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title">Student sectn.io</span>
+        <span class="mui--text-title">Student</span>
     </div>
     <div class="mui-divider"></div>
     <ul>

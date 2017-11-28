@@ -88,7 +88,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return $course->toJson();
+        return redirect()->route('teacher.courses.index');
     }
 
     /**

@@ -39,10 +39,10 @@
             ['name' => 'publish_status', 'list' => \App\Course::$publishStatusArr])
             @endcomponent
 
+            @component('mui.submit')
+            @endcomponent
 
-                <div class="mui--text-right">
-                    <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
-                </div>
+
 
         </div>
 

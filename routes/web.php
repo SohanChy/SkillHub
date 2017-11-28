@@ -21,6 +21,13 @@ Route::group([
         return view("open.welcome");
     });
 
+    Route::get('/courses', function () {
+        $categories = \App\Category::with(['courses' => function ($query) {
+            $query->where('admin_status', '1')->where('publish_status', '1');
+        }])->get();
+        return view("open.courses",compact('categories'));
+    });
+
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");
     Route::post('logout', "Auth\LoginController@logout")->name("logout");

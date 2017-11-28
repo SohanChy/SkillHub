@@ -4,7 +4,7 @@
     <div class="mui--text-center">
         <br>
         <br>
-        <div class="mui--text-display3 row wow zoomInDown">Brand.io</div>
+        <div class="mui--text-display3 row wow zoomInDown">SkillHub</div>
         <br>
         <br>
         <button class="mui-btn mui-btn--raised">Get started</button>

@@ -10,7 +10,6 @@
             @component("teacher.courses.course_card",['course' => $course])
             @endcomponent
         @endforeach
-
     </div>
 </div>
 @endsection

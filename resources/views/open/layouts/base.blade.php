@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('style/muicss/mui.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/muicss/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('style/open/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -22,7 +23,7 @@
         <div class="mui-container">
             <table>
                 <tr class="mui--appbar-height">
-                    <td class="mui--text-title">Brand.io</td>
+                    <td class="mui--text-title">SkillHub</td>
                     <td class="mui--text-right">
                         <ul class="mui-list--inline mui--text-body2">
                             <!-- Authentication Links -->
@@ -56,7 +57,7 @@
                                 </div>
                             @endif
 
-                            <li><a href="#">Courses</a></li>
+                            <li><a href="/courses">Courses</a></li>
                             <li><a href="#">Pricing</a></li>
                             <li><a href="#">About</a></li>
 
