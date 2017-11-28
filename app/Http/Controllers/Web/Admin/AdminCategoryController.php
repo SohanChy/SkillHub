@@ -15,6 +15,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
+        return view('admin.categories', compact('categories'));
+        
     }
 
     /**
@@ -52,7 +55,6 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -63,7 +65,10 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        $categoriesList = Category::pluck('name', 'id');
+
+        return view('admin.add_category', compact('category', 'categoriesList'));
     }
 
     /**
@@ -75,7 +80,7 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $request->all();
     }
 
     /**

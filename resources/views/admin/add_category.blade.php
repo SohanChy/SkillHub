@@ -19,7 +19,7 @@
 			@endcomponent
 
 			@component('mui.textfield',
-			['name' => 'title'])
+			['name' => 'title', 'value' => $category->name])
 			@endcomponent
 
 			<div class="mui-select">
@@ -35,6 +35,8 @@
 			<div class="mui--text-right">
 				<button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
 			</div>
+			{!! Form::close() !!}
+
 		</div>
 	</div>
 </div>

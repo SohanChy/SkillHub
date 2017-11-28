@@ -25,7 +25,13 @@
         <div class="mui-divider"></div>
         <ul>
             <li>
-                <strong><a href="{{ URL::to('admin/category/create') }}">Add category</a></strong>
+                <strong>Categories</strong>
+                <ul>
+                    <li><a href="{{ URL::to('admin/category') }}">All Categories</a></li>
+                    <li><a href="{{ URL::to('admin/category/create') }}">Add new category</a></li>
+
+                </ul>
+
             </li>
             <li>
                 <strong>Category 2</strong>
