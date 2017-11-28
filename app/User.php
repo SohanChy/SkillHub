@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
@@ -39,36 +38,6 @@ class User extends Authenticatable
     public static function roles()
     {
         return ["student", "teacher", "admin"];
-    }
-
-    public static function createFromRequest($request)
-    {
-
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return JsonReturn::error($validator->messages());
-        }
-
-        $approval_status = User::getStatusKey("pending");
-        if ($request->has("approved")) {
-            $approval_status = User::getStatusKey("approved");
-        }
-        $user = User::create([
-                'name' => $request->name,
-                'mobile' => $request->mobile,
-                'email' => $request->email,
-                'role' => $request->type,
-                'password' => bcrypt($request->password),
-                'status' => $approval_status
-            ]
-        );
-
-        /*if ($user->status == User::getStatusKey("approved")) {
-            self::sendWEBApprovedSMS($user, $request->password);
-        }*/
-
-        return "Successful";
     }
 
     public static function redirectRoleLogic()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Teacher;
 
+use App\Category;
 use App\Course;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return "here";
     }
 
     /**
@@ -25,7 +26,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $course = new Course();
+        $categoriesList = Category::pluck('name', 'id');
+        return view("teacher.courses.create")
+            ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -36,7 +40,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -58,7 +62,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        $categoriesList = Category::pluck('name', 'id');
+        return view("teacher.courses.create")
+            ->with( compact('course', 'categoriesList') );
     }
 
     /**

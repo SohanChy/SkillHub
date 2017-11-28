@@ -25,11 +25,12 @@
     <div class="mui-divider"></div>
     <ul>
         <li>
-            <strong>Category 1</strong>
+            <strong>My Courses</strong>
             <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
+                <li><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create</a></li>
+                <li><a href="{{route('teacher.courses.index')}}?publish_status=published"><i class="fa fa-fw fa-graduation-cap"></i> Published</a></li>
+                <li><a href="{{route('teacher.courses.index')}}?publish_status=pending"><i class="fa fa-fw fa-hourglass"></i> Pending</a></li>
+                <li><a href="{{route('teacher.courses.index')}}?publish_status=rejected"><i class="fa fa-fw fa-remove"></i> Rejected</a></li>
             </ul>
         </li>
         <li>
@@ -57,12 +58,12 @@
         <div class="mui-container-fluid">
 
             <div class="mui-row">
-                <div class="mui-col-md-8">
+                <div class="mui-col-xs-7">
                     <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
                     <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-                    <span class="mui--text-title">Section Name</span>
+                    <span class="mui--text-title">@yield('section_name')</span>
                 </div>
-                <div class="mui-col-md-3 mui--text-right">
+                <div class="mui-col-xs-5 mui--text-right">
 
                     <ul class="mui-list--inline">
                         <li><a href="#" class="mui--text-light">
@@ -90,8 +91,6 @@
                     </ul>
 
 
-                </div>
-                <div class="mui-col-md-1">
                 </div>
 
             </div>

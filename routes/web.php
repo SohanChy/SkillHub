@@ -44,9 +44,12 @@ Route::group([
 Route::group([
 'namespace' => 'Web\Teacher',
 'middleware' => ['auth', 'check.role:teacher'],
-'prefix' => 'teacher'
+'prefix' => 'teacher',
+'as' => 'teacher.'
 ], function () {
     //Student Routes Here
+    Route::resource('courses', "CourseController");
+
     Route::get('/', function () {
         return view("teacher.dashboard");
     });
