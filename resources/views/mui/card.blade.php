@@ -1,4 +1,3 @@
-<br>
 <div class="mui-container">
     <div class="card-example mui--z1">
 
@@ -15,6 +14,7 @@
             </div>
         </div>
 
+        <div class="card-bottom-divider" style=""></div>
         {{ $slot }}
 
            {{-- <a class="mui-btn mui-btn--flat mui-btn--accent">Share</a>

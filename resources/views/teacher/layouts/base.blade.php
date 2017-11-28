@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('style/muicss/mui.css') }}" rel="stylesheet">
     <link href="{{ asset('style/muicss/dashboard/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/teacher/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -99,7 +100,6 @@
     </div>
 
 </header>
-
 
 @yield("content")
 

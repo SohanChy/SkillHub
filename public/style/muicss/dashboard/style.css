@@ -172,3 +172,10 @@ buttons {
   color: #fff;
   text-decoration: underline;
 }
+
+/**
+ * Fix Ul issue
+ */
+.mui-appbar ul {
+  margin: 0;
+}

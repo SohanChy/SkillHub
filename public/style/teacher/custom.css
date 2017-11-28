@@ -1,0 +1,27 @@
+.card-example {
+    position: relative;
+    background-color: #fff;
+    margin: 7px 5px;
+}
+
+.card-example img {
+    width: 100%;
+}
+
+.card-example span.title {
+    display: inline-block;
+    position: absolute;
+    bottom: 140px;
+    left: 20px;
+}
+
+.card-example .label {
+    padding: 20px 20px 0;
+}
+
+.card-bottom-divider {
+    display:block;
+    height:1px;
+    margin-top:10px;
+    background-color:rgba(0,0,0,.12)
+}
