@@ -8,7 +8,7 @@
 
         @if($course->exists)
             <h2>Edit Course</h2>
-            {!! Form::model($course, ['route' => ['teacher.courses.update', $course->id]]) !!}
+            {!! Form::model($course, ['method' => 'PATCH','route' => ['teacher.courses.update', $course->id]]) !!}
         @else
             <h2>Create Course</h2>
             {!! Form::model($course, ['route' => ['teacher.courses.store']]) !!}
@@ -23,12 +23,12 @@
             ['name' => 'title'])
             @endcomponent
 
-            @component('mui.textarea',
-            ['name' => 'small_description'])
+            @component('mui.textfield',
+            ['name' => 'small_description', 'type' => 'textarea'])
             @endcomponent
 
-            @component('mui.textarea',
-            ['name' => 'full_description'])
+            @component('mui.textfield',
+            ['name' => 'full_description', 'type' => 'textarea','size'=>'30x7'])
             @endcomponent
 
             <div class="mui-select">
@@ -46,6 +46,8 @@
                 </div>
 
         </div>
+
+        {!! Form::close() !!}
 
     </div>
 </div>
