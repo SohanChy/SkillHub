@@ -34,11 +34,9 @@
 
             </li>
             <li>
-                <strong>Category 2</strong>
+                <strong>Courses</strong>
                 <ul>
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
+                    <li><a href="{{ URL::to('admin/approval') }}">Approve courses</a></li>
                 </ul>
             </li>
             <li>
