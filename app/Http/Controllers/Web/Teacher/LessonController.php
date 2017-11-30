@@ -63,7 +63,7 @@ class LessonController extends Controller
         $lesson->json_file_ids = json_encode($documentId);
         $lesson->save();      
         
-        dd($lesson);
+        return($lesson->all());
     }
 
 
@@ -95,7 +95,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return($lesson->all());
     }
 
     /**

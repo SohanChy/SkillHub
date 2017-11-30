@@ -55,7 +55,6 @@ Route::group([
 'prefix' => 'teacher',
 'as' => 'teacher.'
 ], function () {
-    //Student Routes Here
     Route::get('/lesson/create/{id}', "LessonController@create");
 
 

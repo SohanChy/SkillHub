@@ -30,9 +30,10 @@ class CourseController extends Controller
             ->select("id","title","small_description","admin_status");
 
         $courses->when($request->has("publish_status"), function ($query) use ($request) {
-            return $query->where('publish_status',
+            return
+                $query->where('publish_status',
                 StatusHelper::getStatusKey($request->publish_status,Course::$publishStatusArr)
-            );
+                )->latest("courses.created_at");
         });
 
         $courses = $courses->get();
