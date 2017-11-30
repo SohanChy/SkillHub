@@ -48,6 +48,7 @@ Route::group([
     });
 });
 
+
 Route::group([
 'namespace' => 'Web\Teacher',
 'middleware' => ['auth', 'check.role:teacher'],
@@ -55,8 +56,12 @@ Route::group([
 'as' => 'teacher.'
 ], function () {
     //Student Routes Here
-    Route::resource('courses', "CourseController");
+    Route::get('/lesson/create/{id}', "LessonController@create");
 
+
+    Route::resource('courses', "CourseController");
+    Route::resource('lesson', "LessonController");    
+    
     Route::get('/', function () {
         return view("teacher.dashboard");
     });
@@ -76,7 +81,7 @@ Route::group([
 
     Route::resources([
     'category' => 'AdminCategoryController',
-    'approval' => 'ApprovalController'    
+    'approval' => 'ApprovalController'
     ]);
 });
 

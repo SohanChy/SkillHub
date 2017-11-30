@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Redirect;
 class CourseController extends Controller
 {
     public static $validationRules = [
-        'title' => 'required|max:191',
-        'small_description' => 'required|min:30',
-        'full_description' => 'required|min:30',
-        'category_id' => 'required|exists:categories,id'
+    'title' => 'required|max:191',
+    'small_description' => 'required|min:30',
+    'full_description' => 'required|min:30',
+    'category_id' => 'required|exists:categories,id'
     ];
 
     /**
@@ -52,7 +52,7 @@ class CourseController extends Controller
         $course = new Course();
         $categoriesList = Category::pluck('name', 'id');
         return view("teacher.courses.create_edit")
-            ->with( compact('course', 'categoriesList') );
+        ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -101,7 +101,7 @@ class CourseController extends Controller
     {
         $categoriesList = Category::pluck('name', 'id');
         return view("teacher.courses.create_edit")
-            ->with( compact('course', 'categoriesList') );
+        ->with( compact('course', 'categoriesList') );
     }
 
     /**
