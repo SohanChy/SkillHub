@@ -19,7 +19,6 @@
             ['errors' => $errors])
             @endcomponent
 
-
             @component('mui.textfield',
             ['name' => 'short_description', 'type' => 'textarea'])
             @endcomponent
@@ -30,22 +29,43 @@
             </div>
 
             @component('mui.textfield',
-            ['name' => 'write_an_article', 'type' => 'textarea'])
+            ['name' => 'lesson_text', 'type' => 'textarea'])
             @endcomponent
             
 
-            <div class="mui-row">
-                <div class="mui-col-md-3"><label>Upload a document: </label></div>
-                <div class="mui-col-md-4">{!! Form::file('document') !!}</div>
+           <!--  <div class="mui-textfield mui-textfield--float-label">
+                {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
             </div>
-            
-            <input type="hidden" name="id" value="{{$id}}">
-            <div class="mui--text-right">
-                <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
-            </div>
+        -->
 
+        <div class="mui-row">
+            <div class="mui-col-md-2"><label>Upload a document: </label></div>
+            <div class="mui-col-md-4"><input type="file" name="document[]" multiple></div>
+        </div>
+
+        @if(!$lesson->exists)
+        <input type="hidden" name="id" value="{{$id}}">
+        @endif            
+
+
+        <div class="mui--text-right">
+            <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
         </div>
 
     </div>
+
 </div>
+</div>
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<!-- 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#summernote').summernote();
+});
+</script> -->
+
+
+
 @endsection

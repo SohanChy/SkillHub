@@ -19,7 +19,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -30,7 +30,7 @@ class LessonController extends Controller
     public function create($id)
     {
         $lesson = new Lesson();
-        return view('teacher.lesson.lesson_create', compact('lesson', 'id'));
+        return view('teacher.lesson.create', compact('lesson', 'id'));
     }
 
     /**
@@ -42,7 +42,6 @@ class LessonController extends Controller
     public function store(Request $request)
     {
         $lesson = new Lesson();
-        
         $videoId = null;
         $documentId = [];
 
@@ -53,38 +52,40 @@ class LessonController extends Controller
 
         $file = $request->file('document');        
         if($file){
-            array_push($documentId, $this->uploadFiles($file));            
-        }
-        
-        $lesson->course_id = $request->get('id');        
-        $lesson->short_description = $request->get('short_description');        
-        $lesson->video_file_id = $videoId;        
-        $lesson->lesson_text = $request->get('write_an_article');        
-        $lesson->json_file_ids = json_encode($documentId);
-        $lesson->save();      
-        
-        dd($lesson);
-    }
+            foreach ($file as $key => $value) {
+              array_push($documentId, $this->uploadFiles($value));  
+          }
+      }
+      
+      $lesson->course_id = $request->get('id');        
+      $lesson->short_description = $request->get('short_description');        
+      $lesson->video_file_id = $videoId;        
+      $lesson->lesson_text = $request->get('lesson_text');        
+      $lesson->json_file_ids = json_encode($documentId);
+      $lesson->save();      
+      
+      return redirect('/teacher/courses/'.$request->get('id'));      
+  }
 
 
-    public function uploadFiles($file){
+  public function uploadFiles($file){
 
-        $extension = $file->getClientOriginalExtension();
-        $video = time().rand().'.'.$extension;
-        $destinationPath = public_path('/uploads');
-        $file->move($destinationPath, $video);  
+    $extension = $file->getClientOriginalExtension();
+    $video = time().rand().'.'.$extension;
+    $destinationPath = public_path('/uploads');
+    $file->move($destinationPath, $video);  
 
 
-        $uploadfile = new Uploads();
-        
-        $uploadfile->name = $file->getClientOriginalName();
-        $uploadfile->size = $file->getClientSize();
-        $uploadfile->path = $video;
-        $uploadfile->uploader_id = Auth::user()->id;
-        $uploadfile->save();
+    $uploadfile = new Uploads();
+    
+    $uploadfile->name = $file->getClientOriginalName();
+    $uploadfile->size = $file->getClientSize();
+    $uploadfile->path = $video;
+    $uploadfile->uploader_id = Auth::user()->id;
+    $uploadfile->save();
 
-        return $uploadfile->id;
-    }
+    return $uploadfile->id;
+}
 
 
     /**
@@ -95,7 +96,15 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        // no way to tell if it is video or other file
+            // so two separate calls are made...
+        
+        //$files = json_decode($lesson->json_file_ids);
+        //array_push($files, $lesson->video_file_id);
+        
+        $documents = Uploads::findMany(json_decode($lesson->json_file_ids), ['id', 'name', 'path']);
+        $videos = Uploads::findMany($lesson->video_file_id, ['id', 'name', 'path']);
+        return view('teacher.lesson.lessons', compact('videos', 'documents', 'lesson'));
     }
 
     /**
@@ -105,8 +114,8 @@ class LessonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Lesson $lesson)
-    {
-        //
+    { 
+        return view('teacher.lesson.create', compact('lesson','id'));
     }
 
     /**
@@ -118,7 +127,12 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        /// only short_description and lesson text can be updated
+        
+        $lesson->short_description = $request->short_description;
+        $lesson->lesson_text = $request->lesson_text;
+        $lesson->save();
+        return redirect('/teacher/lesson/'.$lesson->id);
     }
 
     /**

@@ -11,5 +11,10 @@ class Course extends Model
      *
      * @var array
      */
+    public function lessons()
+    {
+    	return $this->hasMany('App\Lesson')->orderBy('id', 'asc');
+    }
+
     protected $guarded = ['rating'];
 }
