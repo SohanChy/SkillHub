@@ -80,3 +80,13 @@ Route::group([
     ]);
 });
 
+
+
+
+Route::group([
+'namespace' => 'Web\Open\Auth',
+'middleware' => 'auth'
+], function () {
+
+    Route::resource('profile',"UpdateController");
+});
