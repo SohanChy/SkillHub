@@ -41,6 +41,7 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());        
         $lesson = new Lesson();
         $videoId = null;
         $documentId = [];
@@ -69,12 +70,12 @@ class LessonController extends Controller
 
 
   public function uploadFiles($file){
-
+    
     $extension = $file->getClientOriginalExtension();
     $video = time().rand().'.'.$extension;
     $destinationPath = public_path('/uploads');
     $file->move($destinationPath, $video);  
-
+    
 
     $uploadfile = new Uploads();
     
@@ -87,6 +88,41 @@ class LessonController extends Controller
     return $uploadfile->id;
 }
 
+
+
+public function postSummernote(Request $request){
+    $this->validate($request, [
+    'image' => 'mimes:jpeg,png,jpg'
+    ]);
+
+    $extension = $request->file('image')->getClientOriginalExtension();
+    $fileName =  time().rand().'.'.$extension;
+    $destinationPath = public_path('/uploads');
+    $request->file('image')->move($destinationPath, $fileName);    
+
+    return $fileName;
+}
+
+public function ResourceUpload(Request $request){
+    $document =  $request->file('document');
+    $dummy = [];
+
+    foreach ($document as $file) {
+        $data = [];
+
+        $extension = $file->getClientOriginalExtension();
+        $fileName = time().rand().'.'.$extension;
+        $destinationPath = public_path('/uploads');
+        $file->move($destinationPath, $fileName);    
+
+        $data['originalName'] = $file->getClientOriginalName();
+        $data['name'] = $fileName;
+        
+        array_push($dummy, $data);
+    }
+    /*$dummy = array('data' => ['name' => $fileName]);*/
+    return json_encode($dummy);
+}
 
     /**
      * Display the specified resource.
@@ -128,7 +164,6 @@ class LessonController extends Controller
     public function update(Request $request, Lesson $lesson)
     {
         /// only short_description and lesson text can be updated
-        
         $lesson->short_description = $request->short_description;
         $lesson->lesson_text = $request->lesson_text;
         $lesson->save();

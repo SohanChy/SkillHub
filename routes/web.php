@@ -51,6 +51,9 @@ Route::group([
     //Student Routes Here
     Route::get('/lesson/create/{id}', "LessonController@create");
 
+    Route::get('/summernote', "LessonController@getSummernote");
+    Route::post('/summernote', "LessonController@postSummernote");
+    Route::post('/uploadResource', "LessonController@ResourceUpload");
 
     Route::resource('courses', "CourseController");
     Route::resource('lesson', "LessonController");    
