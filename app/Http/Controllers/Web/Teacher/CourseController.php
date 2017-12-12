@@ -88,7 +88,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return redirect()->route('teacher.courses.index');
+        $lessons = Course::find($course->id)->lessons;
+        return view('teacher.courses.course_detail', compact('course','lessons'));
     }
 
     /**

@@ -1,0 +1,19 @@
+
+
+#course_detail {
+    padding-left: 20px;
+}
+
+#lesson_add {
+    padding-right: 40px;
+}
+
+
+[hidden] {
+  display: none !important;
+}
+
+
+#imageUploadLabel {
+    padding-top: 10px;
+}
