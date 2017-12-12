@@ -55,7 +55,6 @@ Route::group([
 'prefix' => 'teacher',
 'as' => 'teacher.'
 ], function () {
-    //Student Routes Here
     Route::get('/lesson/create/{id}', "LessonController@create");
 
     Route::get('/summernote', "LessonController@getSummernote");
@@ -88,3 +87,13 @@ Route::group([
     ]);
 });
 
+
+
+
+Route::group([
+'namespace' => 'Web\Open\Auth',
+'middleware' => 'auth'
+], function () {
+
+    Route::resource('profile',"UpdateController");
+});

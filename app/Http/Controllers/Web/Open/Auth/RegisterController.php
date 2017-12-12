@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Open\Auth;
 
+use App\StatusHelper;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -79,7 +80,7 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'role' => $data['type'],
                 'password' => bcrypt($data['password']),
-                'status' => User::getStatusKey("approved")
+                'status' => StatusHelper::getStatusKey("approved",User::$statusArr)
             ]
         );
 
