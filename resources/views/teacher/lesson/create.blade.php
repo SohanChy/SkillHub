@@ -1,4 +1,10 @@
 @extends('teacher.layouts.base')
+
+@section('styleHead')
+
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+@endsection
+
 @section('section_name', 'Lessons')
 
 @section('content')
@@ -71,72 +77,79 @@
 
     </div>    
 </div>
+@endsection
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-<script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
-<script src="{{ asset('js/jquery.iframe-transport.js') }}"></script>
-<script src="{{ asset('js/jquery.fileupload.js') }}"></script>
+@section('scriptsFoot')
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    var flag = true;
-    var fileNames = [];
-    
-    $('#summernote').summernote({
-        height: 300,                 
-        minHeight: null,             
-        maxHeight: null,             
-        callbacks: {
-            onImageUpload: function(files) {
-                url = $(this).data('upload');
-                console.log(files);
-                sendFile(files[0], url, $(this));
-            }
-        }                
-    });
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('js/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
 
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-            if(flag){
-                $('<label/><br/>').text("Already Uplaoded materials:").appendTo("#uploadStat");
-                flag = false;
-            }            
-            fileNames.push(data.result[0].name);
-            console.log(fileNames);
-            $('<label/><br/>').text(data.result[0].originalName).appendTo("#uploadedResources");
-        },
-        progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .bar').css(
-            'width',
-            progress + '%'
-            );
-        }
-    });
 
-    function sendFile(file, url, editor) {
-        data = new FormData();
-        data.append("image", file);
-        data.append("_token",'{{ csrf_token() }}');
-        $.ajax({
-            data: data,
-            type: "POST",
-            url: "{{URL::to('/teacher/summernote')}}",
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(responseText) {
-                var imgUrl = '{{URL::to('uploads')}}'+'/'+responseText;
-                editor.summernote('insertImage', imgUrl);
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var flag = true;
+            var fileNames = [];
+
+            $('#summernote').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        url = $(this).data('upload');
+                        console.log(files);
+                        sendFile(files[0], url, $(this));
+                    }
+                }
+            });
+
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    if(flag){
+                        $('<label/><br/>').text("Already Uplaoded materials:").appendTo("#uploadStat");
+                        flag = false;
+                    }
+                    fileNames.push(data.result[0].name);
+                    console.log(fileNames);
+                    $('<label/><br/>').text(data.result[0].originalName).appendTo("#uploadedResources");
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                }
+            });
+
+            function sendFile(file, url, editor) {
+                data = new FormData();
+                data.append("image", file);
+                data.append("_token",'{{ csrf_token() }}');
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "{{URL::to('/teacher/summernote')}}",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(responseText) {
+                        var imgUrl = '{{URL::to('uploads')}}'+'/'+responseText;
+                        editor.summernote('insertImage', imgUrl);
+                    }
+                });
             }
         });
-    }
-});
-</script>
-
-
+    </script>
 
 @endsection
+
+

@@ -38,6 +38,14 @@ Route::group([
 
 
 Route::group([
+    'namespace' => 'Web\Open\Auth',
+    'middleware' => 'auth'
+], function () {
+    Route::resource('profile',"ProfileController");
+});
+
+
+Route::group([
 'namespace' => 'Web\Student',
 'middleware' => ['auth', 'check.role:student'],
 'prefix' => 'student'
@@ -87,13 +95,3 @@ Route::group([
     ]);
 });
 
-
-
-
-Route::group([
-'namespace' => 'Web\Open\Auth',
-'middleware' => 'auth'
-], function () {
-
-    Route::resource('profile',"UpdateController");
-});

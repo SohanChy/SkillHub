@@ -16,11 +16,7 @@
     <link href="{{ asset('style/muicss/dashboard/style.css') }}" rel="stylesheet">
     <link href="{{ asset('style/teacher/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
+    @yield("styleHead")
 
 </head>
 <body>
@@ -117,7 +113,12 @@
 
 
     <script src="{{ asset('style/muicss/mui.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
+
+    @yield("scriptsFoot")
 
 </body>
 </html>

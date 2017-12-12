@@ -43,8 +43,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="profile">
-                                                Edit Profile
+                                            <a href="{{ route("profile.edit","me") }}">
+                                                Edit My Profile
                                             </a>
                                         </li>
                                         <li>
