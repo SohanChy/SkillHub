@@ -77,7 +77,7 @@
                                         <i class="fa fa-bell" aria-hidden="true"></i>
                                         <span class="mui-caret"></span>
                                     </button>
-                                    <ul class="mui-dropdown__menu">
+                                    <ul class="mui-dropdown__menu mui-dropdown__menu--right">
                                         <li><a href="#">Course Noti 1</a></li>
                                         <li><a href="#">Course Noti 2</a></li>
                                         <li>
