@@ -46,6 +46,18 @@ class ProfileController extends Controller
 
         if(Hash::check($request->previous_password,$user->password))
         {
+            if ($request->hasFile('file')) {
+                $img = $request->file('file');
+
+                $imgname = $user->id . '.' . $img->getClientOriginalExtension();;
+
+                $destinationPath = public_path('/img/profile');
+
+                unlink(public_path('/img/profile/'.$user->pro_pic));
+
+                $request->file('file')->move($destinationPath,$imgname );
+                $user->pro_pic = $imgname;
+            }
 
             $user->name = $request->name;
             $user->email = $request->email;
@@ -55,7 +67,7 @@ class ProfileController extends Controller
             $user->save();
 
             //return "Profile update successful ";
-            return redirect('/');
+            return redirect('/profile/me');
         }
         else
         {

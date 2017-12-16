@@ -24,53 +24,37 @@
 </head>
 <body>
 
-<header class="mui-appbar mui--z1">
-    <div class="mui-container">
-        <table>
-            <tr class="mui--appbar-height">
-                <td width="25%" class="mui--text-title">
-                    <a href="{{url('/')}}">SkillHub</a>
-                    <a href="#menu" style="margin-left:15px;">
-                        <span class="mui--text-subhead">
-                        <i class="mui--text-title fa fa-th" aria-hidden="true"></i> Categories</span>
-                    </a>
-                </td>
-                <td width="5%"></td>
-                <td width="40%">
-                    <div class="search">
-                        <input type="text" class="searchTerm" placeholder=" Search for a course...">
-                        <button type="submit" class="searchButton">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </td>
-                <td width="5%"></td>
-                <td width="25%" class="mui--text-right">
-                    <ul class="mui-list--inline mui--text-body2">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a class="mui-btn mui-btn--primary mui-btn--small registerButton" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <div class="mui-dropdown">
-                                <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                    <span class="mui-caret"></span>
-                                </button>
-                                <ul class="mui-dropdown__menu">
-                                    <li>
-                                        <a href="{{ url(App\User::redirectRoleLogic()) }}">
-                                            Dashboard
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route("profile.edit","me") }}">
-                                            Edit My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
+    <header class="mui-appbar mui--z1">
+        <div class="mui-container">
+            <table>
+                <tr class="mui--appbar-height">
+                    <td class="mui--text-title">SkillHub</td>
+                    <td class="mui--text-right">
+                        <ul class="mui-list--inline mui--text-body2">
+                            <!-- Authentication Links -->
+                            @if (Auth::guest())
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            @else
+                                <div class="mui-dropdown">
+                                    <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        <span class="mui-caret"></span>
+                                    </button>
+                                    <ul class="mui-dropdown__menu">
+                                        <li>
+                                            <a href="{{ url(App\User::redirectRoleLogic()) }}">
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route("profile.show","me") }}">
+                                                My Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
@@ -92,6 +76,7 @@
 
     <div id="content-wrapper" {{--class="mui--text-center"--}}>
         <div class="mui--appbar-height"></div>
+        <br/>>
         @yield('content')
     </div>
     @component("open.layouts.category_nav")
@@ -125,11 +110,7 @@
             </div>
 
         </div>
-
     </footer>
-
-
-
     <script src="{{ asset('style/muicss/mui.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
