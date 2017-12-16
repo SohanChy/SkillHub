@@ -38,8 +38,8 @@ Route::group([
 
 
 Route::group([
-    'namespace' => 'Web\Open\Auth',
-    'middleware' => 'auth'
+'namespace' => 'Web\Open\Auth',
+'middleware' => 'auth'
 ], function () {
     Route::resource('profile',"ProfileController");
 });
@@ -67,7 +67,8 @@ Route::group([
 
     Route::get('/summernote', "LessonController@getSummernote");
     Route::post('/summernote', "LessonController@postSummernote");
-    Route::post('/uploadResource', "LessonController@ResourceUpload");
+    Route::post('/uploadResource', "LessonController@resourceUpload");
+    Route::post('/uploadVideo', "LessonController@videoUpload");
 
     Route::resource('courses', "CourseController");
     Route::resource('lesson', "LessonController");    
