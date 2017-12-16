@@ -14,7 +14,7 @@
                                 No more Bananas, only mangoes.
                             </div>
                             <button class="mui-btn mui-btn--small mui-btn--primary">Explore Courses</button>
-                            <button class="mui-btn mui-btn--small mui-btn--primary">Take Tests</button>
+                            {{--<button class="mui-btn mui-btn--small mui-btn--primary">Take Tests</button>--}}
                         </div>
                     </div>
             </div>
@@ -31,7 +31,7 @@
         @for($i = 0; $i < 5; $i++)
         <br />
         <div class="mui--text-center">
-            <h2>Top Courses</h2><br />
+            <h2>Top Courses <button class="mui-btn mui-btn--flat">See More</button></h2><br />
         </div>
 
         <div>

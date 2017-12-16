@@ -30,16 +30,16 @@
             <table>
                 <tr class="mui--appbar-height">
                     <td width="25%" class="mui--text-title">
-                        <span class="mui--hidden-xs">SkillHub</span>
+                        <span class=" mui--hidden-sm mui--hidden-xs">SkillHub</span>
                         <a href="#menu" class="mui--text-subhead" style="margin-left:15px;">
 
                         <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
-                            <span class="mui--hidden-xs">
+                            <span class=" mui--hidden-sm mui--hidden-xs">
                             Categories
                             </span>
                         </a>
                     </td>
-                    <td class="mui--hidden-xs">
+                    <td class=" mui--hidden-sm mui--hidden-xs">
                         <div class="search">
                             <input type="text" class="searchTerm" placeholder=" Search for a course...">
                             <button type="submit" class="searchButton">

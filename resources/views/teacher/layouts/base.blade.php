@@ -50,7 +50,7 @@
                 <div class="mui-row">
                     <div class="mui-col-xs-8">
                         <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
-                        <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+                        <a class="sidedrawer-toggle  mui--hidden-sm mui--hidden-xs js-hide-sidedrawer">☰</a>
                         <span class="mui--text-title">@yield('section_name')</span>
                     </div>
                     <div class="mui-col-xs-4 mui--text-right">
