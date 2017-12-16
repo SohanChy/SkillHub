@@ -10,6 +10,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "pion/laravel-chunk-upload": "^1.1",
         "tucker-eric/eloquentfilter": "^1.2"
     },
     "require-dev": {
