@@ -20,18 +20,30 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
+        $user = Auth::user();
+
         $rules= [
             'name' => 'required|max:191',
-            'mobile' => 'required|max:191|unique:users',
-            'email' => 'required|email|unique:users',
+            'mobile' => 'required|max:191',
+            'email' => 'required|email',
             'previous_password' => 'nullable|min:8',
             'new_password' => 'nullable|confirmed|min:8',
         ];
 
         $this->validate($request,$rules);
 
+        //If new value
+        $newRules = [];
+        if($request->mobile != $user->mobile){
+            $newRules['mobile'] = 'unique:users';
+        }
+        if($request->email != $user->email){
+            $newRules['email'] = 'unique:users';
+        }
+        if(count($newRules)){
+            $this->validate($request,$newRules);
+        }
 
-        $user = Auth::user();
         if(Hash::check($request->previous_password,$user->password))
         {
 

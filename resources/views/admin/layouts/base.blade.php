@@ -21,7 +21,7 @@
 
     <div id="sidedrawer" class="mui--no-user-select">
         <div id="sidedrawer-brand" class="mui--appbar-line-height">
-            <span class="mui--text-title">Admin</span>
+            <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
         </div>
         <div class="mui-divider"></div>
         <ul>
@@ -57,12 +57,12 @@
             <div class="mui-container-fluid">
 
                 <div class="mui-row">
-                    <div class="mui-col-md-8">
+                    <div class="mui-col-xs-8">
                         <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
                         <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-                        <span class="mui--text-title">Section Name</span>
+                        <span class="mui--text-title">Section X</span>
                     </div>
-                    <div class="mui-col-md-3 mui--text-right">
+                    <div class="mui-col-xs-3 mui--text-right">
 
                         <ul class="mui-list--inline">
                             <li><a href="#" class="mui--text-light">
@@ -91,8 +91,9 @@
 
 
                     </div>
-                    <div class="mui-col-md-1">
-                    </div>
+
+                    {{--<div class="mui-col-md-1">--}}
+                    {{--</div>--}}
 
                 </div>
 

@@ -28,7 +28,8 @@
     <div class="mui-container">
         <table>
             <tr class="mui--appbar-height">
-                <td width="25%" class="mui--text-title">SkillHub
+                <td width="25%" class="mui--text-title">
+                    <a href="{{url('/')}}">SkillHub</a>
                     <a href="#menu" style="margin-left:15px;">
                         <span class="mui--text-subhead">
                         <i class="mui--text-title fa fa-th" aria-hidden="true"></i> Categories</span>

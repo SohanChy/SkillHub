@@ -13,8 +13,8 @@
                                 No more Bananas, only mangoes.<br />
                                 No more Bananas, only mangoes.
                             </div>
-                            <button class="mui-btn mui-btn--small btn-default">Explore Courses</button>
-                            <button class="mui-btn mui-btn--small btn-default">Take Tests</button>
+                            <button class="mui-btn mui-btn--small mui-btn--primary">Explore Courses</button>
+                            <button class="mui-btn mui-btn--small mui-btn--primary">Take Tests</button>
                         </div>
                     </div>
             </div>

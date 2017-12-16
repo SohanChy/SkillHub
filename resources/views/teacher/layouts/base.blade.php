@@ -21,35 +21,23 @@
 </head>
 <body>
 
-<div id="sidedrawer" class="mui--no-user-select">
+<div id="sidedrawer" class="sidedrawer mui--no-user-select">
     <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <span class="mui--text-title">Teacher</span>
+        <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
     </div>
     <div class="mui-divider"></div>
     <ul>
         <li>
-            <strong><i class="fa fa-fw fa-graduation-cap"></i>My Courses</strong>
+            <strong><i class="fa fa-fw fa-graduation-cap"></i> My Courses</strong>
             <ul>
-                <li><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create</a></li>
                 <li><a href="{{route('teacher.courses.index')}}?publish_status=published"><i class="fa fa-fw fa-graduation-cap"></i> Published</a></li>
                 <li><a href="{{route('teacher.courses.index')}}?publish_status=draft"><i class="fa fa-fw fa-pencil-square"></i> Drafts</a></li>
+
             </ul>
         </li>
+
         <li>
-            <strong>Category 2</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
-        <li>
-            <strong>Category 3</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
+            <strong><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Course</a></strong>
         </li>
     </ul>
 </div>
@@ -94,6 +82,8 @@
 
 
                     </div>
+                    {{--<div class="mui-col-md-1">--}}
+                    {{--</div>--}}
 
                 </div>
 
@@ -104,12 +94,12 @@
 
     @yield("content")
 
-<footer id="footer">
-    <div class="mui-container-fluid">
-        <br>
+{{--<footer id="footer">--}}
+    {{--<div class="mui-container-fluid">--}}
+        {{--<br>--}}
         {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
-    </div>
-</footer>
+    {{--</div>--}}
+{{--</footer>--}}
 
 
     <script src="{{ asset('style/muicss/mui.js') }}"></script>
