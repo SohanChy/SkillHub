@@ -6,21 +6,33 @@
             <div class="mui-col-md-4 mui-col-md-offset-4">
 
                 <div class="mui-panel">
+                    {!! Form::model($user, ['method' => 'PATCH','files'=>true,'route' => ['profile.update',"me"]]) !!}
 
-                    <form method="post" action="/profile" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-                        <img src="/img/profile/{{$user->pro_pic}}" width="100%"><br><br>
-                        <input type="file" name="file"><br><br>
+                        <legend>Edit profile</legend>
+                        @component('mui.errors',
+                        ['errors' => $errors])
+                        @endcomponent
+
+                    <img class="img-thumb" src="{{$user->pro_pic_url}}" width="100%"><br><br>
 
 
-                        <label>Name</label><br>
-                        <input type="text" name="name" value="<?= $user->name ?>" style="min-width:100%;"> <br><br>
+                    <div class="mui-textfield">
+                        <input class="mui-btn mui-btn--raised" type="file" name="file">
+                        <label>Upload New Profile Picture</label>
+                    </div>
 
-                        <label>Mobile</label><br>
-                        <input type="text" name="mobile" value="<?= $user->mobile ?>" style="min-width:100%;"><br><br>
 
-                        <label>Email</label><br>
-                        <input type="email" name="email" value="<?= $user->email ?>" style="min-width:100%;"><br><br>
+                        @component('mui.textfield',
+                        ['name' => 'name'])
+                        @endcomponent
+
+                        @component('mui.textfield',
+                        ['name' => 'mobile'])
+                        @endcomponent
+
+                        @component('mui.textfield',
+                        ['name' => 'email','type' => 'email'])
+                        @endcomponent
 
                         @component('mui.textfield',
                         ['name' => 'previous_password','type' => 'password'])
@@ -33,9 +45,8 @@
                         @component('mui.textfield',
                         ['name' => 'new_password_confirmation','type' => 'password'])
                         @endcomponent
-                        <input type="submit" name="" value="upload">
 
-
+                        <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
                     </form>
                 </div>
 

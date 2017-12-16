@@ -26,57 +26,50 @@
 
     <header class="mui-appbar mui--z1">
         <div class="mui-container">
+
             <table>
                 <tr class="mui--appbar-height">
-                    <td class="mui--text-title">SkillHub</td>
-                    <td class="mui--text-right">
+                    <td width="25%" class="mui--text-title">
+                        <span class="mui--hidden-xs">SkillHub</span>
+                        <a href="#menu" class="mui--text-subhead" style="margin-left:15px;">
+
+                        <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
+                            <span class="mui--hidden-xs">
+                            Categories
+                            </span>
+                        </a>
+                    </td>
+                    <td class="mui--hidden-xs">
+                        <div class="search">
+                            <input type="text" class="searchTerm" placeholder=" Search for a course...">
+                            <button type="submit" class="searchButton">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </td>
+                    <td width="25%" class="mui--text-right">
                         <ul class="mui-list--inline mui--text-body2">
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                                 <li><a href="{{ route('login') }}">Login</a></li>
-                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a class="mui-btn mui-btn--primary mui-btn--small registerButton" href="{{ route('register') }}">Register</a></li>
                             @else
-                                <div class="mui-dropdown">
-                                    <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                        <span class="mui-caret"></span>
-                                    </button>
-                                    <ul class="mui-dropdown__menu">
-                                        <li>
-                                            <a href="{{ url(App\User::redirectRoleLogic()) }}">
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route("profile.show","me") }}">
-                                                My Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                @component("open.layouts.logged_in_user_actions")
+                                @endcomponent
+                            @endif
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        @endif
+                        </ul>
+                    </td>
+                </tr>
+            </table>
 
-                    </ul>
-                </td>
-            </tr>
-        </table>
+
     </div>
 </header>
 
     <div id="content-wrapper" {{--class="mui--text-center"--}}>
         <div class="mui--appbar-height"></div>
-        <br/>>
+        <br/>
         @yield('content')
     </div>
     @component("open.layouts.category_nav")

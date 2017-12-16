@@ -4,7 +4,7 @@
     <div class="mui--text-center frontCover">
         <div class="mui-row">
             <div class="mui-col-md-1"></div>
-            <div class="mui-col-md-8">
+            <div class="mui-col-md-4">
 
                     <div class="frontCoverText">
                         <div class="mui-container-fluid mui--text-left mui--align-bottom">
@@ -19,7 +19,7 @@
                     </div>
             </div>
 
-            <div class="mui-col-md-8">
+            <div class="mui-col-md-7">
             </div>
 
         </div>

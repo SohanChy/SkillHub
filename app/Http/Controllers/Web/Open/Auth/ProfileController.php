@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Web\Open\Auth;
 
+use App\User;
+use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +13,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    public function show()
+    {
+        $user = Auth::user();
+        return view('open.auth.view_profile', compact('user'));
+    }
+
     public function edit()
     {
         $user = Auth::user();
@@ -44,35 +52,44 @@ class ProfileController extends Controller
             $this->validate($request,$newRules);
         }
 
-        if(Hash::check($request->previous_password,$user->password))
-        {
-            if ($request->hasFile('file')) {
-                $img = $request->file('file');
 
-                $imgname = $user->id . '.' . $img->getClientOriginalExtension();;
+        if ($request->hasFile('file')) {
+            $img = $request->file('file');
 
-                $destinationPath = public_path('/img/profile');
+            $imgname = $user->id . '.' . $img->getClientOriginalExtension();;
 
-                unlink(public_path('/img/profile/'.$user->pro_pic));
+            $destinationPath = public_path(User::$proPicDirPath);
 
-                $request->file('file')->move($destinationPath,$imgname );
-                $user->pro_pic = $imgname;
+            if($user->pro_pic_url != User::defaultImage()){
+                unlink(public_path(User::$proPicDirPath . $user->pro_pic));
             }
 
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->mobile = $request->mobile;
-            $user->password = bcrypt($request->new_password);
-
-            $user->save();
-
-            //return "Profile update successful ";
-            return redirect('/profile/me');
+            $request->file('file')->move($destinationPath,$imgname );
+            $user->pro_pic = $imgname;
         }
-        else
-        {
-            return Redirect::back()->withErrors(['Wrong old password']);
+
+        $user->name = $request->name;
+
+
+        if($request->new_password){
+
+            if(Hash::check($request->previous_password,$user->password))
+            {
+                $user->email = $request->email;
+                $user->mobile = $request->mobile;
+                $user->password = bcrypt($request->new_password);
+            }
+            else
+            {
+                return Redirect::back()->withErrors(['Wrong old password']);
+            }
         }
+
+
+        $user->save();
+
+        //return "Profile update successful ";
+        return redirect('/profile/me');
     }
 
 
