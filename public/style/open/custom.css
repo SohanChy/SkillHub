@@ -87,8 +87,13 @@ footer {
 }
 
 .bare-card {
+    cursor: pointer;
     padding: 0;
 }
+
+/*.bare-card:hover {*/
+    /*background-color: #f8fcfe;*/
+/*}*/
 
 .bare-card .card-content{
     padding: 5px 15px;
@@ -100,4 +105,8 @@ footer {
     width: 100%;
     max-height: 125px;
     height: auto;
+}
+
+footer ul{
+    list-style-type: none;
 }
