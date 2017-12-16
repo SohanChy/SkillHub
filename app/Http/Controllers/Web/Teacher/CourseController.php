@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Redirect;
 class CourseController extends Controller
 {
     public static $validationRules = [
-        'title' => 'required|max:191',
-        'small_description' => 'required|min:30',
-        'full_description' => 'required|min:30',
-        'category_id' => 'required|exists:categories,id'
+    'title' => 'required|max:191',
+    'small_description' => 'required|min:30',
+    'full_description' => 'required|min:30',
+    'category_id' => 'required|exists:categories,id'
     ];
 
     /**
@@ -27,13 +27,13 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $courses = Auth::user()->teacherOfCourses()
-            ->select("id","title","small_description","admin_status");
+        ->select("id","title","small_description","admin_status");
 
         $courses->when($request->has("publish_status"), function ($query) use ($request) {
             return
-                $query->where('publish_status',
-                StatusHelper::getStatusKey($request->publish_status,Course::$publishStatusArr)
-                )->latest("courses.created_at");
+            $query->where('publish_status',
+            StatusHelper::getStatusKey($request->publish_status,Course::$publishStatusArr)
+            )->latest("courses.created_at");
         });
 
         $courses = $courses->get();
@@ -53,7 +53,7 @@ class CourseController extends Controller
         $course = new Course();
         $categoriesList = Category::pluck('name', 'id');
         return view("teacher.courses.create_edit")
-            ->with( compact('course', 'categoriesList') );
+        ->with( compact('course', 'categoriesList') );
     }
 
     /**
@@ -101,9 +101,14 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $categoriesList = Category::pluck('name', 'id');
-        return view("teacher.courses.create_edit")
-            ->with( compact('course', 'categoriesList') );
+        foreach ($course->teachers as $key) {
+            if (Auth::user()->id == $key->pivot->teacher_id) {
+                $categoriesList = Category::pluck('name', 'id');
+                return view("teacher.courses.create_edit")
+                ->with( compact('course', 'categoriesList') );
+            }             
+        }
+        return redirect('/teacher/courses');
     }
 
     /**
