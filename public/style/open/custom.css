@@ -4,7 +4,9 @@
 html,
 body {
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
+
 
 html,
 body,
@@ -63,4 +65,48 @@ footer {
   background-color: #eee;
   border-top: 1px solid #e0e0e0;
   padding-top: 35px;
+}
+
+.frontCover {
+  min-height: 230px;
+  background-image: url("../../assets/coverBg.jpg");
+}
+
+.frontCoverText {
+    padding-top: 100px;
+
+}
+
+.courses-section {
+    /*font-family: serif;*/
+}
+
+.courses-section .mui-col-md-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bare-card {
+    cursor: pointer;
+    padding: 0;
+}
+
+/*.bare-card:hover {*/
+    /*background-color: #f8fcfe;*/
+/*}*/
+
+.bare-card .card-content{
+    padding: 5px 15px;
+}
+
+.img-responsive {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-height: 125px;
+    height: auto;
+}
+
+footer ul{
+    list-style-type: none;
 }

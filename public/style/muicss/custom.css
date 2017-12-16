@@ -1,4 +1,45 @@
 /**
+  * Navbar
+  */
+.mm-menu li.img:after
+{
+    left: 75px !important;
+}
+.mm-menu li.img a
+{
+    font-size: 16px;
+}
+.mm-menu li.img a img
+{
+    float: left;
+    width: 46px;
+    height: 46px;
+    padding: 4px 2px 0 2px;
+    margin: -5px 10px -5px -5px;
+    border-radius: 100px;
+    opacity: 0.6;
+}
+.mm-menu li.img a small
+{
+    font-size: 12px;
+}
+
+/**
+  * Appbar
+  */
+.mui-appbar {
+    background-color: #ffffff;
+    color: #4f5762;
+}
+
+.mui-appbar a {
+    color: #4f5762;
+}
+
+
+
+
+/**
  * Card
  */
 
@@ -28,4 +69,54 @@
     height:1px;
     margin-top:10px;
     background-color:rgba(0,0,0,.12)
+}
+
+
+/**
+ * Search Bar
+ */
+
+
+.registerButton {
+    color:#FFF !important;
+    background-color:#18C5CB
+}
+
+.search {
+    width: 100%;
+    position: relative
+}
+
+.searchTerm {
+    float: left;
+    width: 100%;
+    border: 1px solid #CDD1D2;
+    padding: 5px;
+    height: 20px;
+    border-radius: 2px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #18C5CB;
+}
+
+.searchButton {
+    position: absolute;
+    right: -13px;
+    width: 30px;
+    height: 31px;
+    border: 1px solid #9DBFAF;
+    background: #18C5CB;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn-default{
+    color: #fff;
+    background: #18C5CB;
 }

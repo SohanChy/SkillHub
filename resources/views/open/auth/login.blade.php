@@ -1,7 +1,7 @@
 @extends('open.layouts.base')
 
 @section('content')
-
+    <br />
     <div class="mui-container-fluid">
         <div class="mui-row">
             <div class="mui-col-md-4 mui-col-md-offset-4">
@@ -30,5 +30,4 @@
             </div>
         </div>
     </div>
-
 @endsection
