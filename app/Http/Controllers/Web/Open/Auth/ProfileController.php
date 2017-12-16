@@ -22,8 +22,8 @@ class ProfileController extends Controller
     {
         $rules= [
             'name' => 'required|max:191',
-            'mobile' => 'required|max:191|unique:users',
-            'email' => 'required|email|unique:users',
+            'mobile' => 'required|max:191',
+            'email' => 'required|email',
             'previous_password' => 'nullable|min:8',
             'new_password' => 'nullable|confirmed|min:8',
         ];
