@@ -1,4 +1,4 @@
-<div id="menu">
+<div id="menu" class="mui--hide">
     <ul>
 
         <li>

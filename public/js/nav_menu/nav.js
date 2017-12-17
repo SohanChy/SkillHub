@@ -1,7 +1,7 @@
 
     $(function() {
-
-        $("#menu").mmenu({
+        var menu = $("#menu");
+        menu.mmenu({
                 extensions 		: [ "theme-white", "pagedim-black" ],
                 dropdown 		: true,
                 // counters		: true,
@@ -32,6 +32,8 @@
                         }
                     }
                 } });
+
+        menu.removeClass("mui--hide");
 
     });
 

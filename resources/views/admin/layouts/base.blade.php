@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <div id="sidedrawer" class="mui--no-user-select">
+    <div id="sidedrawer" class="sidedrawer mui--no-user-select">
         <div id="sidedrawer-brand" class="mui--appbar-line-height">
             <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
         </div>
