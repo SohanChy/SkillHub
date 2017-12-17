@@ -1,8 +1,8 @@
 /**
  * Body CSS
  */
-html,
-body {
+ html,
+ body {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
 }
@@ -22,7 +22,7 @@ buttons {
 /**
  * Header CSS
  */
-header {
+ header {
   position: fixed;
   top: 0;
   right: 0;
@@ -46,7 +46,7 @@ header table {
 /**
  * Content CSS
  */
-#content-wrapper {
+ #content-wrapper {
   min-height: 100%;
 
   /* sticky footer */
@@ -59,7 +59,7 @@ header table {
 /**
  * Footer CSS
  */
-footer {
+ footer {
   box-sizing: border-box;
   height: 100px;
   background-color: #eee;
@@ -75,55 +75,156 @@ footer {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-    .frontCover {
-        background: url("../../assets/coverBg.jpg") 500px 0;
-    }
+  .frontCover {
+    background: url("../../assets/coverBg.jpg") 500px 0;
+  }
 }
 
 .frontCoverText {
-    background-color: white;
-    margin-top: 115px;
+  background-color: white;
+  margin-top: 115px;
 }
 
 
 .courses-section {
-    /*font-family: serif;*/
+  /*font-family: serif;*/
 }
 
 .courses-section .mui-col-md-2 {
-    padding-left: 10px;
-    padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .bare-card {
-    cursor: pointer;
-    padding: 0;
+  cursor: pointer;
+  padding: 0;
 }
 
 /*.bare-card:hover {*/
-    /*background-color: #f8fcfe;*/
-/*}*/
+  /*background-color: #f8fcfe;*/
+  /*}*/
 
-.bare-card .card-content{
+  .bare-card .card-content{
     padding: 5px 15px;
-}
+  }
 
-.img-thumb {
+  .img-thumb {
     display: block;
     margin: 0 auto;
     max-width: 200px;
     width: auto;
     height: auto;
-}
+  }
 
-.img-responsive {
+  .img-responsive {
     display: block;
     margin: 0 auto;
     width: 100%;
     max-height: 125px;
     height: auto;
-}
+  }
 
-footer ul{
+  footer ul{
     list-style-type: none;
-}
+  }
+
+
+
+
+
+  .vid-main-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    min-width: 440px;
+    background: #fff;
+    margin: 0 auto;
+  }
+
+
+      /*  VIDEO PLAYER CONTAINER
+      ############################### */
+      .vid-container {
+        position: relative;
+        padding-bottom: 40%;
+        padding-top: 30px; 
+        height: 0; 
+        width:70%;
+        float:left;
+      }
+
+
+      
+      .vid-container iframe,
+      .vid-container object,
+      .vid-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 360px;
+      }
+
+
+    /*  VIDEOS PLAYLIST 
+    ############################### */
+    .vid-list-container {
+      width: 30%;
+      height:360px;
+      overflow: hidden;
+      float:right;
+    }
+
+    .vid-list-container:hover, .vid-list-container:focus {
+      overflow-y: auto;
+    }
+
+    ol#vid-list {
+      margin:0;
+      padding:0;
+      background: #222;
+    }
+
+    ol#vid-list li {
+      list-style: none;
+    }
+
+    ol#vid-list li a {
+      text-decoration: none;
+      background-color: #EEEEEE;
+      height:27px;
+      display:block;
+      padding:10px;
+    }
+
+    ol#vid-list li a:hover {
+      background-color:#fff
+    }
+
+    .vid-thumb {
+      float:left;
+      margin-right: 8px;
+    }
+
+    .active-vid { 
+      background:#3A3A3A;
+    }
+
+    #vid-list .desc {
+      color: black;
+      font-size: 13px;
+      margin-top:5px;
+    }
+
+
+    @media (max-width: 624px) {
+      body {
+        margin: 15px;
+      }
+      .caption {
+        margin-top: 40px;
+      }
+      .vid-list-container {
+        padding-bottom: 20px;
+      }
+
+    }

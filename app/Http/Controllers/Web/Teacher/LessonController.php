@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Web\Teacher;
 use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Uploads;
+use App\Course;
+use File;
+use Response;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +60,7 @@ class LessonController extends Controller
         
         $lesson = new Lesson();
 
+        $lesson->title = $request->get('title');   
         $lesson->course_id = $request->get('id');   
         $lesson->short_description = $request->get('short_description');        
         $lesson->video_file_id = $request->get('video');
@@ -80,8 +85,8 @@ class LessonController extends Controller
 
        $uploadfile = new Uploads();
        
-       $uploadfile->name = $file->getClientOriginalName();
-       $uploadfile->size = $file->getClientSize();
+       $uploadfile->name = $request->file('image')->getClientOriginalName();
+       $uploadfile->size = $request->file('image')->getClientSize();
        $uploadfile->path = $fileName;
        $uploadfile->uploader_id = Auth::user()->id;
        $uploadfile->save();
@@ -143,6 +148,26 @@ class LessonController extends Controller
      return view('teacher.lesson.lessons', compact('videos', 'documents', 'lesson'));
  }
 
+
+ public function getVideo($id){
+
+
+     $uploads = Uploads::find($id);
+     $file_path = $uploads->path;
+
+     $path = storage_path().'\\app\\'.'/'.$file_path; 
+     if(!File::exists($path)) abort(404); 
+     $file = File::get($path);
+
+     $type = File::mimeType($path);
+     
+
+     $response = Response::make($file, 200);
+     $response->header('Content-Type', "video/mp4");
+     return $response;
+       //$fileContents = Storage::disk('local')->get("uploads/{$file_path}");
+
+ }
 
 
  public function videoUpload(Request $request){
@@ -224,11 +249,14 @@ protected function saveFile(UploadedFile $file)
     public function edit(Lesson $lesson)
     { 
      $file_ids = json_decode($lesson->json_file_ids);
-     $uploads = Uploads::findMany($file_ids);
-     $videos = Uploads::where('id', $lesson->video_file_id)->first();
-     if(Auth::user()->id == $lesson->uploader_id){
-         return view('teacher.lesson.create', compact('lesson','id','uploads','videos'));
-     } else {
+     $uploader = Course::find($lesson->course_id);
+
+     if(Auth::user()->id == $uploader->teachers->first()->pivot->teacher_id ){
+
+        $uploads = Uploads::findMany($file_ids);
+        $videos = Uploads::where('id', $lesson->video_file_id)->first();     
+        return view('teacher.lesson.create', compact('lesson','id','uploads','videos'));
+    } else {
         return redirect('/teacher/courses');
     }
 }
@@ -244,7 +272,7 @@ protected function saveFile(UploadedFile $file)
     {
         /// only short_description and lesson text can be updated
 //        return $request->all();
-        
+        $lesson->title = $request->get('title');   
         $lesson->short_description = $request->short_description;
         $lesson->lesson_text = $request->lesson_text;
         if($request->get('video')){

@@ -11,94 +11,99 @@
 <div id="content-wrapper">
 	<div class="mui--appbar-height"></div>
 	<div class="mui-container-fluid">
+        <div class="mui-panel">
 
-		@if($lesson->exists)
-		<h2>Edit Lesson</h2>
-		{!! Form::model($lesson, ['route' => ['teacher.lesson.update', $lesson->id], 'files' => true , 'id' => 'lessonform']) !!}
-		@else
-		<h2>Create a Lesson</h2>
-		{!! Form::model($lesson, ['route' => ['teacher.lesson.store'],  'files' => true, 'id' => 'lessonform']) !!}
-		@endif
+          @if($lesson->exists)
+          <h2>Edit Lesson</h2>
+          {!! Form::model($lesson, ['route' => ['teacher.lesson.update', $lesson->id], 'files' => true , 'id' => 'lessonform']) !!}
+          @else
+          <h2>Create a Lesson</h2>
+          {!! Form::model($lesson, ['route' => ['teacher.lesson.store'],  'files' => true, 'id' => 'lessonform']) !!}
+          @endif
 
-		<div class="mui-panel">
-			@component('mui.errors',
-			['errors' => $errors])
-			@endcomponent
+          @component('mui.errors',
+          ['errors' => $errors])
+          @endcomponent
+          
+          @component('mui.textfield',
+          ['name' => 'title'])
+          @endcomponent
 
-			@component('mui.textfield',
-			['name' => 'short_description', 'type' => 'textarea'])
-			@endcomponent
-			
-			<div class="mui-row">
-				<div class="mui-col-md-2"><label id="imageUploadLabel">Upload a video: </label></div>
-				<div class="mui-col-md-4">
-					<label class="mui-btn mui-btn--primary">
-						Browse files
-                        <input id="videoupload" type="file" name="video" data-url="{{URL::to('/teacher/uploadVideo')}}" hidden>
-                    </label>
-                </div>
-            </div>
+          @component('mui.textfield',
+          ['name' => 'short_description', 'type' => 'textarea'])
+          @endcomponent
+          
+          <div class="mui-row">
+            <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a video: </label></div>
+            <div class="mui-col-md-4">
+             <label class="mui-btn mui-btn--primary">
+              Browse files
+              <input id="videoupload" type="file" name="video" data-url="{{URL::to('/teacher/uploadVideo')}}" hidden>
+          </label>
+      </div>
+  </div>
 
-            <div id="videoProgress">
-                <div class="videoProgressBar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
-            </div>
-            
+  <div id="videoProgress">
+    <div class="videoProgressBar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
+</div>
 
-            <div id="videoUploadStat">
-                @if($videos)                
-                <label id="videos_update">Already Uplaoded video</label><br/>
-                @endif 
-            </div>
 
-            <div id="uploadedVideo">
-                @if($videos)
-                <label>{{$videos->name}}</label><br/>
-                @endif 
-            </div><br/>
-            
+<div id="videoUploadStat">
+    @if($videos)                
+    <label id="videos_update">Already Uplaoded video</label><br/>
+    @endif 
+</div>
 
-            <label>Add an article: </label>
-            <div class="mui-textfield mui-textfield--float-label">
-                {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
-            </div>
-            
+<div id="uploadedVideo">
+    @if($videos)
+    <label>{{$videos->name}}</label><br/>
+    @endif 
+</div><br/>
 
-            <div class="mui-row">
-                <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a document: </label></div>
-                <div class="mui-col-md-4">
-                   <label class="mui-btn mui-btn--primary">
-                      Browse files
-                      <input type="file" name="document[]" id="fileupload" data-url="{{URL::to('/teacher/uploadResource')}}" multiple hidden>
-                  </label>
-              </div>
-          </div>
 
-          <div id="progress">
-            <div class="bar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
-        </div>
+<label>Add an article: </label>
+<div class="mui-textfield mui-textfield--float-label">
+    {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
+</div>
 
-        <div id="uploadStat"></div>
 
-        @if($uploads)
-        <label id="uploaded_files_update">Already Uplaoded files</label><br/>
-        @foreach($uploads as $upload)
-        <label>{{$upload->name}}</label><br/>
-        @endforeach
-        @endif   
+<div class="mui-row">
+    <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a document: </label></div>
+    <div class="mui-col-md-4">
+     <label class="mui-btn mui-btn--primary">
+      Browse files
+      <input type="file" name="document[]" id="fileupload" data-url="{{URL::to('/teacher/uploadResource')}}" multiple hidden>
+  </label>
+</div>
+</div>
 
-        <div id="uploadedResources"></div>
+<div id="progress">
+    <div class="bar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
+</div>
 
-        @if(!$lesson->exists)
-        <input type="hidden" name="id" id="check_edit_flag" value="{{$id}}">
-        @endif 
-        
-        <div class="mui--text-right">
-            <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
-        </div>
-    </div>
+<div id="uploadStat"></div>
+
+@if($uploads)
+<label id="uploaded_files_update">Already Uplaoded files</label><br/>
+@foreach($uploads as $upload)
+<label>{{$upload->name}}</label><br/>
+@endforeach
+@endif   
+
+<div id="uploadedResources"></div>
+
+@if(!$lesson->exists)
+<input type="hidden" name="id" id="check_edit_flag" value="{{$id}}">
+@endif 
+
+<div class="mui--text-right">
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
+</div>
+</div>
 
 </div>    
 </div>
+
 @endsection
 
 @section('scriptsFoot')

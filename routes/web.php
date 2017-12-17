@@ -28,6 +28,11 @@ Route::group([
         return view("open.courses",compact('categories'));
     });
 
+
+    Route::get('/courseDescription/{id}', function ($id) {
+        return view("open.course_description");
+    });
+
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");
     Route::post('logout', "Auth\LoginController@logout")->name("logout");
@@ -69,6 +74,7 @@ Route::group([
     Route::post('/summernote', "LessonController@postSummernote");
     Route::post('/uploadResource', "LessonController@resourceUpload");
     Route::post('/uploadVideo', "LessonController@videoUpload");
+    Route::get('/get-video/{video}', 'LessonController@getVideo');
 
     Route::resource('courses', "CourseController");
     Route::resource('lesson', "LessonController");    

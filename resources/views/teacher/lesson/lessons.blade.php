@@ -4,65 +4,61 @@
 @section('content')
 <div id="content-wrapper">
 	<div class="mui--appbar-height"></div>
-	<div class="mui-container">
-
-		<div class="mui-row" >
-			<div class="mui-col-sm-10 mui-col-sm-offset-1">
+	
+	<div class="mui-container-fluid">
+		
+		<h3>{{$lesson->title}}</h1>
+			<div class="mui-panel">
+				<h4><strong>Lesson Description:</strong></h4>
+				<p>{{$lesson->short_description}}</p>
 				
-				<div class="mui-divider"></div>
-				<div class="mui--text-display1">{{ $lesson->short_description }}</div>
-				<br/>
-				<div class="mui-divider"></div>
+				<h4><strong>Containing video:</strong></h4>
 
+				<div class="mui-row">
+					<div class="vid-main-wrapper clearfix">
+						<!-- THE YOUTUBE PLAYER -->
+						<div class="vid-container-teacher" >
+							
+							<video id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered"
+							controls preload="auto" height="315" width="560">
+							<source src="{{URL::to('/teacher/get-video/'.$lesson->video_file_id)}}"/>
+							</video>
 
-
-				<!-- video listing -->
-				<div class="mui-row">                
-					@if(!$videos->isEmpty())
-					<div class="mui-col-md-8"><div class="mui--text-headline" >Videos added: </div></div>
-					@endif					
+						</div>
+					</div>
 				</div>
-				@if(!$videos->isEmpty())
-				@foreach($videos as $video)
-				<div class="card-example mui--z1">
-					<div class="label">
-						<div>
-							{{ $video->name }}
-						</div>
-					</div>
-					<div class="card-bottom-divider" style=""></div>
-				</div>				
-				@endforeach
-				@endif
 
-
-				<!-- document listing -->
-				<div class="mui-row">                
-					@if(!$documents->isEmpty())
-					<div class="mui-col-md-8"><div class="mui--text-headline" >Documents added: </div></div>
-					@endif					
-				</div>				
-				@if(!$documents->isEmpty())
+				<!-- THE YOUTUBE PLAYER -->
+				<h5><strong>Lesson text:</strong></h5>
+				{!! html_entity_decode($lesson->lesson_text) !!}
+				
+				<h5><strong>Attachments:</strong></h5>
 				@foreach($documents as $document)
-				<div class="card-example mui--z1">
-					<div class="label">
-						<div>
-							{{ $document->name }}
-						</div>
-					</div>
-					<div class="card-bottom-divider" style=""></div>
-				</div>				
+				{{$document->name}}<br>										
 				@endforeach
-				@endif
-
-
 			</div>
+
 		</div>
 
 
-		<br>
-		<br>
 		
+
+
 	</div>
+
+
+	<script>
+		/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/ 
+		$(document).ready(function () {
+		$('.vid-item').each(function(index){
+		$(this).on('click', function(){
+		var current_index = index+1;
+		$('.vid-item .thumb').removeClass('active');
+		$('.vid-item:nth-child('+current_index+') .thumb').addClass('active');
+	});
+});
+});
+</script>
+
 </div>
 @endsection
