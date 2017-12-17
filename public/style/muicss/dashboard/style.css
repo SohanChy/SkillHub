@@ -161,8 +161,11 @@ buttons {
     color: #ecf0f1;
     border-bottom: 1px solid #319dbf;
 }
+.sidedrawer li a:hover{
+  color: #747474;
+}
 
-#sidedrawer strong:hover, .sidedrawer li a:hover {
+#sidedrawer strong:hover {
     background-color: #13898f;
     color: #ecf0f1;
 }
