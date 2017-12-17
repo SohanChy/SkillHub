@@ -4,14 +4,14 @@
         $("#menu").mmenu({
                 extensions 		: [ "theme-white", "pagedim-black" ],
                 dropdown 		: true,
-                counters		: true,
+                // counters		: true,
                 dividers		: {
                     add				: true,
-                    addTo			: "[id*='contacts-']",
+                    addTo			: "[id*='sub-categories-']",
                     fixed			: true
                 },
                 searchfield		: {
-                    resultsPanel	: false
+                    resultsPanel	: true
                 },
                 sectionIndexer	: {
                     add				: true,
@@ -32,14 +32,6 @@
                         }
                     }
                 } });
-        $(".mh-head.mm-sticky").mhead({
-            scroll: {
-                hide: 200
-            }
-        });
-        $(".mh-head:not(.mm-sticky)").mhead({
-            scroll: false
-        });
-
 
     });
+

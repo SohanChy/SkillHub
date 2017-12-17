@@ -4,7 +4,7 @@
     <div class="mui--text-center frontCover">
         <div class="mui-row">
             <div class="mui-col-md-1"></div>
-            <div class="mui-col-md-8">
+            <div class="mui-col-md-4">
 
                     <div class="frontCoverText">
                         <div class="mui-container-fluid mui--text-left mui--align-bottom">
@@ -13,13 +13,13 @@
                                 No more Bananas, only mangoes.<br />
                                 No more Bananas, only mangoes.
                             </div>
-                            <button class="mui-btn mui-btn--small btn-default">Explore Courses</button>
-                            <button class="mui-btn mui-btn--small btn-default">Take Tests</button>
+                            <button class="mui-btn mui-btn--small mui-btn--primary">Explore Courses</button>
+                            {{--<button class="mui-btn mui-btn--small mui-btn--primary">Take Tests</button>--}}
                         </div>
                     </div>
             </div>
 
-            <div class="mui-col-md-8">
+            <div class="mui-col-md-7">
             </div>
 
         </div>
@@ -31,7 +31,7 @@
         @for($i = 0; $i < 5; $i++)
         <br />
         <div class="mui--text-center">
-            <h2>Top Courses</h2><br />
+            <h2>Top Courses <button class="mui-btn mui-btn--flat">See More</button></h2><br />
         </div>
 
         <div>

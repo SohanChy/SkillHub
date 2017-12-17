@@ -91,19 +91,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course', 'course_student', 'student_id','course_id');
     }
 
-    public static $proPicDirString = "uploads/profile_pics/";
-
-    public static function proPicPath()
-    {
-        return public_path(self::$proPicDirString);
-    }
-
-    public function getProfilePictureAttribute()
-    {
-        if ($this->pro_pic != null) {
-            return url(self::$proPicDirString . $this->pro_pic);
-        } else return url("res/default_pro_pic.jpg");
-    }
 
     public function last_login_ago_str($full = false)
     {
@@ -140,4 +127,21 @@ class User extends Authenticatable
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
+
+    public static $proPicDirPath = "uploads/profile-pics/";
+
+    public static function defaultImage(){
+        return url("assets/default.png");
+    }
+
+    public function getProPicUrlAttribute()
+    {
+        $value = $this->pro_pic;
+        if(!$value){
+           return self::defaultImage();
+        }
+
+        return url(self::$proPicDirPath.$value);
+    }
+
 }

@@ -69,13 +69,22 @@ footer {
 
 .frontCover {
   min-height: 230px;
-  background-image: url("../../assets/coverBg.jpg");
+  background: url("../../assets/coverBg.jpg");
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .frontCover {
+        background: url("../../assets/coverBg.jpg") 500px 0;
+    }
 }
 
 .frontCoverText {
-    padding-top: 100px;
-
+    background-color: white;
+    margin-top: 115px;
 }
+
 
 .courses-section {
     /*font-family: serif;*/
@@ -97,6 +106,14 @@ footer {
 
 .bare-card .card-content{
     padding: 5px 15px;
+}
+
+.img-thumb {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    width: auto;
+    height: auto;
 }
 
 .img-responsive {

@@ -32,6 +32,8 @@ buttons {
   transition: left 0.2s;
 }
 
+
+
 #sidedrawer {
   position: fixed;
   top: 0;
@@ -40,7 +42,8 @@ buttons {
   left: -200px;
   overflow: auto;
   z-index: 2;
-  background-color: #fff;
+  color: #fff !important;
+  background: #18b4ba;
   transition: transform 0.2s;
 }
 
@@ -150,8 +153,18 @@ buttons {
   cursor: pointer;
 }
 
-#sidedrawer strong:hover {
-  background-color: #E0E0E0;
+.sidedrawer a, #sidedrawer-brand > a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+.sidedrawer strong {
+    color: #ecf0f1;
+    border-bottom: 1px solid #319dbf;
+}
+
+#sidedrawer strong:hover, .sidedrawer li a:hover {
+    background-color: #13898f;
+    color: #ecf0f1;
 }
 
 #sidedrawer strong + ul > li {
@@ -164,7 +177,7 @@ buttons {
  */
 
 #footer {
-  background-color: #0288D1;
+  background-color: #dcd9df;
   color: #fff;
 }
 
@@ -183,3 +196,4 @@ buttons {
 #header > .mui-appbar {
   margin-bottom: 3px;
 }
+
