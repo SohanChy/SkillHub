@@ -52,6 +52,7 @@ Route::group([
     Route::get('/live-stream', function () {
         return view("open.live_stream");
     });
+
 });
 
 

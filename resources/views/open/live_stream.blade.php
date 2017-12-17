@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <title>WebRTC Scalable Broadcast using RTCMultiConnection</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="shortcut icon" href="/demos/logo.png">
-    <link rel="stylesheet" href="/demos/stylesheet.css">
-    <script src="/demos/menu.js"></script>
-</head>
-<body>
+@extends('open.layouts.base')
+
+@section('content')
 
 
-<section class="make-center">
-    <div class="make-center">
+
+<section class="make-center mui--text-center">
+    <div class="make-center mui--text-center">
         <div>
         <input type="hidden" id="broadcast-id" value="sohan123" autocorrect=off autocapitalize=off size=20>
-        <button id="open-or-join">Open or Join Broadcast</button>
+        <button id="open-or-join" class="mui-btn mui-btn--danger">Open or Join Broadcast</button>
         </div>
 
 
@@ -382,5 +375,4 @@
 
 
 <script src="https://cdn.webrtc-experiment.com/common.js"></script>
-</body>
-</html>
+@endsection
