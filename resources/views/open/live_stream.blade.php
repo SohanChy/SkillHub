@@ -13,8 +13,11 @@
 
 <section class="make-center">
     <div class="make-center">
-        <input type="text" id="broadcast-id" value="room-xyz" autocorrect=off autocapitalize=off size=20>
+        <div>
+        <input type="hidden" id="broadcast-id" value="sohan123" autocorrect=off autocapitalize=off size=20>
         <button id="open-or-join">Open or Join Broadcast</button>
+        </div>
+
 
         <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
         <div class="make-center" id="broadcast-viewers-counter"></div>
@@ -192,7 +195,7 @@
     // if broadcast is available, simply join it. i.e. "join-broadcaster" event should be emitted.
     // if broadcast is absent, simply create it. i.e. "start-broadcasting" event should be fired.
     document.getElementById('open-or-join').onclick = function() {
-        var broadcastId = document.getElementById('broadcast-id').value;
+        var broadcastId = "sohanchy112358";
         if (broadcastId.replace(/^\s+|\s+$/g, '').length <= 0) {
             alert('Please enter broadcast-id');
             document.getElementById('broadcast-id').focus();
