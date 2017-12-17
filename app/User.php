@@ -131,7 +131,7 @@ class User extends Authenticatable
     public static $proPicDirPath = "uploads/profile-pics/";
 
     public static function defaultImage(){
-        return url("assets/default.png");
+        return url("assets/default-user.png");
     }
 
     public function getProPicUrlAttribute()
