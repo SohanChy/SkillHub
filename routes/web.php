@@ -47,6 +47,11 @@ Route::group([
 'middleware' => 'auth'
 ], function () {
     Route::resource('profile',"ProfileController");
+
+
+    Route::get('/live-stream', function () {
+        return view("open.live_stream");
+    });
 });
 
 
