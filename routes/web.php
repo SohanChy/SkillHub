@@ -29,7 +29,7 @@ Route::group([
     });
 
 
-    Route::get('/courseDescription/{id}', function ($id) {
+    Route::get('/course/{id}', function ($id) {
         return view("open.course_description");
     });
 
