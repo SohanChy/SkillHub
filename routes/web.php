@@ -17,9 +17,7 @@ Route::group([
 'namespace' => 'Web\Open'
 ],function () {
 
-    Route::get('/', function () {
-        return view("open.welcome");
-    });
+    Route::get('/', "HomeController@index");
 
     Route::get('/courses', function () {
         $categories = \App\Category::with(['courses' => function ($query) {
@@ -28,8 +26,7 @@ Route::group([
         return view("open.courses",compact('categories'));
     });
 
-
-    Route::get('/course/{id}', function ($id) {
+    Route::get('/courses/{id}/{slug?}', function ($id) {
         return view("open.course_description");
     });
 

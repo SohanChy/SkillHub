@@ -30,7 +30,9 @@
             <table>
                 <tr class="mui--appbar-height">
                     <td width="25%" class="mui--text-title">
+                        <a href="{{url('/')}}">
                         <span class=" mui--hidden-sm mui--hidden-xs">SkillHub</span>
+                        </a>
                         <a href="#menu" class="mui--text-subhead" style="margin-left:15px;">
 
                         <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
