@@ -33,6 +33,8 @@ Route::group([
         return view("open.course_description");
     });
 
+    Route::get('teacher/{id}',"TeacherController@teacherProfile");
+
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");
     Route::post('logout', "Auth\LoginController@logout")->name("logout");
