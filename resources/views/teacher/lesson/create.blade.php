@@ -231,7 +231,7 @@ data: formdata,
 dataType: 'json',
 success: function(data){
 console.log(data);
-window.location.replace("http://localhost:8000/teacher/courses/"+data);
+window.location.replace("{{url('teacher/courses/')}}/"+data);
 },
 error: function(data){
 console.log("Shit!");

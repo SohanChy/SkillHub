@@ -10,19 +10,18 @@
                     addTo			: "[id*='sub-categories-']",
                     fixed			: true
                 },
-                searchfield		: {
-                    resultsPanel	: true
-                },
-                sectionIndexer	: {
-                    add				: true,
-                    addTo			: "[id*='contacts-']"
-                },
+   /*             searchfield		: {
+                    resultsPanel	: true,
+                    showSubPanels: true,
+                    search: true
+                },*/
+
                 navbar			: {
                     title			: "Categories"
                 },
-                navbars		: [{
+               /* navbars		: [{
                     content: ["searchfield"]
-                }, true]
+                }, true]*/
             },
             {
                 dropdown: {
