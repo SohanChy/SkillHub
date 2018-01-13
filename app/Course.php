@@ -35,4 +35,8 @@ class Course extends Model
     public function urlSlug(){
         return Helpers::slugit($this->title);
     }
+
+    public static function makeUrl($id,$title){
+        return url("courses/".$id."/".Helpers::slugit($title));
+    }
 }

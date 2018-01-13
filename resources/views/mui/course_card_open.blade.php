@@ -14,7 +14,7 @@
             @php
             $teacher = $course->teachers()->first();
             @endphp
-            <div class="mui--text-body2 mui--text-dark-secondary card-teacher-info">{{$teacher->name . "," . substr($teacher->edu_stat,0,9)}}</div>
+            <div class="mui--text-body2 mui--text-dark-secondary card-teacher-info">{{@$teacher->name . "," . substr(@$teacher->edu_stat,0,9)}}</div>
             </div>
 
             <div class="mui-row mui--hidden-xs">
