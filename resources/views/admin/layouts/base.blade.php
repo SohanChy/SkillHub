@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <div id="sidedrawer" class="mui--no-user-select">
+    <div id="sidedrawer" class="sidedrawer mui--no-user-select">
         <div id="sidedrawer-brand" class="mui--appbar-line-height">
             <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
         </div>
@@ -40,14 +40,14 @@
                     <li><a href="{{ URL::to('admin/approval') }}">Approve courses</a></li>
                 </ul>
             </li>
-            <li>
+           {{-- <li>
                 <strong>Category 3</strong>
                 <ul>
                     <li><a href="#">Item 1</a></li>
                     <li><a href="#">Item 2</a></li>
                     <li><a href="#">Item 3</a></li>
                 </ul>
-            </li>
+            </li>--}}
         </ul>
     </div>
 

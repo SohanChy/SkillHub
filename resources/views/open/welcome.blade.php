@@ -1,5 +1,4 @@
 @extends('open.layouts.base')
-
 @section('content')
 <div class="mui--text-center frontCover">
     <div class="mui-row">
@@ -28,25 +27,25 @@
 
 <div class="mui-container-fluid courses-section">
 
-    @for($i = 0; $i < 5; $i++)
+    @foreach($frontPageContents as $title => $courseList)
     <br />
     <div class="mui--text-center">
-        <h2>Top Courses <button class="mui-btn mui-btn--flat">See More</button></h2><br />
+        <h2>{{$title}} {{--<button class="mui-btn mui-btn--flat">See More</button>--}}</h2><br />
     </div>
 
     <div>
         <div class="mui-row">
             <div class="mui-col-md-1">
             </div>
-            @for($j = 0; $j < 5; $j++)
-            @component("mui.course_card_open",['course' => null])
-            @endcomponent
-            @endfor
+            @foreach($courseList as $course)
+                @component("mui.course_card_open",['course' => $course])
+                @endcomponent
+            @endforeach
             <div class="mui-col-md-1">
             </div>
         </div>
     </div>
-    @endfor
+    @endforeach
 
 </div>
 @endsection

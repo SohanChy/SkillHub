@@ -17,21 +17,11 @@ Route::group([
 'namespace' => 'Web\Open'
 ],function () {
 
-    Route::get('/', function () {
-        return view("open.welcome");
-    });
+    Route::get('/', "HomeController@index");
 
-    Route::get('/courses', function () {
-        $categories = \App\Category::with(['courses' => function ($query) {
-            $query->where('admin_status', '1')->where('publish_status', '1');
-        }])->get();
-        return view("open.courses",compact('categories'));
-    });
+    Route::get('/courses', "HomeController@courseList");
 
-
-    Route::get('/course/{id}', function ($id) {
-        return view("open.course_description");
-    });
+    Route::get('/courses/{id}/{slug?}', "HomeController@coursePage");
 
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");

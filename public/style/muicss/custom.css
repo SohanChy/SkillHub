@@ -95,11 +95,25 @@
     height: 20px;
     border-radius: 2px;
     outline: none;
-    color: #9DBFAF;
 }
 
 .searchTerm:focus{
     color: #18C5CB;
+}
+
+.categoryButton {
+    position: absolute;
+    left: -145px;
+    width: 145px;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #9DBFAF;
+    background: #18C5CB;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 .searchButton {

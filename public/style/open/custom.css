@@ -108,6 +108,18 @@ header table {
     padding: 5px 15px;
   }
 
+  .bare-card > .card-content > .card-body {
+      height: 90px;
+  }
+
+  .card-teacher-info {
+      font-size: 12px;
+  }
+
+  .card-content {
+      color: black;
+  }
+
   .img-thumb {
     display: block;
     margin: 0 auto;

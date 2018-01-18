@@ -19,36 +19,20 @@
 </head>
 <body>
 
-<div id="sidedrawer" class="mui--no-user-select">
+<div id="sidedrawer" class="sidedrawer mui--no-user-select">
     <div id="sidedrawer-brand" class="mui--appbar-line-height">
         <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
     </div>
     <div class="mui-divider"></div>
     <ul>
         <li>
-            <strong>Category 1</strong>
+            <strong>My Course Library</strong>
             <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
+                <li><a href="#">Enrolled</a></li>
+                <li><a href="#">Wishlist</a></li>
             </ul>
         </li>
-        <li>
-            <strong>Category 2</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
-        <li>
-            <strong>Category 3</strong>
-            <ul>
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Item 2</a></li>
-                <li><a href="#">Item 3</a></li>
-            </ul>
-        </li>
+
     </ul>
 </div>
 

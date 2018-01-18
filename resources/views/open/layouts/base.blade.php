@@ -30,18 +30,23 @@
             <table>
                 <tr class="mui--appbar-height">
                     <td width="25%" class="mui--text-title">
+                        <a href="{{url('/')}}">
                         <span class=" mui--hidden-sm mui--hidden-xs">SkillHub</span>
-                        <a href="#menu" class="mui--text-subhead" style="margin-left:15px;">
-
-                        <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
-                            <span class=" mui--hidden-sm mui--hidden-xs">
-                            Categories
-                            </span>
                         </a>
+
                     </td>
-                    <td class=" mui--hidden-sm mui--hidden-xs">
+                    <td class="mui--hidden-sm mui--hidden-xs" id="siteSearchBar">
+
                         <div class="search">
-                            <input type="text" class="searchTerm" placeholder=" Search for a course...">
+
+                            <a href="#menu" class="categoryButton mui--text-subhead">
+                                Categories
+                                <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
+                                <span class=" mui--hidden-sm mui--hidden-xs">
+                            </span>
+                            </a>
+
+                            <input id="siteSearchBarField" type="text" class="searchTerm" placeholder=" Search for a course...">
                             <button type="submit" class="searchButton">
                                 <i class="fa fa-search"></i>
                             </button>

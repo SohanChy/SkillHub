@@ -162,13 +162,32 @@ buttons {
     border-bottom: 1px solid #319dbf;
 }
 
-#sidedrawer strong:hover, .sidedrawer li a:hover {
+#sidedrawer strong:hover {
     background-color: #13898f;
     color: #ecf0f1;
 }
 
 #sidedrawer strong + ul > li {
-  padding: 6px 0px;
+  padding: 0px 0px;
+}
+
+#sidedrawer strong + ul {
+  background-color: #159fa4;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+#sidedrawer strong + ul > li a {
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 11px;
+  padding-top: 11px;
+  padding-left: 45px;
+}
+
+#sidedrawer strong + ul > li a:hover {
+  background-color: #13898f;
 }
 
 

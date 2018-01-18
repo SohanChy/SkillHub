@@ -31,4 +31,12 @@ class Course extends Model
     {
         return $this->belongsToMany('App\User', 'course_student', 'course_id', 'student_id');
     }
+
+    public function urlSlug(){
+        return Helpers::slugit($this->title);
+    }
+
+    public static function makeUrl($id,$title){
+        return url("courses/".$id."/".Helpers::slugit($title));
+    }
 }
