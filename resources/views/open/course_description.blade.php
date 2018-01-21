@@ -39,7 +39,7 @@ $teacher = $course->teachers()->first();
 					@foreach($course->lessons as $lessons)
 					<li>
 						@if($loop->iteration == 1)
-						<a href="javascript:void();" value="{{ $lessons->video->path }}">
+						<a href="#" value="{{ $lessons->video->path }}">
 							<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
 						</a>
 						
@@ -53,7 +53,7 @@ $teacher = $course->teachers()->first();
 
 					@endforeach
 					
-				</ul>
+				</ol>
 			</div>
 
 			

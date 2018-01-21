@@ -43,7 +43,7 @@ $teacher = $course->teachers()->first();
 
 					@endforeach
 					
-				</ul>
+				</ol>
 			</div>
 
 			
