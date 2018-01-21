@@ -21,7 +21,8 @@ Route::group([
 
     Route::get('/courses', "HomeController@courseList");
 
-    Route::get('/courses/{id}/{slug?}', "HomeController@coursePage");
+    Route::get('/courses/{id}/lesson/{lesson}', "LessonController@lessonPage");
+    Route::get('/courses/{id}/{slug?}', "CourseController@coursePage");
 
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");

@@ -12,6 +12,7 @@ class UploadedFile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'path','size','metadata','user_id'
+    'name', 'path','size','metadata','user_id'
     ];
+
 }
