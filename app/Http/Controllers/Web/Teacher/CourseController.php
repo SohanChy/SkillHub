@@ -87,10 +87,18 @@ class CourseController extends Controller
      * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
+
     public function show(Course $course)
     {
         $lessons = Course::find($course->id)->lessons;
         return view('teacher.courses.course_detail', compact('course','lessons'));
+    }
+
+    public function showStudents($id)
+    {
+        $course = Course::findOrFail($id);
+        $students = $course->students;
+        return view('teacher.courses.course_students', compact('course','students'));
     }
 
     /**

@@ -28,8 +28,8 @@
         <li>
             <strong>My Course Library</strong>
             <ul>
-                <li><a href="#">Enrolled</a></li>
-                <li><a href="#">Wishlist</a></li>
+                <li><a href="{{url('student/courses/current')}}">Current</a></li>
+                <li><a href="{{url('student/courses/enrolled')}}">Enrolled</a></li>
             </ul>
         </li>
 

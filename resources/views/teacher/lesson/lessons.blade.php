@@ -7,7 +7,7 @@
 	
 	<div class="mui-container-fluid">
 		
-		<h3>{{$lesson->title}}</h1>
+		<h3>{{$lesson->title}}</h3>
 			<div class="mui-panel">
 				<h4><strong>Lesson Description:</strong></h4>
 				<p>{{$lesson->short_description}}</p>
