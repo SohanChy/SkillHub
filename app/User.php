@@ -18,9 +18,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'mobile', 'password','bio','role',
-        'email', 'address',
-        'status', 'edu_stat'
+    'name', 'mobile', 'password','bio','role',
+    'email', 'address',
+    'status', 'edu_stat'
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'updated_at', 'created_at', 'bio', "pro_pic"
+    'password', 'remember_token', 'updated_at', 'created_at', 'bio', "pro_pic"
     ];
 
 //    protected $appends = ['delivery_man_name', 'delivery_man_phone', "profile_picture"];
@@ -47,7 +47,7 @@ class User extends Authenticatable
         } else if (Auth::user()->hasRole("teacher")) {
             return "/teacher";
         } else {
-            return "/student";
+            return "/student/courses/enrolled";
         }
     }
 
@@ -113,13 +113,13 @@ class User extends Authenticatable
         $diff->d -= $diff->w * 7;
 
         $string = array(
-            'y' => 'year',
-            'm' => 'month',
-            'w' => 'week',
-            'd' => 'day',
-            'h' => 'hour',
-            'i' => 'minute',
-            's' => 'second',
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
         );
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
@@ -143,10 +143,10 @@ class User extends Authenticatable
     {
         $value = $this->pro_pic;
         if(!$value){
-           return self::defaultImage();
-        }
+         return self::defaultImage();
+     }
 
-        return url(self::$proPicDirPath.$value);
-    }
+     return url(self::$proPicDirPath.$value);
+ }
 
 }

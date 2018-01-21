@@ -38,8 +38,8 @@
             <div class="mui-col-md-1">
             </div>
             @foreach($courseList as $course)
-                @component("mui.course_card_open",['course' => $course])
-                @endcomponent
+            @component("mui.course_card_open",['course' => $course])
+            @endcomponent
             @endforeach
             <div class="mui-col-md-1">
             </div>
