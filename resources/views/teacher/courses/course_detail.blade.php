@@ -6,7 +6,7 @@
     <div class="mui--appbar-height"></div>
 
     <div class="mui-container">
-        <h3>Lesson name: {{ $course->title }}</h3>
+        <h3>Course name: {{ $course->title }}</h3>
         <div class="mui-container">
 
             
@@ -23,7 +23,7 @@
 
     <div class="mui-row">                
         @if(!$lessons->isEmpty())
-        <div class="mui-col-md-8"><h4 id="course_detail">Lessons added: </div></h4>
+        <div class="mui-col-md-8"><h4 id="course_detail">Lessons added: </h4></div>
         @else
         <div class="mui-col-md-8"><h4 id="course_detail">No lesson added. Click Add new lesson to add one.</h4></div>
         @endif

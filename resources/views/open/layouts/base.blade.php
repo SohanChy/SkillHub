@@ -37,14 +37,14 @@
 
                         <div class="search">
 
-                            <a href="#menu" class="categoryButton mui--text-subhead">
+                            <a class="categoryButton mui--text-subhead">
                                 Categories
                                 <i class="mui--text-title fa fa-th" aria-hidden="true"></i>
                                 <span class=" mui--hidden-sm mui--hidden-xs">
                             </span>
                             </a>
 
-                            <input id="siteSearchBarField" type="text" class="searchTerm" placeholder=" Search for a course...">
+                            <input href="#menu" id="siteSearchBarField" type="text" class="searchTerm" placeholder=" Search for a course...">
                             <button type="submit" class="searchButton">
                                 <i class="fa fa-search"></i>
                             </button>

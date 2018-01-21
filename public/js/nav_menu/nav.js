@@ -25,7 +25,7 @@
                 dropdown: {
                     offset: {
                         button: {
-                            y: $( ".mui--appbar-height" ).height() - 25
+                            y: $( ".mui--appbar-height" ).height() - 46
                         }
                     }
                 }

@@ -83,13 +83,15 @@
 }
 
 .search {
-    width: 100%;
+    /*width: 100%;*/
+    width: 440px;
     position: relative
 }
 
 .searchTerm {
     float: left;
     width: 100%;
+    
     border: 1px solid #CDD1D2;
     padding: 5px;
     height: 20px;
@@ -105,7 +107,7 @@
     position: absolute;
     left: -145px;
     width: 145px;
-    height: 31px;
+    height: 30px;
     line-height: 31px;
     border: 1px solid #9DBFAF;
     background: #18C5CB;
@@ -113,14 +115,14 @@
     color: #fff;
     border-radius: 2px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .searchButton {
     position: absolute;
     right: -13px;
     width: 30px;
-    height: 31px;
+    height: 30px;
     border: 1px solid #9DBFAF;
     background: #18C5CB;
     text-align: center;

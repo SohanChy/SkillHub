@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Web\Open\Auth;
 use App\StatusHelper;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\View;
 
 class RegisterController extends Controller
 {
@@ -46,7 +49,26 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', ['except' => 'logout']);
+
+        $categoryNavData = Cache::remember('categoryNavData', 15, function () {
+
+            $categoryNavData = DB::table('categories')
+                ->join('courses', 'categories.id', '=', 'courses.category_id')
+                ->join('course_teacher', 'courses.id', '=', 'course_teacher.course_id')
+                ->join('users', 'course_teacher.teacher_id', '=', 'users.id')
+                ->select('courses.id as course_id','courses.title as course_title','courses.rating as course_rating',
+                    'categories.id as category_id', 'categories.name as category_name',
+                    'users.name as teacher_name','users.edu_stat as teacher_edu')
+                ->get();
+
+            return $categoryNavData->groupBy('category_id')->toArray();
+        });
+
+        /*
+            dd($categoryNavData);*/
+
+        View::share('categoryNavData', $categoryNavData);
     }
 
     /**

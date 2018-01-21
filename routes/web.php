@@ -66,8 +66,9 @@ Route::group([
     Route::post('/uploadVideo', "LessonController@videoUpload");
     Route::get('/get-video/{video}', 'LessonController@getVideo');
 
+    Route::get('courses/{id}/students', "CourseController@showStudents");
     Route::resource('courses', "CourseController");
-    Route::resource('lesson', "LessonController");    
+    Route::resource('lesson', "LessonController");
     
     Route::get('/', function () {
         return view("teacher.dashboard");
