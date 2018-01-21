@@ -43,7 +43,7 @@ class LessonController extends Controller
      $uploads = [];
      $videos = [];
      return view('teacher.lesson.create', compact('lesson', 'id', 'uploads','videos'));
- }
+   }
 
     /**
      * Store a newly created resource in storage.
@@ -53,45 +53,45 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {     
-        $this->validate($request, [
-        'short_description' => 'required',
-        'video' => 'required',
-        ]);
-        
-        $lesson = new Lesson();
+      $this->validate($request, [
+      'short_description' => 'required',
+      'video' => 'required',
+      ]);
+      
+      $lesson = new Lesson();
 
-        $lesson->title = $request->get('title');   
-        $lesson->course_id = $request->get('id');   
-        $lesson->short_description = $request->get('short_description');        
-        $lesson->video_file_id = $request->get('video');
-        $lesson->lesson_text = $request->get('lesson_text');
-        $lesson->json_file_ids = json_encode($request->get('uploads'));
-        $lesson->save();      
-        
-        return $request->get('id');      
+      $lesson->title = $request->get('title');   
+      $lesson->course_id = $request->get('id');   
+      $lesson->short_description = $request->get('short_description');        
+      $lesson->video_file_id = $request->get('video');
+      $lesson->lesson_text = $request->get('lesson_text');
+      $lesson->json_file_ids = json_encode($request->get('uploads'));
+      $lesson->save();      
+      
+      return $request->get('id');      
     }
 
 
 
     public function postSummernote(Request $request){
-       $this->validate($request, [
-       'image' => 'mimes:jpeg,png,jpg'
-       ]);
+     $this->validate($request, [
+     'image' => 'mimes:jpeg,png,jpg'
+     ]);
 
-       $extension = $request->file('image')->getClientOriginalExtension();
-       $fileName =  time().rand().'.'.$extension;
-       $destinationPath = public_path('/uploads');
-       $request->file('image')->move($destinationPath, $fileName);    
+     $extension = $request->file('image')->getClientOriginalExtension();
+     $fileName =  time().rand().'.'.$extension;
+     $destinationPath = public_path('/uploads');
+     $request->file('image')->move($destinationPath, $fileName);    
 
-       $uploadfile = new Uploads();
-       
-       $uploadfile->name = $request->file('image')->getClientOriginalName();
-       $uploadfile->size = $request->file('image')->getClientSize();
-       $uploadfile->path = $fileName;
-       $uploadfile->uploader_id = Auth::user()->id;
-       $uploadfile->save();
+     $uploadfile = new Uploads();
+     
+     $uploadfile->name = $request->file('image')->getClientOriginalName();
+     $uploadfile->size = $request->file('image')->getClientSize();
+     $uploadfile->path = $fileName;
+     $uploadfile->uploader_id = Auth::user()->id;
+     $uploadfile->save();
 
-       return $fileName;
+     return $fileName;
    }
 
    public function resourceUpload(Request $request){
@@ -103,31 +103,31 @@ class LessonController extends Controller
     $dummy = [];
 
     foreach ($document as $file) {
-        $data = [];
+      $data = [];
 
-        $extension = $file->getClientOriginalExtension();
-        $fileName = time().rand().'.'.$extension;
-        $destinationPath = public_path('/uploads');
-        $file->move($destinationPath, $fileName);    
+      $extension = $file->getClientOriginalExtension();
+      $fileName = time().rand().'.'.$extension;
+      $destinationPath = public_path('/uploads');
+      $file->move($destinationPath, $fileName);    
 
-        $data['originalName'] = $file->getClientOriginalName();
-        $data['name'] = $fileName;
-        
-        $uploadfile = new Uploads();
-        
-        $uploadfile->name = $file->getClientOriginalName();
-        $uploadfile->size = $file->getClientSize();
-        $uploadfile->path = $fileName;
-        $uploadfile->uploader_id = Auth::user()->id;
-        $uploadfile->lesson_id = $request->get('lesson_id');
-        $uploadfile->save();
-        $data['id'] = $uploadfile->id;
+      $data['originalName'] = $file->getClientOriginalName();
+      $data['name'] = $fileName;
+      
+      $uploadfile = new Uploads();
+      
+      $uploadfile->name = $file->getClientOriginalName();
+      $uploadfile->size = $file->getClientSize();
+      $uploadfile->path = $fileName;
+      $uploadfile->uploader_id = Auth::user()->id;
+      $uploadfile->lesson_id = $request->get('lesson_id');
+      $uploadfile->save();
+      $data['id'] = $uploadfile->id;
 
-        array_push($dummy, $data);
+      array_push($dummy, $data);
     }
     /*$dummy = array('data' => ['name' => $fileName]);*/
     return json_encode($dummy);
-}
+  }
 
     /**
      * Display the specified resource.
@@ -146,10 +146,10 @@ class LessonController extends Controller
      $documents = Uploads::findMany(json_decode($lesson->json_file_ids), ['id', 'name', 'path']);
      $videos = Uploads::findMany($lesson->video_file_id, ['id', 'name', 'path']);
      return view('teacher.lesson.lessons', compact('videos', 'documents', 'lesson'));
- }
+   }
 
 
- public function getVideo($id){
+   public function getVideo($id){
 
 
      $uploads = Uploads::find($id);
@@ -167,13 +167,13 @@ class LessonController extends Controller
      return $response;
        //$fileContents = Storage::disk('local')->get("uploads/{$file_path}");
 
- }
+   }
 
 
- public function videoUpload(Request $request){
-    $this->validate($request, [
+   public function videoUpload(Request $request){
+    /*$this->validate($request, [
     'video' => 'mimes:mp4'
-    ]);
+    ]);*/
 
      // create the file receiver
     $receiver = new FileReceiver("video", $request, HandlerFactory::classFromRequest($request));
@@ -186,17 +186,17 @@ class LessonController extends Controller
                 // save the file and return any response you need
        
        return $this->saveFile($save->getFile());
-   } else {
+     } else {
                 // we are in chunk mode, lets send the current progress
        /** @var AbstractHandler $handler */
        $handler = $save->handler();
        return response()->json([
        "done" => $handler->getPercentageDone(),
        ]);
-   }
-} else {
-  throw new UploadMissingFileException();
-}
+     }
+   } else {
+    throw new UploadMissingFileException();
+  }
 }
 
 
@@ -238,8 +238,8 @@ protected function saveFile(UploadedFile $file)
         // Add timestamp hash to name of the file
         $filename .= "_" . md5(time()) . "." . $extension;
         return $filename;
-    }
-    
+      }
+      
     /**
      * Show the form for editing the specified resource.
      *
@@ -253,13 +253,13 @@ protected function saveFile(UploadedFile $file)
 
      if(Auth::user()->id == $uploader->teachers->first()->pivot->teacher_id ){
 
-        $uploads = Uploads::findMany($file_ids);
-        $videos = Uploads::where('id', $lesson->video_file_id)->first();     
-        return view('teacher.lesson.create', compact('lesson','id','uploads','videos'));
+      $uploads = Uploads::findMany($file_ids);
+      $videos = Uploads::where('id', $lesson->video_file_id)->first();     
+      return view('teacher.lesson.create', compact('lesson','id','uploads','videos'));
     } else {
-        return redirect('/teacher/courses');
+      return redirect('/teacher/courses');
     }
-}
+  }
 
     /**
      * Update the specified resource in storage.
@@ -272,20 +272,20 @@ protected function saveFile(UploadedFile $file)
     {
         /// only short_description and lesson text can be updated
 //        return $request->all();
-        $lesson->title = $request->get('title');   
-        $lesson->short_description = $request->short_description;
-        $lesson->lesson_text = $request->lesson_text;
-        if($request->get('video')){
-            $lesson->video_file_id = $request->get('video');
-        }
-        if($request->get('uploads')){
-          $uploaded_files = json_decode($lesson->json_file_ids);
-          $lesson->json_file_ids = json_encode(array_merge($uploaded_files,$request->get('uploads')));
+      $lesson->title = $request->get('title');   
+      $lesson->short_description = $request->short_description;
+      $lesson->lesson_text = $request->lesson_text;
+      if($request->get('video')){
+        $lesson->video_file_id = $request->get('video');
+      }
+      if($request->get('uploads')){
+        $uploaded_files = json_decode($lesson->json_file_ids);
+        $lesson->json_file_ids = json_encode(array_merge($uploaded_files,$request->get('uploads')));
       }
       $lesson->save();
 
       return $lesson->course_id;
-  }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -297,4 +297,4 @@ protected function saveFile(UploadedFile $file)
     {
         //
     }
-}
+  }

@@ -11,94 +11,94 @@
 <div id="content-wrapper">
 	<div class="mui--appbar-height"></div>
 	<div class="mui-container-fluid">
-        <div class="mui-panel">
+    <div class="mui-panel">
 
-          @if($lesson->exists)
-          <h2>Edit Lesson</h2>
-          {!! Form::model($lesson, ['route' => ['teacher.lesson.update', $lesson->id], 'files' => true , 'id' => 'lessonform']) !!}
-          @else
-          <h2>Create a Lesson</h2>
-          {!! Form::model($lesson, ['route' => ['teacher.lesson.store'],  'files' => true, 'id' => 'lessonform']) !!}
-          @endif
+      @if($lesson->exists)
+      <h2>Edit Lesson</h2>
+      {!! Form::model($lesson, ['route' => ['teacher.lesson.update', $lesson->id], 'files' => true , 'id' => 'lessonform']) !!}
+      @else
+      <h2>Create a Lesson</h2>
+      {!! Form::model($lesson, ['route' => ['teacher.lesson.store'],  'files' => true, 'id' => 'lessonform']) !!}
+      @endif
 
-          @component('mui.errors',
-          ['errors' => $errors])
-          @endcomponent
-          
-          @component('mui.textfield',
-          ['name' => 'title'])
-          @endcomponent
+      @component('mui.errors',
+      ['errors' => $errors])
+      @endcomponent
+      
+      @component('mui.textfield',
+      ['name' => 'title'])
+      @endcomponent
 
-          @component('mui.textfield',
-          ['name' => 'short_description', 'type' => 'textarea'])
-          @endcomponent
-          
-          <div class="mui-row">
-            <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a video: </label></div>
-            <div class="mui-col-md-4">
-             <label class="mui-btn mui-btn--primary">
-              Browse files
-              <input id="videoupload" type="file" name="video" data-url="{{URL::to('/teacher/uploadVideo')}}" hidden>
-          </label>
+      @component('mui.textfield',
+      ['name' => 'short_description', 'type' => 'textarea'])
+      @endcomponent
+      
+      <div class="mui-row">
+        <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a video: </label></div>
+        <div class="mui-col-md-4">
+         <label class="mui-btn mui-btn--primary">
+          Browse files
+          <input id="videoupload" type="file" name="video" data-url="{{URL::to('/teacher/uploadVideo')}}" hidden>
+        </label>
       </div>
+    </div>
+
+    <div id="videoProgress">
+      <div class="videoProgressBar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
+    </div>
+
+
+    <div id="videoUploadStat">
+      @if($videos)                
+      <label id="videos_update">Already Uplaoded video</label><br/>
+      @endif 
+    </div>
+
+    <div id="uploadedVideo">
+      @if($videos)
+      <label>{{$videos->name}}</label><br/>
+      @endif 
+    </div><br/>
+
+
+    <label>Add an article: </label>
+    <div class="mui-textfield mui-textfield--float-label">
+      {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
+    </div>
+
+
+    <div class="mui-row">
+      <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a document: </label></div>
+      <div class="mui-col-md-4">
+       <label class="mui-btn mui-btn--primary">
+        Browse files
+        <input type="file" name="document[]" id="fileupload" data-url="{{URL::to('/teacher/uploadResource')}}" multiple hidden>
+      </label>
+    </div>
   </div>
 
-  <div id="videoProgress">
-    <div class="videoProgressBar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
-</div>
-
-
-<div id="videoUploadStat">
-    @if($videos)                
-    <label id="videos_update">Already Uplaoded video</label><br/>
-    @endif 
-</div>
-
-<div id="uploadedVideo">
-    @if($videos)
-    <label>{{$videos->name}}</label><br/>
-    @endif 
-</div><br/>
-
-
-<label>Add an article: </label>
-<div class="mui-textfield mui-textfield--float-label">
-    {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
-</div>
-
-
-<div class="mui-row">
-    <div class="mui-col-md-2"><label id="imageUploadLabel">Upload a document: </label></div>
-    <div class="mui-col-md-4">
-     <label class="mui-btn mui-btn--primary">
-      Browse files
-      <input type="file" name="document[]" id="fileupload" data-url="{{URL::to('/teacher/uploadResource')}}" multiple hidden>
-  </label>
-</div>
-</div>
-
-<div id="progress">
+  <div id="progress">
     <div class="bar" style="margin-top: 10px;margin-bottom: 10px;width: 0%; height: 18px; background:green;"></div>
-</div>
+  </div>
 
-<div id="uploadStat"></div>
+  <div id="uploadStat"></div>
 
-@if($uploads)
-<label id="uploaded_files_update">Already Uplaoded files</label><br/>
-@foreach($uploads as $upload)
-<label>{{$upload->name}}</label><br/>
-@endforeach
-@endif   
+  @if($uploads)
+  <label id="uploaded_files_update">Already Uplaoded files</label><br/>
+  @foreach($uploads as $upload)
+  <label>{{$upload->name}}</label><br/>
+  @endforeach
+  @endif   
 
-<div id="uploadedResources"></div>
+  <div id="uploadedResources"></div>
 
-@if(!$lesson->exists)
-<input type="hidden" name="id" id="check_edit_flag" value="{{$id}}">
-@endif 
+  @if(!$lesson->exists)
+  <input type="hidden" name="id" id="check_edit_flag" value="{{$id}}">
+  @endif 
 
-<div class="mui--text-right">
+  <div class="mui--text-right">
     <button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Save</button>
-</div>
+  </div>
 </div>
 
 </div>    
@@ -122,25 +122,27 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 	var flag = true;
-    var video_flag = true;
-    var fileNames = [];
-    var video;
+  var video_flag = true;
+  var fileNames = [];
+  var video;
 
-    $('#summernote').summernote({
-    height: 300,
-    minHeight: null,
-    maxHeight: null,
-    callbacks: {
-    onImageUpload: function(files) {
-    url = $(this).data('upload');
-    console.log(files);
-    sendFile(files[0], url, $(this));
+  $('#summernote').summernote({
+  height: 300,
+  minHeight: null,
+  maxHeight: null,
+  callbacks: {
+  onImageUpload: function(files) {
+  url = $(this).data('upload');
+  console.log(files);
+  sendFile(files[0], url, $(this));
 }
 }
 });
 
 $('#videoupload').fileupload({
 dataType: 'json',
+maxFileSize: 500000000,
+maxChunkSize: 10000000,
 done: function (e, data) {
 console.log(data);
 if(video_flag && document.getElementById('uploaded_files_update') == null){
@@ -162,7 +164,6 @@ progress + '%'
 
 
 $('#videoupload').bind('fileuploadfail', function (e, data) {
-console.log(data);
 })
 
 
@@ -170,6 +171,8 @@ console.log(data);
 $('#fileupload').fileupload({
 dataType: 'json',
 done: function (e, data) {
+console.log(data);
+
 if(flag && document.getElementById('uploaded_files_update') == null){
 $('<label/><br/>').text("Already Uplaoded materials:").appendTo("#uploadStat");
 flag = false;
