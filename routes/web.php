@@ -21,8 +21,16 @@ Route::group([
 
     Route::get('/courses', "HomeController@courseList");
 
-    Route::get('/courses/{id}/lesson/{lesson}', "LessonController@lessonPage");
-    Route::get('/courses/{id}/{slug?}', "CourseController@coursePage");
+
+    Route::group([
+    'middleware' => ['auth', 'check.role:student'],
+    ], function () {
+        Route::get('/courses/{id}/lesson/{lesson}', "LessonController@lessonPage");
+        Route::get('/courses/checkout/{id}', "LessonController@checkout")->name("courses.checkout");
+        Route::post('/courses/enroll', "LessonController@enrollStudent")->name("courses.enroll");
+    });
+
+    Route::get('/courses/{id}/{slug?}', "CourseController@coursePage")->name("course");
 
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");
