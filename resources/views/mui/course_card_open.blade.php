@@ -2,7 +2,7 @@
     @php $course = \App\Course::inRandomOrder()->first(); @endphp
 @endif
 <a href="{{url("courses/".$course->id."/".$course->urlSlug())}}">
-<div class="mui-col-md-2">
+<div class="{{$colWidth or 'mui-col-md-2'}}">
     <div class="mui-panel bare-card mui-btn--flat mui--z1">
         <img class="img-responsive mui--hidden-xs" src="{{$course->poster_file_id or url("uploads/maths.jpg")}}" alt="">
         <div class="card-content">

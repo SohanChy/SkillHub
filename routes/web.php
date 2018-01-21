@@ -49,6 +49,9 @@ Route::group([
     Route::get('/', function () {
         return view("student.dashboard");
     });
+
+    Route::get('/courses/enrolled', "CourseController@enrolled");
+
 });
 
 
