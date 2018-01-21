@@ -17,9 +17,7 @@
     <link href="{{ asset('style/open/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-    <link type="text/css" href="http://mmenu.frebsite.nl/mmenu/jquery.mmenu.all.css?v=6.1.8" rel="stylesheet" />
-
+    <link type="text/css" href="{{ asset('js/nav_menu/jquery.mmenu.all.css') }}" rel="stylesheet" />
 
 </head>
 <body>
@@ -111,9 +109,9 @@
     </footer>
     <script src="{{ asset('style/muicss/mui.js') }}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="http://mmenu.frebsite.nl/mmenu/jquery.mmenu.all.js?v=6.1.8"></script>
-    <script src="http://mmenu.frebsite.nl/mhead-plugin/mhead/jquery.mhead.js?v=6.1.8    "></script>
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/nav_menu/jquery.mmenu.all.js') }}"></script>
+    <script src="{{ asset('js/nav_menu/jquery.mhead.js') }}"></script>
     <script src="{{ asset('js/nav_menu/nav.js') }}"></script>
 
 
