@@ -20,6 +20,7 @@ Route::group([
     Route::get('/', "HomeController@index");
 
     Route::get('/courses', "HomeController@courseList");
+    Route::get('/live-streams', "HomeController@liveStreams");
 
     Route::get('/courses/{id}/lesson/{lesson}', "LessonController@lessonPage");
     Route::get('/courses/{id}/{slug?}', "CourseController@coursePage");
@@ -77,6 +78,10 @@ Route::group([
     Route::get('/', function () {
         return view("teacher.dashboard");
     });
+
+
+    //Live stream
+    Route::resource('live-streams', "LiveStreamController");
 });
 
 

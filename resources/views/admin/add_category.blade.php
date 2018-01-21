@@ -7,7 +7,7 @@
 		
 		@if($category->exists)
 		<h2>Edit Category</h2>
-		{!! Form::model($category, ['route' => ['admin.category.update', $category->id]]) !!}
+		{!! Form::model($category, ['method' => 'put','route' => ['admin.category.update', $category->id]]) !!}
 		@else
 		<h2>Create Category</h2>
 		{!! Form::model($category, ['route' => ['admin.category.store']]) !!}
@@ -19,7 +19,7 @@
 			@endcomponent
 
 			@component('mui.textfield',
-			['name' => 'title', 'value' => $category->name])
+			['name' => 'name', 'value' => $category->name])
 			@endcomponent
 
 			<div class="mui-select">

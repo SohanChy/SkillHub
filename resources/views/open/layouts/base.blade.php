@@ -27,7 +27,7 @@
 
             <table>
                 <tr class="mui--appbar-height">
-                    <td width="25%" class="mui--text-title">
+                    <td width="30%" class="mui--text-title">
                         <a href="{{url('/')}}">
                         <span class=" mui--hidden-sm mui--hidden-xs">SkillHub</span>
                         </a>

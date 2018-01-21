@@ -81,6 +81,11 @@ class User extends Authenticatable
 
     //Relations
 
+    public function teacherOfStreams()
+    {
+        return $this->hasMany('App\LiveStream', 'teacher_id');
+    }
+
     public function teacherOfCourses()
     {
         return $this->belongsToMany('App\Course', 'course_teacher', 'teacher_id','course_id');

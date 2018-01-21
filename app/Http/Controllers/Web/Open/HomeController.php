@@ -73,4 +73,10 @@ class HomeController extends Controller
       return view("open.courses",compact('categories'));
 
     }
+
+    public function liveStreams(){
+
+        $streams = \App\LiveStream::with('teacher')->get();
+        return view("open.livestreams",compact('streams'));
+    }
   }
