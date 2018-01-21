@@ -17,6 +17,7 @@ class CreateLiveStreamsTable extends Migration
             $table->increments('id');
             $table->text('title');
             $table->text('description');
+            $table->double('price');
             $table->dateTime('date_time');
             $table->integer('teacher_id')->unsigned();
             $table->boolean('finish_status')->default(0);

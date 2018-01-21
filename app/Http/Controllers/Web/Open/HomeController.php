@@ -5,13 +5,38 @@ namespace App\Http\Controllers\Web\Open;
 use App\Category;
 use App\Course;
 use App\Http\Controllers\Controller;
+use App\LiveStream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
+//CODE TO SUBSCRIBE
+/*
+$StuJson = json_decode($stream->students_json);
+$StuJson[] = Auth::id();
+$stream->students_json= json_encode(array_unique($StuJson));
+*/
+
+
+    public function streamNow($id){
+        $stream = LiveStream::findOrFail($id);
+
+        $userId = Auth::id();
+        $subscribedStatus = in_array($userId,json_decode($stream->students_json));
+
+        $isTeacher = ($stream->teacher_id == $userId);
+
+        if($isTeacher){
+            $subscribedStatus = true;
+        }
+
+        return view("open.stream_now",
+            compact("stream","subscribedStatus","isTeacher"));
+    }
     /**
      * Create a new controller instance.
      *

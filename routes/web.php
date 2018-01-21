@@ -39,13 +39,16 @@ Route::group([
 'middleware' => 'auth'
 ], function () {
     Route::resource('profile',"ProfileController");
-
-
-    Route::get('/live-stream', function () {
-        return view("open.live_stream");
-    });
-
 });
+
+
+Route::group([
+    'namespace' => 'Web\Open',
+    'middleware' => 'auth'
+], function () {
+    Route::get('/stream-now/{id}', "HomeController@streamNow");
+});
+
 
 
 Route::group([

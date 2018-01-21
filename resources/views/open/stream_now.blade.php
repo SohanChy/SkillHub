@@ -7,20 +7,37 @@
 <section class="make-center mui--text-center">
     <div class="make-center mui--text-center">
         <div>
-        <input type="hidden" id="broadcast-id" value="sohan123" autocorrect=off autocapitalize=off size=20>
-        <button id="open-or-join" class="mui-btn mui-btn--danger">Open or Join Broadcast</button>
+            <h2>{{$stream->title}}</h2>
+            <p>{{$stream->description}}</p>
+            <h3 id="countDown"></h3>
+
+            @if(!$subscribedStatus)
+            <button class="mui-btn mui-btn--danger">Subscribe to this Broadcast</button>
+            @endif
+
+        {{--<input type="hidden" id="broadcast-id" value="sohan123" autocorrect=off autocapitalize=off size=20>--}}
+        {{--<button id="open-or-join" class="mui-btn mui-btn--danger">Open or Join Broadcast</button>--}}
         </div>
 
 
-        <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
-        <div class="make-center" id="broadcast-viewers-counter"></div>
+        {{--<div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>--}}
+
+        @if($subscribedStatus)
+        <div class="make-center" id="broadcast-viewers-counter">
+        </div>
 
         <video id="video-preview" controls loop></video>
+        @endif
+
+    </div>
 </section>
+
 
 <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
 <script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
 <!-- <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script> -->
+
+@if($subscribedStatus)
 <script>
     // recording is disabled because it is resulting for browser-crash
     // if you enable below line, please also uncomment above "RecordRTC.js"
@@ -188,15 +205,16 @@
     // ask node.js server to look for a broadcast
     // if broadcast is available, simply join it. i.e. "join-broadcaster" event should be emitted.
     // if broadcast is absent, simply create it. i.e. "start-broadcasting" event should be fired.
-    document.getElementById('open-or-join').onclick = function() {
-        var broadcastId = "sohanchy112358x";
-        if (broadcastId.replace(/^\s+|\s+$/g, '').length <= 0) {
+    function startStreamNow() {
+        var broadcastId = "{{substr($stream->title, 0, 5)}}{{$stream->id}}";
+
+/*        if (broadcastId.replace(/^\s+|\s+$/g, '').length <= 0) {
             alert('Please enter broadcast-id');
             document.getElementById('broadcast-id').focus();
             return;
-        }
+        }*/
 
-        document.getElementById('open-or-join').disabled = true;
+        // document.getElementById('open-or-join').disabled = true;
 
         connection.session = {
             audio: true,
@@ -208,6 +226,10 @@
 
         socket.emit('check-broadcast-presence', broadcastId, function(isBroadcastExists) {
             if (!isBroadcastExists) {
+                console.log("IT IS: " + isBroadcastExists);
+                @if(!$isTeacher)
+                return;
+                @endif
                 // the first person (i.e. real-broadcaster) MUST set his user-id
                 connection.userid = broadcastId;
             }
@@ -305,10 +327,10 @@
         html += '<br>';
         html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
 
-        var roomURLsDiv = document.getElementById('room-urls');
-        roomURLsDiv.innerHTML = html;
+        // var roomURLsDiv = document.getElementById('room-urls');
+        // roomURLsDiv.innerHTML = html;
 
-        roomURLsDiv.style.display = 'block';
+        // roomURLsDiv.style.display = 'block';
     }
 
     (function() {
@@ -330,10 +352,10 @@
     } else {
         broadcastId = connection.token();
     }
-    document.getElementById('broadcast-id').value = broadcastId;
-    document.getElementById('broadcast-id').onkeyup = function() {
+    // document.getElementById('broadcast-id').value = broadcastId;
+    /*document.getElementById('broadcast-id').onkeyup = function() {
         localStorage.setItem(connection.socketMessageEvent, this.value);
-    };
+    };*/
 
     var hashString = location.hash.replace('#', '');
     if (hashString.length && hashString.indexOf('comment-') == 0) {
@@ -346,7 +368,7 @@
     }
 
     if (broadcastId && broadcastId.length) {
-        document.getElementById('broadcast-id').value = broadcastId;
+        // document.getElementById('broadcast-id').value = broadcastId;
         localStorage.setItem(connection.socketMessageEvent, broadcastId);
 
         // auto-join-room
@@ -372,8 +394,46 @@
         document.getElementById('broadcast-viewers-counter').innerHTML = 'Number of broadcast viewers: <b>' + event.numberOfBroadcastViewers + '</b>';
     };
 </script>
-
-
+@endif
 
 <script src="https://cdn.webrtc-experiment.com/common.js"></script>
+
+
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("{{$stream->date_time}}").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("countDown").innerHTML = "Starts in "+ days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countDown").innerHTML = "Live...";
+
+            @if($subscribedStatus)
+            startStreamNow();
+            @endif
+        }
+    }, 1000);
+</script>
+
+
 @endsection

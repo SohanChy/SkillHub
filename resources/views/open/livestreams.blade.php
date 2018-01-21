@@ -11,7 +11,9 @@
 ['title' => $stream->title . " by ". $stream->teacher->name,'text'=>$stream->description])
 
                         <button class="mui-btn">{{$stream->timeUntilString()}}</button>
+                        <a href="{{url("stream-now/".$stream->id)}}">
                         <button class="mui-btn mui-btn--primary">Watch</button>
+                        </a>
 
 
                     @endcomponent
