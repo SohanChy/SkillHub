@@ -41,9 +41,15 @@
         $("#siteSearchBar").click(
             function(){
                 var API =  menu.data( "mmenu" );
+                var realSearch = $('#menu').find('input[type="text"]');
+                var siteSearchBarField = $("#siteSearchBarField");
+
+
+                API.closeAllPanels();
+                siteSearchBarField.val("");
+                realSearch.val("");
                 API.open();
 
-                var realSearch = $('#menu').find('input[type="text"]');
 
                 $("#siteSearchBarField").keyup(function() {
                     realSearch.val( this.value );
@@ -51,7 +57,7 @@
                 });
 
                 realSearch.keyup(function() {
-                    $("#siteSearchBarField").val(realSearch.val);
+                    siteSearchBarField.val(realSearch.val);
                 });
 
             }

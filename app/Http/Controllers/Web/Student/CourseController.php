@@ -14,7 +14,7 @@ class CourseController extends Controller
 {
     public function enrolled(Request $request)
     {
-        $courses = Auth::user()->studentOfCourses;
+        $courses = Auth::user()->studentOfCourses()->latest()->get();
 //        dd($courses);
         return view('student.courses.enrolled', compact('courses'));
     }
