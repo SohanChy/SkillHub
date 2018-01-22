@@ -151,11 +151,11 @@ class LessonController extends Controller
 
    public function getVideo($id){
 
-
      $uploads = Uploads::find($id);
      $file_path = $uploads->path;
 
-     $path = storage_path().'\\app\\'.'/'.$file_path; 
+     $path = storage_path().'/app/'.$file_path;
+
      if(!File::exists($path)) abort(404); 
      $file = File::get($path);
 

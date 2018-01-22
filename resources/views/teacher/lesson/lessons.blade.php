@@ -47,7 +47,7 @@
 </div>
 
 
-<script>
+{{--<script>
 	/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/ 
 	$(document).ready(function () {
 	$('.vid-item').each(function(index){
@@ -58,7 +58,6 @@
 });
 });
 });
-</script>
+</script>--}}
 
-</div>
 @endsection
