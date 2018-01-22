@@ -26,10 +26,10 @@
                 @if(Auth::check())
 
                     <div class="mui-row mui--text-right">
-                        <div class="mui-col-md-8"></div>
+                        <div class="mui-col-md-7"></div>
                         @if(!$isCourse)
-                        <div class="mui-col-md-2">
-                                <button class="mui-btn mui-btn--primary" onclick="showReplyForm({{$singleComment->id}})"><i class="fa fa-fw fa-reply"></i> Reply</button>
+                        <div class="mui-col-md-3">
+                                <button class="mui-btn mui-btn--small mui-btn--primary" onclick="showReplyForm({{$singleComment->id}})"><i class="fa fa-fw fa-reply"></i> Reply</button>
                         </div>
                         @endif
                     @if($isCourse)
@@ -44,7 +44,7 @@
 
                         @if($user->id == $singleComment->commented->id)
                         <div class="mui-col-md-2">
-                                <button class="mui-btn " onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
+                                <button class="mui-btn mui-btn--small" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
                         </div>
                         @endif
                     </div>
@@ -81,7 +81,7 @@
                             @if(Auth::check())
                             <div class="mui--text-right">
                                 @if($user->id == $singleComment->commented->id)
-                                    <button class="mui-btn mui-btn--accent" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
+                                    <button class="mui-btn mui-btn--small" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
                                 @endif
                             </div>
                             @endif

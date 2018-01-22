@@ -102,7 +102,7 @@ $teacher = $course->teachers()->first();
 		</div>
 
 
-		</div>
+
 		<div class="mui-tabs__pane" id="pane-default-4">
 
 			<div class="mui-row"  style="margin-top:30px">
@@ -177,7 +177,7 @@ $teacher = $course->teachers()->first();
 			</div>
 
 		</div>
-
+</div>
 
 		<div class="mui-row" >
 			<div class="mui-col-md-12">

@@ -66,7 +66,7 @@ $teacher = $course->teachers()->first();
 
 		<ul class="mui-tabs__bar">
 			<li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-default-1">About</a></li>
-			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Community</a></li>
+			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Reviews</a></li>
 			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-3">Teachers</a></li>
 			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-4">Course Syllebus</a></li>
 		</ul>
@@ -154,8 +154,6 @@ $teacher = $course->teachers()->first();
 	</div>
 </div>
 
-
-</div>
 <div class="mui-tabs__pane" id="pane-default-4">
 
 	<div class="mui-row"  style="margin-top:30px"></div>
@@ -185,16 +183,16 @@ $teacher = $course->teachers()->first();
 				<img src="https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg" alt="" height="200px" width="200px">
 			</div>
 			<div class="mui-col-md-8">
-				
+
 				<h2>
-					{{@$teacher->name}}	
+					{{@$teacher->name}}
 				</h2>
 				<div class="mui--text-body2 mui--text-dark-secondary card-teacher-info">{{$teacher->edu_stat}}</div>
 				<p>{{$teacher->bio}}</p>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="mui-row" >
 		<div class="mui-col-md-12">
 			<div class="mui-col-md-12">
@@ -218,7 +216,7 @@ $teacher = $course->teachers()->first();
 	</div>
 
 </div>
-
+</div>
 
 
 

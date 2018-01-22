@@ -36,6 +36,7 @@ function reloadComments(){
 }
 
 function submitComment(){
+    console.log("here");
     $(this).html("<img class='.img-responsive' src='/assets/waiting.gif' />");
 
     var form = $('#comment-form');

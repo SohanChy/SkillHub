@@ -9,8 +9,8 @@
                 <div class="mui-container-fluid mui--text-left mui--align-bottom">
                     <div class="mui--text-subhead"><strong>Learn by taking complete courses online</strong></div>
                     <div class="mui--text-body2">
-                        No more Bananas, only mangoes.<br />
-                        No more Bananas, only mangoes.
+                        Courses Covering Topics In Detail.<br />
+                        Livestreams covering exclusive Talks & Lectures.
                     </div>
                     <button class="mui-btn mui-btn--small mui-btn--primary">Explore Courses</button>
                     <a href="{{url('live-streams')}}">

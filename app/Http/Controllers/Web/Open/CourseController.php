@@ -27,6 +27,7 @@ class CourseController extends Controller
 
       $comments = $course->comments;
       $comment = new Comment();
+      $comment->commentable_type = "App\Course";
 
       if($course){
           return view("open.course_description",

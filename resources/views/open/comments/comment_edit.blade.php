@@ -25,7 +25,7 @@
             {{Form::hidden('parent_id', $parent_id)}}
         @endif
 
-            @if($type == "course")
+            @if($comment->commentable_type == "App\Course")
                 <div class="mui--text-left">
                     <div class="rating ratingEdit">
                         <label>
