@@ -24,10 +24,21 @@ class LessonController extends Controller
 
   public function lessonPage($id, $lesson){
 
-    $course = Course::findOrFail($id);
-    $userId = \Auth::id();
+      $course = Course::findOrFail($id);
+      $userId = Auth::id();
 
-    if($course->students()->where('student_id',$userId)->count() >= 1){
+      $subscribed = false;
+    if(
+        $course->students()->where('student_id',$userId)->count() >= 1
+        ||
+        $course->teachers()->where('teacher_id',$userId)->count() >= 1
+    ){
+        $subscribed = true;
+    }
+
+
+
+    if($subscribed){
       $lesson = $course->lessons()->where('id', $lesson);
 
       if($lesson->count() == 1){
@@ -38,6 +49,7 @@ class LessonController extends Controller
         return view('error404');
       }
     } else {
+
       return redirect()->route('courses.checkout',$course->id);
     }
   }
