@@ -459,7 +459,7 @@
 </script>
 <script>
     window.setInterval(function(){
-        
+
         if (!$("#comment").is(":focus")) {
             var elem = $("#comment_view");
             elem.load(baseUrl + "?type=" + comment_type + "&parent_id=" + comment_parent_id);

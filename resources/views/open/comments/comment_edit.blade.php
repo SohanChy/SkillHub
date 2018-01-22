@@ -14,12 +14,57 @@
             <h4 id="commentEditTitle">Edit Comment</h4>
             {!! Form::model($comment, ['id'=>'comment-form','method' => 'put','url' =>  url("/comments/".$comment->id)]) !!}
         @else
-            <h4>New Comment</h4>
+            @if($type == "course")
+                <h4>New Review</h4>
+            @else
+                <h4>New Comment</h4>
+            @endif
             {!! Form::model($comment, ['id'=>'comment-form','url' =>  url("/comments")]) !!}
 
             {{Form::hidden('type', $type)}}
             {{Form::hidden('parent_id', $parent_id)}}
         @endif
+
+            @if($type == "course")
+                <div class="mui--text-left">
+                    <div class="rating ratingEdit">
+                        <label>
+                            <input type="radio" name="stars" value="1" />
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stars" value="2" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stars" value="3" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stars" value="4" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="stars" value="5" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+
+            @endif
+
 
         @component("mui.textfield",
         ['name' => 'comment',
@@ -27,6 +72,8 @@
         "size"=>"30x3"
         ])
         @endcomponent
+
+
 
             {{ Form::close() }}
 

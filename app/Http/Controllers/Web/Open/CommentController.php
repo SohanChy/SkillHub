@@ -38,7 +38,7 @@ class CommentController extends Controller
             return;
         }
 
-        $comments = $commentable->comments;
+        $comments = $commentable->comments()->latest()->get();
 
         return view("open.comments.comment_view",compact("comments","user"));
     }
@@ -57,6 +57,8 @@ class CommentController extends Controller
         }
         else if($request->type == "course"){
             $commentable = Course::findOrFail($request->parent_id);
+            $user->comment($commentable, $request->comment,@$request->stars);
+            return redirect()->back();
         }
         else if($request->type == "reply"){
             $reply = new Comment();
@@ -93,6 +95,7 @@ class CommentController extends Controller
 
         $comment = Comment::findOrFail($id);
         $comment->comment = $request->comment;
+        $comment->rate = @$request->stars;
         $comment->save();
 
         return redirect()->back();
