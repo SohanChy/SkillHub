@@ -12,13 +12,14 @@ class ApprovalController extends Controller
 	public function index(){
 
 	    //Dont show drafts, only published
-        $courses = Course::where("publish_status", StatusHelper::getStatusKey("Published",Course::$publishStatusArr));
-
+		$courses = Course::where("publish_status", StatusHelper::getStatusKey("Published",Course::$publishStatusArr))
+		->where("admin_status", StatusHelper::getStatusKey("Pending",Course::$publishStatusArr))
+		->latest();
         //Future when filters are implemented
         //$courses = $courses->where("admin_status", StatusHelper::getStatusKey("Pending",Course::$adminStatusArr));
 
-        $courses = $courses->get();
-        return view('admin.courses', compact('courses'));
+		$courses = $courses->paginate(10);
+		return view('admin.courses', compact('courses'));
 	}
 
 	public function show($id){

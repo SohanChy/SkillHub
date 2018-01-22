@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Open;
 
 use App\Category;
 use App\Course;
+use App\StatusHelper;
 use App\Http\Controllers\Controller;
 use App\LiveStream;
 use Illuminate\Http\Request;
@@ -38,7 +39,21 @@ class HomeController extends Controller
     }
 
 
+    public function streamNow($id){
+        $stream = LiveStream::findOrFail($id);
 
+        $userId = Auth::id();
+        $subscribedStatus = in_array($userId,json_decode($stream->students_json));
+
+        $isTeacher = ($stream->teacher_id == $userId);
+
+        if($isTeacher){
+            $subscribedStatus = true;
+        }
+
+        return view("open.stream_now",
+            compact("stream","subscribedStatus","isTeacher"));
+    }
     /**
      * Create a new controller instance.
      *
@@ -58,10 +73,10 @@ class HomeController extends Controller
     {
       $courses = Course::all();
 
-      $popularCourses = Course::inRandomOrder()->limit(5)->get();
-      $topRatedCourses = Course::orderByDesc("rating")->limit(5)->get();
-      $trendingCourses = Course::inRandomOrder()->limit(5)->get();
-      $recentCourses = Course::latest()->limit(5)->get();
+      $popularCourses = Course::where("admin_status", '1')->limit(5)->get();
+      $topRatedCourses = Course::where("admin_status", '1')->orderByDesc("rating")->limit(5)->get();
+      $trendingCourses = Course::where("admin_status", '1')->latest()->orderByDesc("rating")->limit(5)->get();
+      $recentCourses = Course::where("admin_status", '1')->latest()->limit(5)->get();
 
       $frontPageContents = [
       "Most Popular Courses" => $popularCourses,
@@ -82,5 +97,11 @@ class HomeController extends Controller
       }])->get();
       return view("open.courses",compact('categories'));
 
+    }
+
+    public function liveStreams(){
+
+        $streams = \App\LiveStream::with('teacher')->get();
+        return view("open.livestreams",compact('streams'));
     }
   }

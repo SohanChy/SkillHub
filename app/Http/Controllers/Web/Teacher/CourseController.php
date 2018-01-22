@@ -66,7 +66,7 @@ class CourseController extends Controller
     {
 
         $this->validate($request, self::$validationRules);
-        $validatedData = $request->all();
+        $validatedData = $request->except('files');
 
         $course = Course::create($validatedData);
 

@@ -59,13 +59,21 @@ class LessonController extends Controller
         }
     }
 
-    public function enrollStudent(Request $request)
-    {
-        DB::table('course_student')->insert(
-            ['student_id' => \Auth::id(), 'course_id' => $request->get('id'), 'payment_code' => $request->get('transaction_code')]
-        );
-        return redirect()->route('course', $request->get('id'));
-    }
+
+
+  public function enrollStudent(Request $request){
+    DB::table('course_student')->insert(
+    ['student_id' => \Auth::id(), 'course_id' => $request->get('id'), 'payment_code' =>$request->get('transaction_code')]
+    );
+
+    $course = Course::find($request->get('id'));
+
+    DB::table('payments')->insert(
+    ['user_id' => \Auth::id(), 'course_id' => $request->get('id'), 'teacher_id' =>$course->teachers->first()->id, 'withdraw' => $course->price ]
+    );
+
+    return redirect()->route('course', $request->get('id'));
+  }
 
 
     public function checkout($id)
