@@ -109,10 +109,10 @@
 #siteSearchBar > div > a{
     color: #fff;
 }
-
+/*
 .searchTerm:focus{
     color: #18C5CB;
-}
+}*/
 
 .categoryButton {
     position: absolute;

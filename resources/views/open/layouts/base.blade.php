@@ -114,6 +114,7 @@
     <script src="{{ asset('js/nav_menu/jquery.mhead.js') }}"></script>
     <script src="{{ asset('js/nav_menu/nav.js') }}"></script>
 
+@yield("footerAfterJs")
 
 </body>
 </html>
