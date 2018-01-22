@@ -246,3 +246,8 @@ header table {
       }
 
     }
+
+
+#content-wrapper {
+  min-height: 660px;
+}

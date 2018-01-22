@@ -8,16 +8,18 @@
 	
 	<div class="mui-row">
 		<h1>Checkout!</h1>
+
+		@component("open.checkout.instructions")
+			@endcomponent
 	</div>
 	<div class="mui-row">
 		<div class="mui-col-md-8 nopadding">
-			<form class="mui-form" action="/courses/enroll" method="post">
+			<form class="mui-form" action="{{url()->current()}}" method="post">
 				{{ csrf_field() }}
 
 				<div class="mui-textfield">
-					<input type="text" placeholder="BKash number" name="bkash_token">
+					<input type="text" placeholder="Transaction ID" name="transaction_code">
 				</div>
-				<input type="text" hidden="true" value="{{$id}}" name="id">
 
 				<button type="submit" class="mui-btn mui-btn--raised">Submit</button>
 			</form>

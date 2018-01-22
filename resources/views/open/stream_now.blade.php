@@ -12,7 +12,9 @@
             <h3 id="countDown"></h3>
 
             @if(!$subscribedStatus)
-            <button class="mui-btn mui-btn--danger">Subscribe to this Broadcast</button>
+                <a href="{{url('checkout-stream/'.$stream->id)}}">
+                <button class="mui-btn mui-btn--danger">Subscribe to this Broadcast</button>
+                </a>
             @endif
 
         {{--<input type="hidden" id="broadcast-id" value="sohan123" autocorrect=off autocapitalize=off size=20>--}}
@@ -228,7 +230,9 @@
             if (!isBroadcastExists) {
                 console.log("IT IS: " + isBroadcastExists);
                 @if(!$isTeacher)
-                return;
+                    document.getElementById("countDown").innerHTML = "Teacher has not started broadcast yet...<br/> Please Try again in a moment!";
+                    document.getElementById("video-preview").style.display = "none";
+                    return;
                 @endif
                 // the first person (i.e. real-broadcaster) MUST set his user-id
                 connection.userid = broadcastId;
@@ -426,9 +430,9 @@
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("countDown").innerHTML = "Live...";
-
+            document.getElementById("countDown").innerHTML = "...";
             @if($subscribedStatus)
+            document.getElementById("countDown").innerHTML = "Live...";
             startStreamNow();
             @endif
         }

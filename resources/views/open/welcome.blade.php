@@ -13,6 +13,9 @@
                         No more Bananas, only mangoes.
                     </div>
                     <button class="mui-btn mui-btn--small mui-btn--primary">Explore Courses</button>
+                    <a href="{{url('live-streams')}}">
+                        <button class="mui-btn mui-btn--small mui-btn--accent">Live Streams</button>
+                    </a>
                     {{--<button class="mui-btn mui-btn--small mui-btn--primary">Take Tests</button>--}}
                 </div>
             </div>

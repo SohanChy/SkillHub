@@ -44,7 +44,7 @@ class LessonController extends Controller
 
   public function enrollStudent(Request $request){
     DB::table('course_student')->insert(
-    ['student_id' => \Auth::id(), 'course_id' => $request->get('id'), 'payment_code' =>$request->get('bkash_token')]
+    ['student_id' => \Auth::id(), 'course_id' => $request->get('id'), 'payment_code' =>$request->get('transaction_code')]
     );
     return redirect()->route('course', $request->get('id'));
   }
@@ -56,9 +56,9 @@ class LessonController extends Controller
     $userId = \Auth::id();
 
     if($course->students()->where('student_id',$userId)->count() == 0){
-      return view('open.checkout', compact('id', 'course'));
+      return view('open.checkout.course_checkout', compact('id', 'course'));
     } else {
-      return redirect('/');
+      return redirect()->back();
     }
   }
 

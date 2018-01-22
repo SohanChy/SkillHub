@@ -14,12 +14,7 @@ use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
-//CODE TO SUBSCRIBE
-/*
-$StuJson = json_decode($stream->students_json);
-$StuJson[] = Auth::id();
-$stream->students_json= json_encode(array_unique($StuJson));
-*/
+
 
     public static function courseNavDataShare(){
         $categoryNavData = Cache::remember('categoryNavData', 15, function () {
@@ -43,21 +38,7 @@ $stream->students_json= json_encode(array_unique($StuJson));
     }
 
 
-    public function streamNow($id){
-        $stream = LiveStream::findOrFail($id);
 
-        $userId = Auth::id();
-        $subscribedStatus = in_array($userId,json_decode($stream->students_json));
-
-        $isTeacher = ($stream->teacher_id == $userId);
-
-        if($isTeacher){
-            $subscribedStatus = true;
-        }
-
-        return view("open.stream_now",
-            compact("stream","subscribedStatus","isTeacher"));
-    }
     /**
      * Create a new controller instance.
      *
@@ -101,11 +82,5 @@ $stream->students_json= json_encode(array_unique($StuJson));
       }])->get();
       return view("open.courses",compact('categories'));
 
-    }
-
-    public function liveStreams(){
-
-        $streams = \App\LiveStream::with('teacher')->get();
-        return view("open.livestreams",compact('streams'));
     }
   }

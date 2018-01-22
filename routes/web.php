@@ -20,7 +20,7 @@ Route::group([
     Route::get('/', "HomeController@index");
 
     Route::get('/courses', "HomeController@courseList");
-    Route::get('/live-streams', "HomeController@liveStreams");
+    Route::get('/live-streams', "LiveStreamController@liveStreams");
 
 
     Route::group([
@@ -54,7 +54,9 @@ Route::group([
     'namespace' => 'Web\Open',
     'middleware' => 'auth'
 ], function () {
-    Route::get('/stream-now/{id}', "HomeController@streamNow");
+    Route::get('/checkout-stream/{id}', "LiveStreamController@checkout");
+    Route::post('/checkout-stream/{id}', "LiveStreamController@checkoutDone");
+    Route::get('/stream-now/{id}', "LiveStreamController@streamNow");
 });
 
 
