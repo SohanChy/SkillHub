@@ -51,8 +51,8 @@ Route::group([
 
 
 Route::group([
-    'namespace' => 'Web\Open',
-    'middleware' => 'auth'
+'namespace' => 'Web\Open',
+'middleware' => 'auth'
 ], function () {
     Route::get('/stream-now/{id}', "HomeController@streamNow");
 });
@@ -66,10 +66,11 @@ Route::group([
 ], function () {
     //Student Routes Here
     Route::get('/', function () {
-        return view("student.dashboard");
+        return redirect('/student/courses/enrolled');
     });
 
     Route::get('/courses/enrolled', "CourseController@enrolled");
+    Route::get('/get-video/{video}', 'CourseController@getVideo');
 
 });
 
@@ -89,11 +90,16 @@ Route::group([
     Route::get('/get-video/{video}', 'LessonController@getVideo');
 
     Route::get('courses/{id}/students', "CourseController@showStudents");
+
+    Route::get('payments', "PaymentController@index")->name("teacher.payments");
+    Route::post('payments', "PaymentController@payment");
+
+
     Route::resource('courses', "CourseController");
     Route::resource('lesson', "LessonController");
     
     Route::get('/', function () {
-        return view("teacher.dashboard");
+        return redirect('/teacher/courses');
     });
 
 
@@ -110,7 +116,7 @@ Route::group([
 ], function () {
     //Admin Routes Here
     Route::get('/', function () {
-        return view("admin.dashboard");
+        return redirect('/admin/approval');
     });
 
     Route::resources([

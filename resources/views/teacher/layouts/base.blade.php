@@ -21,39 +21,43 @@
 </head>
 <body>
 
-<div id="sidedrawer" class="sidedrawer mui--no-user-select">
-    <div id="sidedrawer-brand" class="mui--appbar-line-height">
-        <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
+    <div id="sidedrawer" class="sidedrawer mui--no-user-select">
+        <div id="sidedrawer-brand" class="mui--appbar-line-height">
+            <a class="mui--text-title mui--text-dark" href="{{url('/')}}">SkillHub</a>
+        </div>
+        <div class="mui-divider"></div>
+        <ul>
+            <li>
+                <strong><i class="fa fa-fw fa-graduation-cap"></i> My Courses</strong>
+                <ul>
+                    <li><a href="{{route('teacher.courses.index')}}?publish_status=published"><i class="fa fa-fw fa-graduation-cap"></i> Published</a></li>
+                    <li><a href="{{route('teacher.courses.index')}}?publish_status=draft"><i class="fa fa-fw fa-pencil-square"></i> Drafts</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <strong><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Course</a></strong>
+            </li>
+
+            <li>
+                <strong><i class="fa fa-fw fa-television"></i> My Live Streams</strong>
+                <ul>
+                    <li><a href="{{route('teacher.live-streams.index')}}?finish_status=0"><i class="fa fa-fw    fa-fighter-jet"></i> Upcoming</a></li>
+                    <li><a href="{{route('teacher.live-streams.index')}}?finish_status=1"><i class="fa fa-fw fa-fast-forward"></i> Archive</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong><a href="{{route('teacher.live-streams.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Live Stream</a></strong>
+            </li>
+            
+
+            <li>
+                <strong><a href="{{URL::to('/teacher/payments')}}"><i class="fa fa-fw fa-money"></i> Payments </a></strong>
+            </li>
+        </ul>
     </div>
-    <div class="mui-divider"></div>
-    <ul>
-        <li>
-            <strong><i class="fa fa-fw fa-graduation-cap"></i> My Courses</strong>
-            <ul>
-                <li><a href="{{route('teacher.courses.index')}}?publish_status=published"><i class="fa fa-fw fa-graduation-cap"></i> Published</a></li>
-                <li><a href="{{route('teacher.courses.index')}}?publish_status=draft"><i class="fa fa-fw fa-pencil-square"></i> Drafts</a></li>
-
-            </ul>
-        </li>
-
-        <li>
-            <strong><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Course</a></strong>
-        </li>
-
-        <li>
-            <strong><i class="fa fa-fw fa-television"></i> My Live Streams</strong>
-            <ul>
-                <li><a href="{{route('teacher.live-streams.index')}}?finish_status=0"><i class="fa fa-fw    fa-fighter-jet"></i> Upcoming</a></li>
-                <li><a href="{{route('teacher.live-streams.index')}}?finish_status=1"><i class="fa fa-fw fa-fast-forward"></i> Archive</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <strong><a href="{{route('teacher.live-streams.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Live Stream</a></strong>
-        </li>
-
-    </ul>
-</div>
 
     <header id="header">
 
@@ -68,8 +72,8 @@
                     </div>
                     <div class="mui-col-xs-4 mui--text-right">
 
-                                @component("open.layouts.logged_in_user_actions")
-                                @endcomponent
+                        @component("open.layouts.logged_in_user_actions")
+                        @endcomponent
 
                     </div>
                     {{--<div class="mui-col-md-1">--}}
@@ -84,18 +88,18 @@
 
     @yield("content")
 
-{{--<footer id="footer">--}}
+    {{--<footer id="footer">--}}
     {{--<div class="mui-container-fluid">--}}
-        {{--<br>--}}
-        {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
+    {{--<br>--}}
+    {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
     {{--</div>--}}
-{{--</footer>--}}
+    {{--</footer>--}}
 
 
     <script src="{{ asset('style/muicss/mui.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
     <script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
 
     @yield("scriptsFoot")

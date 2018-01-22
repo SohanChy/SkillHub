@@ -40,56 +40,56 @@
                     <li><a href="{{ URL::to('admin/approval') }}">Approve courses</a></li>
                 </ul>
             </li>
-           {{-- <li>
-                <strong>Category 3</strong>
-                <ul>
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
-                </ul>
-            </li>--}}
-        </ul>
-    </div>
+            {{-- <li>
+            <strong>Category 3</strong>
+            <ul>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+            </ul>
+        </li>--}}
+    </ul>
+</div>
 
-    <header id="header">
+<header id="header">
 
-        <div class="mui-appbar mui--appbar-line-height">
-            <div class="mui-container-fluid">
+    <div class="mui-appbar mui--appbar-line-height">
+        <div class="mui-container-fluid">
 
-                <div class="mui-row">
-                    <div class="mui-col-xs-8">
-                        <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
-                        <a class="sidedrawer-toggle  mui--hidden-sm mui--hidden-xs js-hide-sidedrawer">☰</a>
-                        <span class="mui--text-title">Section X</span>
-                    </div>
-                    <div class="mui-col-xs-4 mui--text-right">
-                        @component("open.layouts.logged_in_user_actions")
-                        @endcomponent
-                    </div>
-
+            <div class="mui-row">
+                <div class="mui-col-xs-8">
+                    <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+                    <a class="sidedrawer-toggle  mui--hidden-sm mui--hidden-xs js-hide-sidedrawer">☰</a>
+                    <span class="mui--text-title">{{@$title}}</span>
+                </div>
+                <div class="mui-col-xs-4 mui--text-right">
+                    @component("open.layouts.logged_in_user_actions")
+                    @endcomponent
                 </div>
 
             </div>
+
         </div>
+    </div>
 
-    </header>
-
-
-    @yield("content")
-
-    <footer id="footer">
-        <div class="mui-container-fluid">
-            <br>
-            {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
-        </div>
-    </footer>
+</header>
 
 
-    <script src="{{ asset('style/muicss/mui.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
+@yield("content")
+
+<footer id="footer">
+    <div class="mui-container-fluid">
+        <br>
+        {{--Made with ♥ by <a href="https://www.muicss.com">MUI</a>--}}
+    </div>
+</footer>
+
+
+<script src="{{ asset('style/muicss/mui.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script src="{{ asset('style/muicss/dashboard/script.js') }}"></script>
 
 </body>
 </html>

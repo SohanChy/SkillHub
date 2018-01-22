@@ -14,14 +14,19 @@ use Illuminate\Support\Facades\View;
 class CourseController extends Controller
 {
 
-  public function __construct()
-  {
-      HomeController::courseNavDataShare();
-  }
+	public function __construct()
+	{
+		HomeController::courseNavDataShare();
+	}
 
 
-  public function coursePage($id){
-    $course = Course::findOrFail($id);
-    return view("open.course_description", compact('course'));
-  }
+	public function coursePage($id){
+		$course = Course::where("admin_status", '1')
+		->where('id', $id)->first();
+		if($course){
+			return view("open.course_description", compact('course'));
+		} else {
+			return view('error404');
+		}
+	}
 }

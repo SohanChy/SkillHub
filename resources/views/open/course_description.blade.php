@@ -31,7 +31,7 @@ $teacher = $course->teachers()->first();
 			<!-- THE YOUTUBE PLAYER -->
 			<div class="vid-container">
 				<video poster="/path/to/poster.jpg" controls>
-					<source src="" type="video/mp4">	
+					<source src="{{URL::to('/student/get-video/'.@$course->lessons[0]->video_file_id)}}" type="video/mp4">	
 					</video>
 				</div>
 
@@ -39,17 +39,17 @@ $teacher = $course->teachers()->first();
 				<!-- THE PLAYLIST -->
 				<div class="vid-list-container">
 					<ol id="vid-list">
-						@foreach($course->lessons as $lessons)
+						@foreach(@$course->lessons as $lessons)
 						<li>
-							@if($loop->iteration == 1)
-							<a href="#" value="{{ $lessons->video->path }}">
-								<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
+							@if(@$loop->iteration == 1)
+							<a href="#" value="{{ @$lessons->video->path }}">
+								<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
 							</a>
 							
 							@else
 							
-							<a href="{{URL::to('courses/'.$course->id.'/lesson/'.$lessons->id)}}" value="{{ $lessons->video->path }}">
-								<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
+							<a href="{{URL::to('courses/'.@$course->id.'/lesson/'.@$lessons->id)}}" value="{{ @$lessons->video->path }}">
+								<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
 							</a>
 							@endif
 						</li>
@@ -90,7 +90,7 @@ $teacher = $course->teachers()->first();
 					</div>
 
 					<div class="mui-col-md-4">
-						<i class="fa fa-book fa-2x" aria-hidden="true">{{$course->lessons->count()}}</i>
+						<i class="fa fa-book fa-2x" aria-hidden="true">{{@$course->lessons->count()}}</i>
 						<p>Lessons</p>
 					</div>
 
@@ -120,9 +120,9 @@ $teacher = $course->teachers()->first();
 					<!-- <img src="https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg" alt="" height="300px" width="600px">
 					<br/><br/>
 				-->
-				<p>
-					{{$course->full_description}}
-				</p>
+				
+				{!! $course->full_description !!}
+				
 			</div>
 		</div>
 	</div>
@@ -164,10 +164,10 @@ $teacher = $course->teachers()->first();
 	<div class="mui-row" >
 		<div class="mui-col-md-10">
 			<div class="mui-col-md-12">
-				@foreach($course->lessons as $lesson)
+				@foreach(@$course->lessons as $lesson)
 				<div class="mui-panel">
-					<h3>{{ $loop->iteration }}. {{$lesson->title}}</h3>
-					<p>{{$lesson->short_description}}</p>
+					<h3>{{ $loop->iteration }}. {{@$lesson->title}}</h3>
+					<p>{{@$lesson->short_description}}</p>
 				</div>
 				
 				@endforeach
@@ -190,7 +190,7 @@ $teacher = $course->teachers()->first();
 				<h2>
 					{{@$teacher->name}}	
 				</h2>
-				<div class="mui--text-body2 mui--text-dark-secondary card-teacher-info">{{@$teacher->edu_stat}}</div>
+				<div class="mui--text-body2 mui--text-dark-secondary card-teacher-info">{{$teacher->edu_stat}}</div>
 				<p>{{$teacher->bio}}</p>
 			</div>
 		</div>

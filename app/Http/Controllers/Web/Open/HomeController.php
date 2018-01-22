@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Open;
 
 use App\Category;
 use App\Course;
+use App\StatusHelper;
 use App\Http\Controllers\Controller;
 use App\LiveStream;
 use Illuminate\Http\Request;
@@ -21,29 +22,29 @@ $StuJson[] = Auth::id();
 $stream->students_json= json_encode(array_unique($StuJson));
 */
 
-    public static function courseNavDataShare(){
-        $categoryNavData = Cache::remember('categoryNavData', 15, function () {
+public static function courseNavDataShare(){
+  $categoryNavData = Cache::remember('categoryNavData', 15, function () {
 
-            $categoryNavData = DB::table('categories')
-                ->join('courses', 'categories.id', '=', 'courses.category_id')
-                ->join('course_teacher', 'courses.id', '=', 'course_teacher.course_id')
-                ->join('users', 'course_teacher.teacher_id', '=', 'users.id')
-                ->select('courses.id as course_id','courses.title as course_title','courses.rating as course_rating',
-                    'categories.id as category_id', 'categories.name as category_name',
-                    'users.name as teacher_name','users.edu_stat as teacher_edu')
-                ->get();
+    $categoryNavData = DB::table('categories')
+    ->join('courses', 'categories.id', '=', 'courses.category_id')
+    ->join('course_teacher', 'courses.id', '=', 'course_teacher.course_id')
+    ->join('users', 'course_teacher.teacher_id', '=', 'users.id')
+    ->select('courses.id as course_id','courses.title as course_title','courses.rating as course_rating',
+    'categories.id as category_id', 'categories.name as category_name',
+    'users.name as teacher_name','users.edu_stat as teacher_edu')
+    ->get();
 
-            return $categoryNavData->groupBy('category_id')->toArray();
-        });
+    return $categoryNavData->groupBy('category_id')->toArray();
+  });
 
         /*
-            dd($categoryNavData);*/
+        dd($categoryNavData);*/
 
         View::share('categoryNavData', $categoryNavData);
-    }
+      }
 
 
-    public function streamNow($id){
+      public function streamNow($id){
         $stream = LiveStream::findOrFail($id);
 
         $userId = Auth::id();
@@ -52,12 +53,12 @@ $stream->students_json= json_encode(array_unique($StuJson));
         $isTeacher = ($stream->teacher_id == $userId);
 
         if($isTeacher){
-            $subscribedStatus = true;
+          $subscribedStatus = true;
         }
 
         return view("open.stream_now",
-            compact("stream","subscribedStatus","isTeacher"));
-    }
+        compact("stream","subscribedStatus","isTeacher"));
+      }
     /**
      * Create a new controller instance.
      *
@@ -77,10 +78,10 @@ $stream->students_json= json_encode(array_unique($StuJson));
     {
       $courses = Course::all();
 
-      $popularCourses = Course::inRandomOrder()->limit(5)->get();
-      $topRatedCourses = Course::orderByDesc("rating")->limit(5)->get();
-      $trendingCourses = Course::inRandomOrder()->limit(5)->get();
-      $recentCourses = Course::latest()->limit(5)->get();
+      $popularCourses = Course::where("admin_status", '1')->limit(5)->get();
+      $topRatedCourses = Course::where("admin_status", '1')->orderByDesc("rating")->limit(5)->get();
+      $trendingCourses = Course::where("admin_status", '1')->latest()->orderByDesc("rating")->limit(5)->get();
+      $recentCourses = Course::where("admin_status", '1')->latest()->limit(5)->get();
 
       $frontPageContents = [
       "Most Popular Courses" => $popularCourses,
@@ -105,7 +106,7 @@ $stream->students_json= json_encode(array_unique($StuJson));
 
     public function liveStreams(){
 
-        $streams = \App\LiveStream::with('teacher')->get();
-        return view("open.livestreams",compact('streams'));
+      $streams = \App\LiveStream::with('teacher')->get();
+      return view("open.livestreams",compact('streams'));
     }
   }

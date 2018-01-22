@@ -237,7 +237,7 @@ console.log(data);
 window.location.replace("{{url('teacher/courses/')}}/"+data);
 },
 error: function(data){
-console.log("Shit!");
+console.log(data);
 }
 
 })
