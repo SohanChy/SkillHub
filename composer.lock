@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d5ed6551290a849adc94f2bcac7c29c",
+    "content-hash": "47e9010fcea1b2641f7a5b5ec8526678",
     "packages": [
+        {
+            "name": "actuallymab/laravel-comment",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/actuallymab/laravel-comment.git",
+                "reference": "e8805b3baa4f4fa4eee41e6d5b5cfe336dc65cf9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/actuallymab/laravel-comment/zipball/e8805b3baa4f4fa4eee41e6d5b5cfe336dc65cf9",
+                "reference": "e8805b3baa4f4fa4eee41e6d5b5cfe336dc65cf9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": "~0.9.0",
+                "orchestra/database": "3.4.x@dev",
+                "orchestra/testbench": "~3.4",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Actuallymab\\LaravelComment\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mehmet Aydin Bahadir",
+                    "email": "mehmet.aydin.bahadir@gmail.com",
+                    "homepage": "http://www.actuallymab.me",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "Just another comment system for laravel projects.",
+            "homepage": "https://github.com/actuallymab/laravel-comment",
+            "keywords": [
+                "actuallymab",
+                "laravel-comment"
+            ],
+            "time": "2017-01-31T07:40:27+00:00"
+        },
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v2.4.3",

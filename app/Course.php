@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Actuallymab\LaravelComment\Commentable;
 
 class Course extends Model
 {
+    use Commentable;
+    protected $canBeRated = true;
+    protected $mustBeApproved = false;
+
     public function lessons()
     {
     	return $this->hasMany('App\Lesson')->orderBy('id', 'asc');

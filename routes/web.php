@@ -19,12 +19,12 @@ Route::group([
 
     Route::get('/', "HomeController@index");
 
+
     Route::get('/courses', "HomeController@courseList");
     Route::get('/live-streams', "LiveStreamController@liveStreams");
 
-
     Route::group([
-    'middleware' => ['auth', 'check.role:student'],
+        'middleware' => ['auth'],
     ], function () {
         Route::get('/courses/{id}/lesson/{lesson}', "LessonController@lessonPage");
         Route::get('/courses/checkout/{id}', "LessonController@checkout")->name("courses.checkout");
@@ -33,11 +33,15 @@ Route::group([
 
     Route::get('/courses/{id}/{slug?}', "CourseController@coursePage")->name("course");
 
+
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
     Route::get('register', "Auth\RegisterController@showRegistrationForm")->name("register");
     Route::post('logout', "Auth\LoginController@logout")->name("logout");
     Route::post('login', "Auth\LoginController@login");
     Route::post('register', "Auth\RegisterController@register");
+
+
+//    Route::get('/comments/lesson/{id}', "CommentController@courseIndex");
 
 });
 
@@ -54,6 +58,9 @@ Route::group([
     'namespace' => 'Web\Open',
     'middleware' => 'auth'
 ], function () {
+    Route::resource('comments',"CommentController");
+
+
     Route::get('/checkout-stream/{id}', "LiveStreamController@checkout");
     Route::post('/checkout-stream/{id}', "LiveStreamController@checkoutDone");
     Route::get('/stream-now/{id}', "LiveStreamController@streamNow");

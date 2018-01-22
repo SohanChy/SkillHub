@@ -181,7 +181,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         EloquentFilter\ServiceProvider::class,
-        ],
+        \Actuallymab\LaravelComment\LaravelCommentServiceProvider::class
+    ],
 
     /*
     |--------------------------------------------------------------------------

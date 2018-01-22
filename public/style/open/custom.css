@@ -124,6 +124,7 @@ header table {
     color: black;
   }
 
+
   .img-thumb {
     display: block;
     margin: 0 auto;
@@ -250,4 +251,27 @@ header table {
 
 #content-wrapper {
   min-height: 660px;
+}
+
+
+.img-pro-pic{
+  display: block;
+  margin: 0 auto;
+  height: 90px;
+}
+
+.comment-panel{
+  padding: 0;
+}
+.comment-panel > .mui-col-xs-3 {
+  padding: 5px;
+}
+
+.comment-panel > .mui-col-xs-9 {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.child-comment {
+    margin-left: 40px;
 }
