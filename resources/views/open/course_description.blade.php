@@ -30,89 +30,91 @@ $teacher = $course->teachers()->first();
 
 			<!-- THE YOUTUBE PLAYER -->
 			<div class="vid-container">
-				<iframe id="vid_frame" src="https://www.youtube.com/embed/cOSEOYi9JS4?rel=0&showinfo=0&autohide=1" frameborder="0" width="560" height="315"></iframe>
-			</div>
+				<video poster="/path/to/poster.jpg" controls>
+					<source src="" type="video/mp4">	
+					</video>
+				</div>
 
-			<!-- THE PLAYLIST -->
-			<div class="vid-list-container">
-				<ol id="vid-list">
-					@foreach($course->lessons as $lessons)
-					<li>
-						@if($loop->iteration == 1)
-						<a href="javascript:void();" value="{{ $lessons->video->path }}">
-							<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
-						</a>
+				<!-- THE PLAYLIST -->
+				<div class="vid-list-container">
+					<ol id="vid-list">
+						@foreach($course->lessons as $lessons)
+						<li>
+							@if($loop->iteration == 1)
+							<a href="javascript:void();" value="{{ $lessons->video->path }}">
+								<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
+							</a>
+							
+							@else
+							
+							<a href="{{URL::to('courses/'.$course->id.'/lesson/'.$lessons->id)}}" value="{{ $lessons->video->path }}">
+								<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
+							</a>
+							@endif
+						</li>
+
+						@endforeach
 						
-						@else
-						
-						<a href="{{URL::to('courses/'.$course->id.'/lesson/'.$lessons->id)}}" value="{{ $lessons->video->path }}">
-							<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ $lessons->title }}</div>
-						</a>
-						@endif
-					</li>
+					</ul>
+				</div>
 
-					@endforeach
-					
-				</ul>
+				
 			</div>
+		</div>
 
+		<ul class="mui-tabs__bar">
+			<li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-default-1">About</a></li>
+			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Community</a></li>
+			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-3">Teachers</a></li>
+			<li><a data-mui-toggle="tab" data-mui-controls="pane-default-4">Course Syllebus</a></li>
+		</ul>
+
+
+		<div class="mui-tabs__pane mui--is-active" id="pane-default-1">
+
+			<div class="mui-row" style="margin-top:30px">
+				<div class="mui-col-md-8">
+					<div class="mui-col-md-8">
+						<h4><strong>About the course</strong></h4>
+					</div>
+					<div class="mui-col-md-4">
+						<button type="" class="mui-btn mui-btn--primary">Join <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+					</div>
+				</div>
+				<div class="mui-col-md-4">
+					<div class="mui-col-md-4">
+						<i class="fa fa-user-o fa-2x" aria-hidden="true">220</i>
+						<p>Enrolled</p>
+					</div>
+
+					<div class="mui-col-md-4">
+						<i class="fa fa-book fa-2x" aria-hidden="true">{{$course->lessons->count()}}</i>
+						<p>Lessons</p>
+					</div>
+
+					<div class="mui-col-md-4">
+						<i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true">100</i>
+						<p>Reviews</p>
+					</div>
+				</div>
+			</div>
 			
-		</div>
-	</div>
 
-	<ul class="mui-tabs__bar">
-		<li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-default-1">About</a></li>
-		<li><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Community</a></li>
-		<li><a data-mui-toggle="tab" data-mui-controls="pane-default-3">Teachers</a></li>
-		<li><a data-mui-toggle="tab" data-mui-controls="pane-default-4">Course Syllebus</a></li>
-	</ul>
-
-
-	<div class="mui-tabs__pane mui--is-active" id="pane-default-1">
-
-		<div class="mui-row" style="margin-top:30px">
-			<div class="mui-col-md-8">
+			<div class="mui-row" >
 				<div class="mui-col-md-8">
-					<h4><strong>About the course</strong></h4>
-				</div>
-				<div class="mui-col-md-4">
-					<button type="" class="mui-btn mui-btn--primary">Join <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-				</div>
-			</div>
-			<div class="mui-col-md-4">
-				<div class="mui-col-md-4">
-					<i class="fa fa-user-o fa-2x" aria-hidden="true">220</i>
-					<p>Enrolled</p>
-				</div>
-
-				<div class="mui-col-md-4">
-					<i class="fa fa-book fa-2x" aria-hidden="true">{{$course->lessons->count()}}</i>
-					<p>Lessons</p>
-				</div>
-
-				<div class="mui-col-md-4">
-					<i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true">100</i>
-					<p>Reviews</p>
+					<div class="mui-col-md-8">
+						<h4><strong>Overview</strong></h4>
+					</div>
 				</div>
 			</div>
-		</div>
-		
 
-		<div class="mui-row" >
-			<div class="mui-col-md-8">
-				<div class="mui-col-md-8">
-					<h4><strong>Overview</strong></h4>
-				</div>
-			</div>
-		</div>
-
-		<div class="mui-row" >
-			<div class="mui-col-md-10">
-				<div class="mui-col-md-12">
-					<p>
-						{{$course->small_description}}
-					</p><br/>
-					
+			<div class="mui-row" >
+				<div class="mui-col-md-10">
+					<div class="mui-col-md-12">
+						<p>
+							{{$course->small_description}}
+						</p><br/>
+						
 					<!-- <img src="https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg" alt="" height="300px" width="600px">
 					<br/><br/>
 				-->
@@ -246,25 +248,12 @@ $teacher = $course->teachers()->first();
 
 </div>
 
+<link rel="stylesheet" href="https://cdn.plyr.io/2.0.18/plyr.css">
+<script src="https://cdn.plyr.io/2.0.18/plyr.js"></script>
+
 
 <script>
-	/*JS FOR SCROLLING THE ROW OF THUMBNAILS*/ 
-	$(document).ready(function () {
-	$('.vid-item').each(function(index){
-	$(this).on('click', function(){
-	var current_index = index+1;
-	$('.vid-item .thumb').removeClass('active');
-	$('.vid-item:nth-child('+current_index+') .thumb').addClass('active');
-});
-});
-
-
-
-});
-
-
-
-
+	plyr.setup();
 </script>
 
 
