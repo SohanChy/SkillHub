@@ -45,6 +45,10 @@ class CommentController extends Controller
 
     public function store(Request $request){
 
+        if(empty($request->comment)){
+            return;
+        }
+
         $commentable = null;
         $user = Auth::user();
 
@@ -83,6 +87,9 @@ class CommentController extends Controller
     }
 
     public function update(Request $request,$id){
+        if(empty($request->comment)){
+            return;
+        }
 
         $comment = Comment::findOrFail($id);
         $comment->comment = $request->comment;
