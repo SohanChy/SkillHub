@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Open;
 
 use App\Category;
+use App\Comment;
 use App\Course;
 use App\Lessons;
 use App\Http\Controllers\Controller;
@@ -22,6 +23,11 @@ class CourseController extends Controller
 
   public function coursePage($id){
     $course = Course::findOrFail($id);
-    return view("open.course_description", compact('course'));
+
+      $comments = $course->comments;
+      $comment = new Comment();
+
+    return view("open.course_description",
+        compact('course','comments','comment'));
   }
 }

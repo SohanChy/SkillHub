@@ -14,6 +14,7 @@
 </script>
 <script src="{{asset("js/comments/comment.js")}}"></script>
 
+@if(Auth::check())
 <div id="comment_create_edit">
 @component("open.comments.comment_edit",
     ['comment' => $comment,
@@ -23,3 +24,5 @@
     ])
 @endcomponent
 </div>
+
+@endif

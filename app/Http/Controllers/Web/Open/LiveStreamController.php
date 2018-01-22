@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Open;
 
+use App\Comment;
 use App\Course;
 use App\LiveStream;
 use App\Uploads;
@@ -33,8 +34,12 @@ class LiveStreamController extends Controller
             $subscribedStatus = true;
         }
 
+        $comments = $stream->comments;
+        $comment = new Comment();
+
         return view("open.stream_now",
-            compact("stream","subscribedStatus","isTeacher"));
+            compact("stream","subscribedStatus","isTeacher"
+            ,'comments','comment'));
 
   }
 

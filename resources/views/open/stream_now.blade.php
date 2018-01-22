@@ -32,6 +32,25 @@
         @endif
 
     </div>
+
+    <div class="mui-row" >
+        <div class="mui-col-md-3"></div>
+        <div class="mui-col-md-6">
+            <div class="mui-col-md-12">
+                @component("open.comments.main",[
+                "comments"=>$comments,
+                "comment"=>$comment,
+                "type"=>"livestream",
+                "parent_id"=>$stream->id,
+                "user"=>\Illuminate\Support\Facades\Auth::user()])
+                @endcomponent
+            </div>
+        </div>
+    </div>
+
+
+
+
 </section>
 
 
@@ -438,6 +457,11 @@
         }
     }, 1000);
 </script>
-
+<script>
+    window.setInterval(function(){
+        var elem = $("#comment_view");
+        elem.load(baseUrl + "?type=" + comment_type + "&parent_id=" + comment_parent_id);
+    }, 3000);
+</script>
 
 @endsection

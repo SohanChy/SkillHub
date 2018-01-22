@@ -2,11 +2,16 @@
 
 namespace App;
 
+use Actuallymab\LaravelComment\Commentable;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class LiveStream extends Model
 {
+
+    use Commentable;
+    protected $canBeRated = true;
+    protected $mustBeApproved = false;
 
     public function timeUntilString(){
         $now = new DateTime();

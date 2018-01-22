@@ -1,3 +1,11 @@
+@if(count($comments) == 0)
+    <div class="mui-container-fluid">
+        <div class="mui-row mui-panel">
+            No Comments
+        </div>
+    </div>
+@endif
+
 @foreach($comments as $singleComment)
     <div class="mui-container-fluid">
         <div class="mui-row mui-panel comment-panel">
@@ -7,6 +15,7 @@
                 {{$singleComment->commented->name}} - {{ucfirst($singleComment->commented->role)}}
             </div>
             <div class="mui-col-xs-9">
+                @if(Auth::check())
                 <div class="mui--text-right">
 
                 <button class="mui-btn mui-btn--primary" onclick="showReplyForm({{$singleComment->id}})"><i class="fa fa-fw fa-reply"></i> Reply</button>
@@ -15,6 +24,7 @@
                         <button class="mui-btn mui-btn--accent" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
                 @endif
                 </div>
+                @endif
                 {{$singleComment->comment}}
 
             </div>
@@ -37,11 +47,13 @@
                             {{$singleComment->commented->name}} - {{ucfirst($singleComment->commented->role)}}
                         </div>
                         <div class="mui-col-xs-9">
+                            @if(Auth::check())
                             <div class="mui--text-right">
                                 @if($user->id == $singleComment->commented->id)
                                     <button class="mui-btn mui-btn--accent" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
                                 @endif
                             </div>
+                            @endif
                             {{$singleComment->comment}}
 
                         </div>
