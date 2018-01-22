@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers\Web\Open\Auth;
 
+use App\Http\Controllers\Web\Open\HomeController;
 use App\User;
 use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        HomeController::courseNavDataShare();
+    }
+
     public function show()
     {
         $user = Auth::user();

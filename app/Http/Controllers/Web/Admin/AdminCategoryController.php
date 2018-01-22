@@ -42,7 +42,7 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
-        $category->name = $request->get('title');
+        $category->name = $request->get('name');
         $category->save(); 
         return redirect('/admin');
     }
@@ -80,7 +80,10 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $request->all();
+        $category = Category::findOrFail($id);
+        $category->name = $request->get('name');
+        $category->save();
+        return redirect('/admin');
     }
 
     /**

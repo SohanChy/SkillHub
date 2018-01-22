@@ -25,7 +25,8 @@
                 dropdown: {
                     offset: {
                         button: {
-                            y: $( ".mui--appbar-height" ).height() - 46
+                            y: $( ".mui--appbar-height" ).height() - 86,
+                            x: +10
                         }
                     }
                 }
@@ -41,9 +42,20 @@
         $("#siteSearchBar").click(
             function(){
                 var API =  menu.data( "mmenu" );
-                API.open();
+                var menuDiv = $('#menu');
+                var realSearch = menuDiv.find('input[type="text"]');
+                var siteSearchBarField = $("#siteSearchBarField");
 
-                var realSearch = $('#menu').find('input[type="text"]');
+
+
+
+                if(menuDiv.hasClass("mm-menu_opened") === false){
+                    API.closeAllPanels();
+                    siteSearchBarField.val("");
+                    realSearch.val("");
+
+                    API.open();
+                }
 
                 $("#siteSearchBarField").keyup(function() {
                     realSearch.val( this.value );
@@ -51,7 +63,7 @@
                 });
 
                 realSearch.keyup(function() {
-                    $("#siteSearchBarField").val(realSearch.val);
+                    siteSearchBarField.val(realSearch.val);
                 });
 
             }

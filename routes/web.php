@@ -20,6 +20,7 @@ Route::group([
     Route::get('/', "HomeController@index");
 
     Route::get('/courses', "HomeController@courseList");
+    Route::get('/live-streams', "HomeController@liveStreams");
 
 
     Route::group([
@@ -47,6 +48,15 @@ Route::group([
 ], function () {
     Route::resource('profile',"ProfileController");
 });
+
+
+Route::group([
+    'namespace' => 'Web\Open',
+    'middleware' => 'auth'
+], function () {
+    Route::get('/stream-now/{id}', "HomeController@streamNow");
+});
+
 
 
 Route::group([
@@ -85,6 +95,10 @@ Route::group([
     Route::get('/', function () {
         return view("teacher.dashboard");
     });
+
+
+    //Live stream
+    Route::resource('live-streams', "LiveStreamController");
 });
 
 

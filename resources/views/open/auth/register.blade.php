@@ -1,6 +1,11 @@
-@extends('open.layouts.base')
+@extends('open.auth.login')
 
-@section('content')
+@section('footerAfterJs')
+<script>
+    mui.tabs.activate("pane-justified-register");
+</script>
+@endsection
+{{--@section('content')
     <br />
     <div class="mui-container-fluid">
         <div class="mui-row">
@@ -51,4 +56,4 @@
         </div>
     </div>
 
-@endsection
+@endsection--}}

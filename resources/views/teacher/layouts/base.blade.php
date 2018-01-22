@@ -39,6 +39,19 @@
         <li>
             <strong><a href="{{route('teacher.courses.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Course</a></strong>
         </li>
+
+        <li>
+            <strong><i class="fa fa-fw fa-television"></i> My Live Streams</strong>
+            <ul>
+                <li><a href="{{route('teacher.live-streams.index')}}?finish_status=0"><i class="fa fa-fw    fa-fighter-jet"></i> Upcoming</a></li>
+                <li><a href="{{route('teacher.live-streams.index')}}?finish_status=1"><i class="fa fa-fw fa-fast-forward"></i> Archive</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <strong><a href="{{route('teacher.live-streams.create')}}"><i class="fa fa-fw fa-pencil"></i> Create Live Stream</a></strong>
+        </li>
+
     </ul>
 </div>
 
