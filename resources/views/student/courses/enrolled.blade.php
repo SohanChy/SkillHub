@@ -6,6 +6,21 @@
 	<div class="mui--appbar-height"></div>
 	<div class="mui-container-fluid">
         <br />
+        @if(session('currentLessonUrl', false))
+        <div class="mui-panel">
+
+            <div class="mui-row">
+                <div class="mui--text-center mui--text-subhead">
+                    Want to continue where you last left off?
+                    <br/>
+                    <a class="mui-btn mui-btn--small mui-btn--primary" href="{{url('student/courses/current')}}">
+                        Yeah! Take me there.
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        @endif
         <div class="mui-panel">
 		<h3>Your Enrolled Courses</h3>
 		@foreach($courses as $course)

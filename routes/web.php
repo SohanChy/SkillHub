@@ -32,6 +32,7 @@ Route::group([
     });
 
     Route::get('/courses/{id}/{slug?}', "CourseController@coursePage")->name("course");
+    Route::get('/courses-video/{id}', "CourseController@getVideo");
 
 
     Route::get('login', "Auth\LoginController@showLoginForm")->name("login");
@@ -79,6 +80,7 @@ Route::group([
     });
 
     Route::get('/courses/enrolled', "CourseController@enrolled");
+    Route::get('/courses/current', "CourseController@current");
     Route::get('/get-video/{video}', 'CourseController@getVideo');
 
 });

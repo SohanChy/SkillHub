@@ -42,6 +42,7 @@ class LessonController extends Controller
                 $lesson = $lesson->first();
                 $documents = Uploads::findMany(json_decode($lesson->json_file_ids), ['id', 'name', 'path']);
 
+                session(['currentLessonUrl' => url()->current()]);
 
                 $comments = $lesson->comments;
                 $comment = new Comment();

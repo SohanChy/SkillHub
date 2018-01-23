@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class CourseController extends Controller
 {
+
+    public function current(){
+        return redirect(session("currentLessonUrl"));
+    }
+
 	public function enrolled(Request $request)
 	{
 		$courses = Auth::user()->studentOfCourses()->latest()->get();

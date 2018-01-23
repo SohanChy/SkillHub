@@ -31,7 +31,7 @@ $teacher = $course->teachers()->first();
 			<!-- THE YOUTUBE PLAYER -->
 			<div class="vid-container">
 				<video poster="/path/to/poster.jpg" controls>
-					<source src="{{URL::to('/student/get-video/'.@$course->lessons[0]->video_file_id)}}" type="video/mp4">	
+					<source src="{{URL::to('/courses-video/'.$course->id)}}" type="video/mp4">
 					</video>
 				</div>
 
