@@ -21,6 +21,7 @@ Route::group([
 
     Route::get('/courses', "HomeController@courseList");
     Route::get('/live-streams', "HomeController@liveStreams");
+    Route::get('/explore', "HomeController@explore");
 
 
     Route::group([

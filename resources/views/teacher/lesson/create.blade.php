@@ -63,7 +63,7 @@
 
     <label>Add an article: </label>
     <div class="mui-textfield mui-textfield--float-label">
-      {!! Form::textarea('lesson_text',null,['id' => 'summernote' ]) !!}
+      {!! Form::textarea('lesson_text',null,['id' => 'summernote']) !!}
     </div>
 
 
@@ -117,6 +117,7 @@
 <script src="{{ asset('js/jquery.ui.widget.js') }}"></script>
 <script src="{{ asset('js/jquery.iframe-transport.js') }}"></script>
 <script src="{{ asset('js/jquery.fileupload.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 
 
 <script type="text/javascript">
@@ -207,6 +208,7 @@ editor.summernote('insertImage', imgUrl);
 }
 });
 }
+
 
 
 

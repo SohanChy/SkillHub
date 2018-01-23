@@ -7,13 +7,14 @@
 	@foreach($categories as $category)
 	<div class="mui-row mui--text-center">
 
-		<div class="mui--text-display3">{{$category->name}}</div>
-		@foreach($category->courses as $course)
-		@component("open.layouts.course_card",['course' => $course])
-		@endcomponent
-
-		@endforeach
-
+		<div class="mui-row">
+			
+			@foreach($category->courses as $course)
+			@component("mui.course_card_open",['course' => $course])
+			@endcomponent
+			@endforeach
+			
+		</div>
 
 	</div>
 	@endforeach

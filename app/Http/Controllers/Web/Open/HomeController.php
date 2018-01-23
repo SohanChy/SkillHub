@@ -109,4 +109,15 @@ public static function courseNavDataShare(){
       $streams = \App\LiveStream::with('teacher')->get();
       return view("open.livestreams",compact('streams'));
     }
+
+
+    public function explore(Request $request){
+      $course = Course::where('admin_status', '=', '1')->get();
+      //return view('')
+      /*if($request->category{
+        ->where('cate')
+      }*/
+
+
+    }
   }

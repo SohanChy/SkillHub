@@ -55,7 +55,6 @@ class LessonController extends Controller
     {     
       $this->validate($request, [
       'short_description' => 'required',
-      'video' => 'required',
       ]);
       
       $lesson = new Lesson();
