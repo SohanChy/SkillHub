@@ -16,7 +16,9 @@ $teacher = $course->teachers()->first();
 			<p>{{trim($course->small_description)}}</p>
 		</div>
 		<div class="mui-col-md-4">
+			@if(!$subscribed)
 			<h1 class="pull-right">৳{{$course->price}}</h1>
+				@endif
 		</div>
 	</div>
 	<div class="mui-row">
@@ -42,15 +44,21 @@ $teacher = $course->teachers()->first();
 						@foreach(@$course->lessons as $lessons)
 						<li>
 							@if(@$loop->iteration == 1)
-							<a href="#" value="{{ @$lessons->video->path }}">
+							<a href="{{URL::to('courses/'.@$course->id.'/lesson/'.@$lessons->id)}}" value="{{ @$lessons->video->path }}">
 								<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
 							</a>
 							
 							@else
+								@if($subscribed)
+									<a href="{{URL::to('courses/'.@$course->id.'/lesson/'.@$lessons->id)}}" value="{{ @$lessons->video->path }}">
+										<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
+									</a>
+									@else
+									<a href="{{URL::to('courses/'.@$course->id.'/lesson/'.@$lessons->id)}}" value="{{ @$lessons->video->path }}">
+										<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
+									</a>
+									@endif
 							
-							<a href="{{URL::to('courses/'.@$course->id.'/lesson/'.@$lessons->id)}}" value="{{ @$lessons->video->path }}">
-								<div class="desc"><i class="fa fa-lock" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
-							</a>
 							@endif
 						</li>
 
@@ -79,9 +87,14 @@ $teacher = $course->teachers()->first();
 					<div class="mui-col-md-8">
 						<h4><strong>About the course</strong></h4>
 					</div>
+					@if(!$subscribed)
 					<div class="mui-col-md-4">
-						<button type="" class="mui-btn mui-btn--primary">Join <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                        <a href="{{URL::to('courses/'.@$course->id.'/lesson/1')}}">
+                            <button type="" class="mui-btn mui-btn--primary">Join <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+
+                        </a>
 					</div>
+						@endif
 				</div>
 				<div class="mui-col-md-4">
 					<div class="mui-col-md-4">
@@ -144,6 +157,7 @@ $teacher = $course->teachers()->first();
 			<div class="mui-col-md-12">
 				@component("open.comments.main",[
                     "comments"=>$comments,
+                    "subscribed"=>$subscribed,
                     "comment"=>$comment,
                     "type"=>"course",
                     "parent_id"=>$course->id,

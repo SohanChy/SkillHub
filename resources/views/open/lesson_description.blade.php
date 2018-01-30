@@ -9,7 +9,14 @@ $teacher = $course->teachers()->first();
 
 <div class="mui-container-fluid" style="margin: 0 15%">
 	<div class="mui-row">
-		<h2>{{$lesson->title}}</h2>
+
+		<div class="mui-col-md-10">
+			<h2>
+				<a class="mui-btn mui-btn--large mui-btn--primary mui-btn--flat" href="{{url("courses/".$course->id."/".$course->urlSlug())}}">
+					<i class="fa fa fa-book" aria-hidden="true"></i>
+				</a>
+				{{$lesson->title}}</h2>
+		</div>
 	</div>
 
 	<div class="mui-row">
@@ -31,8 +38,9 @@ $teacher = $course->teachers()->first();
 				<div class="vid-list-container">
 					<ol id="vid-list">
 						@foreach($course->lessons as $lessons)
-						<li>
-							<a href="{{URL::to('courses/'.$course->id.'/lesson/'.$lessons->id)}}" value="{{ $lessons->video->path }}">
+
+                                <li>
+							<a @if($lesson->id == $lessons->id) style="background-color: white;" @endif href="{{URL::to('courses/'.$course->id.'/lesson/'.$lessons->id)}}" value="{{ $lessons->video->path }}">
 								<div class="desc"><i class="fa fa-play" aria-hidden="true"></i> {{$loop->iteration}}. {{ @$lessons->title }}</div>
 							</a>
 							

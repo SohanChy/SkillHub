@@ -12,6 +12,7 @@
     if($comments->first()->commentable_type == "App\Course"){
         $isCourse = true;
     }
+
 @endphp
 
 @foreach($comments as $singleComment)
@@ -23,33 +24,39 @@
                 {{$singleComment->commented->name}} - {{ucfirst($singleComment->commented->role)}}
             </div>
             <div class="mui-col-xs-9">
+                <div class="mui-row mui--text-right">
+                    <div class="mui-col-md-7"></div>
+
+                @if($isCourse)
+                    <div class="mui-col-md-2">
+                        <div class="mui--text-left">
+                            <span class="mui--text-title">
+                                {{$singleComment->rate}}<span class="mui--text-subhead">/5</span> <span>★</span>
+                            </span>
+                        </div>
+                    </div>
+                @endif
+
                 @if(Auth::check())
 
-                    <div class="mui-row mui--text-right">
-                        <div class="mui-col-md-7"></div>
+
+
                         @if(!$isCourse)
                         <div class="mui-col-md-3">
                                 <button class="mui-btn mui-btn--small mui-btn--primary" onclick="showReplyForm({{$singleComment->id}})"><i class="fa fa-fw fa-reply"></i> Reply</button>
                         </div>
                         @endif
-                    @if($isCourse)
-                        <div class="mui-col-md-2">
-                                <div class="mui--text-left">
-                            <span class="mui--text-title">
-                                {{$singleComment->rate}}<span class="mui--text-subhead">/5</span> <span>★</span>
-                            </span>
-                                </div>
-                        </div>
-                        @endif
+
 
                         @if($user->id == $singleComment->commented->id)
                         <div class="mui-col-md-2">
                                 <button class="mui-btn mui-btn--small" onclick="showEditForm({{$singleComment->id}})"><i class="fa fa-fw fa-pencil"></i></button>
                         </div>
                         @endif
-                    </div>
+
 
                 @endif
+                </div>
 
 
 

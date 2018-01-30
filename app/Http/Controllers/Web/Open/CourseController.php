@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Uploads;
 use App\VideoStream;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -61,9 +62,21 @@ class CourseController extends Controller
       $comment = new Comment();
       $comment->commentable_type = "App\Course";
 
+      $subscribed = false;
+      if(Auth::check()){
+          $userId = Auth::id();
+          if (
+              $course->students()->where('student_id', $userId)->count() >= 1
+              ||
+              $course->teachers()->where('teacher_id', $userId)->count() >= 1
+          ) {
+              $subscribed = true;
+          }
+      }
+
       if($course){
           return view("open.course_description",
-              compact('course','comments','comment'));
+              compact('course','comments','comment','subscribed'));
       } else {
           return view('error404');
       }
